@@ -9,7 +9,6 @@ drop table if exists category cascade ;
 create table category (category_id int not null unique auto_increment primary key,
                        title varchar(225) not null unique );
 
-
 create table key_word(key_word_id int not null unique auto_increment primary key,
                       title varchar(225) not null unique,
                       prime boolean default false);
@@ -31,3 +30,5 @@ create table key_word_problem(id int not null unique auto_increment primary key,
                               key_word_id int not null,
                               FOREIGN KEY (problem_id) REFERENCES problem(problem_id),
                               FOREIGN KEY (key_word_id) REFERENCES key_word(key_word_id));
+
+ALTER TABLE key_word_problem ADD UNIQUE `unique_index`(problem_id, key_word_id);
