@@ -11,7 +11,8 @@ create table category (category_id int not null unique auto_increment primary ke
 
 
 create table key_word(key_word_id int not null unique auto_increment primary key,
-                      title varchar(225) not null unique );
+                      title varchar(225) not null unique,
+                      prime boolean default false);
 
 create table problem(problem_id int not null unique auto_increment primary key ,
                      title varchar(225) not null,
