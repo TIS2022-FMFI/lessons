@@ -21,7 +21,8 @@ create table problem(problem_id int not null unique auto_increment primary key ,
                      user_name varchar(100) not null,
                      create_at date not null,
                      last_editor varchar(100),
-                     last_edited_at date);
+                     last_edited_at date,
+                     edit_description varchar(500));
 
 create table key_word_problem(id int not null unique auto_increment primary key,
                               problem_id int not null,
