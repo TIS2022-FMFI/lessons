@@ -20,9 +20,9 @@ create table problem(problem_id int not null unique auto_increment primary key ,
                      path varchar(225) not null,
                      user_name varchar(100) not null,
                      create_at date not null,
-                     last_editor varchar(100),
-                     last_edited_at date,
-                     edit_description varchar(500));
+                     last_editor varchar(100) deafult null,
+                     last_edited_at date default null,
+                     edit_description varchar(500) default null);
 
 create table key_word_problem(id int not null unique auto_increment primary key,
                               problem_id int not null,
