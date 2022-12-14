@@ -1,0 +1,39 @@
+-- drop table if exists problem cascade;
+-- create table if not exists problem
+-- (
+--     problem_id   serial
+--     constraint lekar_pk
+--     primary key,
+--     meno       varchar(50) not null,
+--     priezvisko varchar(50) not null
+--     );
+--
+-- alter table lekar
+--     owner to "obsivanova3@uniba.sk";
+--
+-- create unique index if not exists lekar_lekar_id_uindex
+--     on lekar (lekar_id);
+--
+-- drop table if exists pacient cascade ;
+-- create table if not exists pacient
+-- (
+--     pacient_id      serial
+--     constraint pacient_pk
+--     primary key,
+--     rodne_cislo     serial,
+--     meno            varchar(50)               not null,
+--     priezvisko      varchar(50)               not null,
+--     ulica           varchar(50)               not null,
+--     cislo_domu      integer                   not null,
+--     mesto           varchar                   not null,
+--     datum_narodenia date default CURRENT_DATE not null,
+--     lekar_id        integer
+--     constraint pacient_lekar_fk
+--     references lekar
+--     );
+--
+-- alter table pacient
+--     owner to "obsivanova3@uniba.sk";
+--
+-- create unique index if not exists pacient_pacient_id_uindex
+--     on pacient (pacient_id);
