@@ -1,11 +1,12 @@
 create database if not exists lesson_learning;
 use lesson_learning;
 
-truncate table category;
+
 truncate table key_word_problem;
 SET foreign_key_checks=0;
 truncate table key_word;
 truncate table problem;
+truncate table category;
 SET foreign_key_checks=1;
 
 -- name
@@ -30,27 +31,71 @@ values ('hliník'), ('železo'), ('plast'), ('PVC'), ('plastelína'),
 insert into key_word (title, prime)
 values ('prasklina', true), ('škrabanec', true), ('roztavenie', true), ('zmrštenie', true);
 
-insert into problem (title, description, path, user_name, create_at)
-values ('The Dilemma of Overcrowding in Cities', 'je to pokazene', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
-('The Growing Problem of Income Inequality', 'aj toto sa pokazilo', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
-('The Environmental Consequences of Climate Change', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
-('The Challenges of Providing Access to Quality Healthcare', 'aaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
-('The Struggle for Racial and Social Justice', 'bbb', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
-('The Impact of Technology on Employment and the Economy', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
-('The Dangers of Cybersecurity Breaches and Data Privacy', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Difficulty of Maintaining Mental Health in a Fast-Paced World', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Impact of Overconsumption on Natural Resources and the Environment', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Challenges of Globalization and Cultural Homogenization', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Dilemma of Limited Resources', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Conundrum of Overpopulation', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Paradox of Climate Change', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Enigma of Income Inequality', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Quandary of Globalization', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Predicament of Terrorism', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Dilemma of Human Rights Violations', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Paradox of Advancing Technology', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Conundrum of Political Corruption', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now()),
- ('The Quandary of Mental Health Stigma', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now());
+insert into problem (title, description, path, user_name, create_at, category_id)
+values ('The Dilemma of Overcrowding in Cities', 'je to pokazene', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+('The Growing Problem of Income Inequality', 'aj toto sa pokazilo', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(),(SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+('The Environmental Consequences of Climate Change', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+('The Challenges of Providing Access to Quality Healthcare', 'aaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+('The Struggle for Racial and Social Justice', 'bbb', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+('The Impact of Technology on Employment and the Economy', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+('The Dangers of Cybersecurity Breaches and Data Privacy', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Difficulty of Maintaining Mental Health in a Fast-Paced World', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Impact of Overconsumption on Natural Resources and the Environment', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Challenges of Globalization and Cultural Homogenization', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Dilemma of Limited Resources', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Conundrum of Overpopulation', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Paradox of Climate Change', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Enigma of Income Inequality', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Quandary of Globalization', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Predicament of Terrorism', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Dilemma of Human Rights Violations', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Paradox of Advancing Technology', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Conundrum of Political Corruption', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('The Quandary of Mental Health Stigma', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1));
+
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
+INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
 
 drop table name;
-
