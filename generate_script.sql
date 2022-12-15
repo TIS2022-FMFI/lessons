@@ -54,15 +54,15 @@ values ('The Dilemma of Overcrowding in Cities', 'je to pokazene', 'C://user', (
  ('The Conundrum of Political Corruption', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
  ('The Quandary of Mental Health Stigma', 'aaaaa', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
  ('Inconsistent Quality in Product Manufacturing', 'fjhgbjnkhbg', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
- ('Frequent Customer Complaints About Service', 'sdfgjkl', 'asdfghjkl', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
- ('Inefficient Processes Leading to Delays', 'asdfghjk', 'yxcvbnm', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
- ('Inaccurate Inventory Tracking Causing Stockouts', 'qwertzu', 'dtfzghuok', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
- ('High Employee Turnover Rate', 'sdfghj', 'asdfghjkl', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
- ('Lack of Communication Between Departments', 'xfgzuj', 'xsdtzh', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
- ('Ineffective Marketing Strategies Leading to Low Sales', 'sdfghjk', 'ugk', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
- ('Poor Customer Satisfaction Scores', 'sdugihk', 'dtzujn', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
- ('Lack of Training and Development Opportunities for Employees', 'sertzuik', 'cfgizo', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
- ('Difficulty Retaining Talent and Attracting New Employees', 'xdz', 'stzuj', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1));
+ ('Frequent Customer Complaints About Service', 'sdfgjkl', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('Inefficient Processes Leading to Delays', 'asdfghjk', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('Inaccurate Inventory Tracking Causing Stockouts', 'qwertzu', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('High Employee Turnover Rate', 'sdfghj', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('Lack of Communication Between Departments', 'xfgzuj', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('Ineffective Marketing Strategies Leading to Low Sales', 'sdfghjk', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('Poor Customer Satisfaction Scores', 'sdugihk', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('Lack of Training and Development Opportunities for Employees', 'sertzuik', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1)),
+ ('Difficulty Retaining Talent and Attracting New Employees', 'xdz', 'C://user', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1));
 
 INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));
 INSERT IGNORE INTO key_word_problem(problem_id, key_word_id) values ((SELECT problem.problem_id from problem order by RAND() LIMIT 1), (SELECT key_word.key_word_id from key_word order by RAND() LIMIT 1));

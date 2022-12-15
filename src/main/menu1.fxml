@@ -70,47 +70,47 @@
       <items>
             <VBox prefHeight="510.0" prefWidth="100.0" style="-fx-background-color: #FF4433;">
                <children>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="%key.unspecified">
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="key.unspecified">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="%key.unspecified">
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="key.unspecified">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="53.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="%key.unspecified">
+                  <Button layoutX="10.0" layoutY="53.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="key.unspecified">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="%key.unspecified">
+                  <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="key.unspecified">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="160.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="%key.unspecified">
+                  <Button layoutX="10.0" layoutY="160.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="key.unspecified">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="308.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="%key.unspecified">
+                  <Button layoutX="10.0" layoutY="308.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="key.unspecified">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="310.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="%key.unspecified">
+                  <Button layoutX="10.0" layoutY="310.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="key.unspecified">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="358.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="%key.unspecified">
+                  <Button layoutX="10.0" layoutY="358.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 0 3;" text="key.unspecified">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="290.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 3 3;" text="%key.unspecified">
+                  <Button layoutX="10.0" layoutY="290.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FF4433; -fx-border-color: #000000; -fx-border-width: 3 3 3 3;" text="key.unspecified">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
@@ -136,7 +136,7 @@
                            <children>
                               <VBox prefHeight="100.0" prefWidth="150.0">
                                  <children>
-                                    <TextField editable="false" text="%key.unspecified">
+                                    <TextField editable="false" text="key.unspecified">
                                        <font>
                                           <Font name="Calibri Bold" size="18.0" />
                                        </font>
@@ -144,7 +144,7 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <TextField text="%key.unspecified">
+                                    <TextField text="key.unspecified">
                                        <font>
                                           <Font name="Calibri Italic" size="16.0" />
                                        </font>
@@ -206,7 +206,7 @@
                            <children>
                               <VBox prefHeight="100.0" prefWidth="150.0">
                                  <children>
-                                    <TextField editable="false" text="%key.unspecified">
+                                    <TextField editable="false" text="key.unspecified">
                                        <font>
                                           <Font name="Calibri Bold" size="18.0" />
                                        </font>
@@ -214,7 +214,7 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <TextField text="%key.unspecified">
+                                    <TextField text="key.unspecified">
                                        <font>
                                           <Font name="Calibri Italic" size="16.0" />
                                        </font>
@@ -276,7 +276,7 @@
                            <children>
                               <VBox prefHeight="100.0" prefWidth="150.0">
                                  <children>
-                                    <TextField editable="false" text="%key.unspecified">
+                                    <TextField editable="false" text="key.unspecified">
                                        <font>
                                           <Font name="Calibri Bold" size="18.0" />
                                        </font>
@@ -284,7 +284,7 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <TextField text="%key.unspecified">
+                                    <TextField text="key.unspecified">
                                        <font>
                                           <Font name="Calibri Italic" size="16.0" />
                                        </font>
