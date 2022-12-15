@@ -77,7 +77,8 @@ public class KPFinder {
 
     public List<Key_word> usedInProblemByCategory(int categoryId) throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement(
-                "SELECT DISTINCT kw.key_word_id, kw.title, kw.prime FROM key_word_problem kwp LEFT JOIN key_word kw ON kwp.key_word_id = kw.key_word_id WHERE kwp.problem_id IN" +
+                "SELECT DISTINCT kw.key_word_id, kw.title, kw.prime FROM key_word_problem kwp LEFT JOIN key_word kw " +
+                        "ON kwp.key_word_id = kw.key_word_id WHERE kwp.problem_id IN" +
                         "(SELECT problem_id FROM problem WHERE category_id = ?) AND kw.prime = TRUE")) {
             s.setInt(1, categoryId);
 

@@ -13,9 +13,9 @@ public class Problem {
     private String description;
     private String path;
     private String user_name;
-    private Date edited_at;
-    private String last_editor;
     private Date created_at;
+    private Date last_edited_at;
+    private String last_editor;
     private String edit_description;
     private Integer category_id;
 
