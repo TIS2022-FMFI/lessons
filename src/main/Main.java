@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             java.util.Properties prop = new Properties();
-            prop.loadFromXML(new FileInputStream("configuration/configuration.xml"));
+            prop.loadFromXML(new FileInputStream("config/config.xml"));
             Connection connection = DriverManager.getConnection(
                     prop.getProperty("database"),
                     prop.getProperty("user"),

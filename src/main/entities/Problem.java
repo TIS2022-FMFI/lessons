@@ -1,15 +1,55 @@
 package main.entities;
 
+import main.DbContext;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 
 public class Problem {
     private Integer problem_id;
     private String title;
-    private Integer key_word_problem_id;
     private String description;
     private String path;
     private String user_name;
-    private Date edited_at;
+    private Date created_at;
+    private String last_editor;
+    private Date last_edited_at;
+    private String edit_description;
+
+    public void insert() throws SQLException {
+        try (PreparedStatement s = DbContext.getConnection().
+                prepareStatement("INSERT INTO \"problem\" (title, description, path, user_name, create_at) VALUES (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
+            s.setString(1, title);
+            s.setString(2, description);
+            s.setString(3, path);
+            s.setString(4, user_name);
+            s.setDate(5, (java.sql.Date) created_at);
+            s.executeUpdate();
+        }
+    }
+    public void delete() throws SQLException {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM \"problem\" WHERE problem_id = ?")) {
+            s.setInt(1, problem_id);
+            s.executeUpdate();
+        }
+    }
+
+    public void update()throws SQLException {
+        try(PreparedStatement s = DbContext.getConnection().
+                prepareStatement("UPDATE \"problem\" SET title = ?, description = ?, path = ?, user_name = ?, create_at = ?, last_editor = ?, last_edited_at = ?, edit_description = ? WHERE problem_id = ?")){
+            s.setString(1, title);
+            s.setString(2, description);
+            s.setString(3, path);
+            s.setString(4, user_name);
+            s.setDate(5, (java.sql.Date) created_at);
+            s.setString(6, last_editor);
+            s.setDate(7, (java.sql.Date) last_edited_at);
+            s.setString(8, edit_description);
+            s.executeUpdate();
+        }
+    }
 
     public Integer getCategory_id() {
         return category_id;
@@ -45,20 +85,12 @@ public class Problem {
         this.edit_description = edit_description;
     }
 
-    private String last_editor;
-    private Date created_at;
-    private String edit_description;
-
     public void setProblem_id(Integer problem_id) {
         this.problem_id = problem_id;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public void setKey_word_problem_id(Integer key_word_problem_id) {
-        this.key_word_problem_id = key_word_problem_id;
     }
 
     public void setDescription(String description) {
@@ -73,8 +105,8 @@ public class Problem {
         this.user_name = user_name;
     }
 
-    public void setEdited_at(Date edited_at) {
-        this.edited_at = edited_at;
+    public void setEdited_at(Date last_edited_at) {
+        this.last_edited_at = last_edited_at;
     }
 
     public Integer getProblem_id() {
@@ -83,10 +115,6 @@ public class Problem {
 
     public String getTitle() {
         return title;
-    }
-
-    public Integer getKey_word_problem_id() {
-        return key_word_problem_id;
     }
 
     public String getDescription() {
@@ -102,6 +130,6 @@ public class Problem {
     }
 
     public Date getEdited_at() {
-        return edited_at;
+        return last_edited_at;
     }
 }
