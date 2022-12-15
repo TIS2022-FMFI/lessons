@@ -20,7 +20,7 @@ create table problem(problem_id int not null unique auto_increment primary key ,
                      category_id int not null,
                      FOREIGN KEY (category_id) REFERENCES category(category_id),
                      user_name varchar(100) not null,
-                     create_at date default NOW();
+                     create_at date default NOW(),
                      last_editor varchar(100) default null,
                      last_edited_at date default null,
                      edit_description varchar(500) default null);
