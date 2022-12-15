@@ -43,6 +43,32 @@ public class KeywordFinder {
         }
     }
 
+    public Key_word findByTitle(String titleK) throws SQLException {
+
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM \"key_word\" WHERE title = ?")) {
+            s.setString(1, titleK);
+
+            try (ResultSet r = s.executeQuery()) {
+                if (r.next()) {
+                    Key_word c = new Key_word();
+
+                    c.setKey_word_id(r.getInt("key_word_id"));
+                    c.setTitle(r.getString("title"));
+                    c.setPrime(r.getBoolean("prime"));
+
+
+                    if (r.next()) {
+                        throw new RuntimeException("More than one row was returned");
+                    }
+
+                    return c;
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+
     public List<Key_word> findAllCustom() throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM \"key_word\" WHERE prime = FALSE")) {

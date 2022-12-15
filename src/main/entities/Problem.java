@@ -13,10 +13,11 @@ public class Problem {
     private String description;
     private String path;
     private String user_name;
-    private Date created_at;
+    private Date edited_at;
     private String last_editor;
-    private Date last_edited_at;
+    private Date created_at;
     private String edit_description;
+    private Integer category_id;
 
     public void insert() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().
@@ -60,8 +61,6 @@ public class Problem {
     public void setCategory_id(Integer category_id) {
         this.category_id = category_id;
     }
-
-    private Integer category_id;
 
     public String getLast_editor() {
         return last_editor;
