@@ -5,11 +5,14 @@ import java.util.Date;
 public class Problem {
     private Integer problem_id;
     private String title;
-    private Integer key_word_problem_id;
     private String description;
     private String path;
     private String user_name;
     private Date edited_at;
+    private String last_editor;
+    private Date created_at;
+    private String edit_description;
+    private Integer category_id;
 
     public Integer getCategory_id() {
         return category_id;
@@ -18,8 +21,6 @@ public class Problem {
     public void setCategory_id(Integer category_id) {
         this.category_id = category_id;
     }
-
-    private Integer category_id;
 
     public String getLast_editor() {
         return last_editor;
@@ -45,20 +46,12 @@ public class Problem {
         this.edit_description = edit_description;
     }
 
-    private String last_editor;
-    private Date created_at;
-    private String edit_description;
-
     public void setProblem_id(Integer problem_id) {
         this.problem_id = problem_id;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public void setKey_word_problem_id(Integer key_word_problem_id) {
-        this.key_word_problem_id = key_word_problem_id;
     }
 
     public void setDescription(String description) {
@@ -83,10 +76,6 @@ public class Problem {
 
     public String getTitle() {
         return title;
-    }
-
-    public Integer getKey_word_problem_id() {
-        return key_word_problem_id;
     }
 
     public String getDescription() {

@@ -3,6 +3,7 @@ package main.entities;
 public class Key_word {
     private Integer key_word_id;
     private String title;
+    private boolean prime;
 
     public boolean isPrime() {
         return prime;
@@ -11,8 +12,6 @@ public class Key_word {
     public void setPrime(boolean prime) {
         this.prime = prime;
     }
-
-    private boolean prime;
 
     public void setKey_word_id(Integer key_word_id) {
         this.key_word_id = key_word_id;
