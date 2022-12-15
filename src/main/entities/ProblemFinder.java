@@ -33,9 +33,11 @@ public class ProblemFinder {
                     c.setUser_name(r.getString("user_name"));
                     c.setCreated_at(r.getDate("create_at"));
                     c.setLast_editor(r.getString("last_editor"));
-                    c.setEdited_at(r.getDate("last_edited_at"));
+                    c.setLast_edited_at(r.getDate("last_edited_at"));
                     c.setEdit_description(r.getString("edit_description"));
                     c.setCategory_id(r.getInt("category_id"));
+                    c.setImage1(r.getString("image1"));
+                    c.setImage2(r.getString("image2"));
 
                     if (r.next()) {
                         throw new RuntimeException("More than one row was returned");
@@ -67,15 +69,15 @@ public class ProblemFinder {
                     c.setUser_name(r.getString("user_name"));
                     c.setCreated_at(r.getDate("create_at"));
                     c.setLast_editor(r.getString("last_editor"));
-                    c.setEdited_at(r.getDate("last_edited_at"));
+                    c.setLast_edited_at(r.getDate("last_edited_at"));
                     c.setEdit_description(r.getString("edit_description"));
                     c.setCategory_id(r.getInt("category_id"));
-
+                    c.setImage1(r.getString("image1"));
+                    c.setImage2(r.getString("image2"));
                     elements.add(c);
                 }
                 return elements;
             }
         }
     }
-
 }
