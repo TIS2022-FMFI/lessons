@@ -1,19 +1,19 @@
 package main;
 
-import main.entities.Category;
-import main.entities.Key_word;
-import main.entities.Key_word_problem;
-import main.entities.Problem;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class Main {
+public class Main extends Application {
     public static void main(String[] args) {
         try {
             java.util.Properties prop = new Properties();
@@ -29,5 +29,14 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("menu1.fxml"));
+        stage.setTitle("Lessons Learn");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }
