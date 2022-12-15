@@ -19,7 +19,7 @@ public class CategoryFinder {
 
     public Category findById(int id) throws SQLException {
 
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM \"category\" WHERE category_id = ?")) {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM category WHERE category_id = ?")) {
             s.setInt(1, id);
 
             try (ResultSet r = s.executeQuery()) {
@@ -43,7 +43,7 @@ public class CategoryFinder {
 
     public List<Category> findAll() throws SQLException {
 
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM \"category\"")) {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM category")) {
 
             try (ResultSet r = s.executeQuery()) {
 

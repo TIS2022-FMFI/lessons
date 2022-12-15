@@ -19,7 +19,7 @@ public class ProblemFinder {
 
     public Problem findById(int id) throws SQLException {
 
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM \"problem\" WHERE problem_id = ?")) {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM problem WHERE problem_id = ?")) {
             s.setInt(1, id);
 
             try (ResultSet r = s.executeQuery()) {
@@ -51,7 +51,7 @@ public class ProblemFinder {
 
     public List<Problem> findAll() throws SQLException {
 
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM \"problem\"")) {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM problem")) {
 
             try (ResultSet r = s.executeQuery()) {
 

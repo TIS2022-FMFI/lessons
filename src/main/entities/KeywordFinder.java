@@ -19,7 +19,7 @@ public class KeywordFinder {
 
     public Key_word findById(int id) throws SQLException {
 
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM \"key_word\" WHERE key_word_id = ?")) {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word WHERE key_word_id = ?")) {
             s.setInt(1, id);
 
             try (ResultSet r = s.executeQuery()) {
@@ -45,7 +45,7 @@ public class KeywordFinder {
 
     public Key_word findByTitle(String titleK) throws SQLException {
 
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM \"key_word\" WHERE title = ?")) {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word WHERE title = ?")) {
             s.setString(1, titleK);
 
             try (ResultSet r = s.executeQuery()) {
@@ -71,7 +71,7 @@ public class KeywordFinder {
 
     public List<Key_word> findAllCustom() throws SQLException {
 
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM \"key_word\" WHERE prime = FALSE")) {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word WHERE prime = FALSE")) {
 
             try (ResultSet r = s.executeQuery()) {
 
@@ -93,7 +93,7 @@ public class KeywordFinder {
 
     public List<Key_word> findAllPrimary() throws SQLException {
 
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM \"key_word\" WHERE prime = TRUE")) {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word WHERE prime = TRUE")) {
 
             try (ResultSet r = s.executeQuery()) {
 
