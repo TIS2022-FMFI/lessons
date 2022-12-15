@@ -20,17 +20,19 @@ public class Problem {
 
     public void insert() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().
-                prepareStatement("INSERT INTO \"problem\" (title, description, path, user_name, create_at) VALUES (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
+                prepareStatement("INSERT INTO problem (title, description, path, user_name, create_at, category_id) VALUES (?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
             s.setString(1, title);
             s.setString(2, description);
             s.setString(3, path);
             s.setString(4, user_name);
             s.setDate(5, (java.sql.Date) created_at);
+            s.setInt(6, category_id);
             s.executeUpdate();
         }
     }
+
     public void delete() throws SQLException {
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM \"problem\" WHERE problem_id = ?")) {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM problem WHERE problem_id = ?")) {
             s.setInt(1, problem_id);
             s.executeUpdate();
         }
@@ -38,7 +40,7 @@ public class Problem {
 
     public void update()throws SQLException {
         try(PreparedStatement s = DbContext.getConnection().
-                prepareStatement("UPDATE \"problem\" SET title = ?, description = ?, path = ?, user_name = ?, create_at = ?, last_editor = ?, last_edited_at = ?, edit_description = ? WHERE problem_id = ?")){
+                prepareStatement("UPDATE problem SET title = ?, description = ?, path = ?, user_name = ?, create_at = ?, last_editor = ?, last_edited_at = ?, edit_description = ? WHERE problem_id = ?")){
             s.setString(1, title);
             s.setString(2, description);
             s.setString(3, path);
