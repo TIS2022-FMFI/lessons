@@ -1,5 +1,10 @@
 package main.entities;
 
+import main.DbContext;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 
 public class Problem {
@@ -13,6 +18,41 @@ public class Problem {
     private Date created_at;
     private String edit_description;
     private Integer category_id;
+
+    public void insert() throws SQLException {
+        try (PreparedStatement s = DbContext.getConnection().
+                prepareStatement("INSERT INTO problem (title, description, path, user_name, create_at, category_id) VALUES (?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
+            s.setString(1, title);
+            s.setString(2, description);
+            s.setString(3, path);
+            s.setString(4, user_name);
+            s.setDate(5, (java.sql.Date) created_at);
+            s.setInt(6, category_id);
+            s.executeUpdate();
+        }
+    }
+
+    public void delete() throws SQLException {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM problem WHERE problem_id = ?")) {
+            s.setInt(1, problem_id);
+            s.executeUpdate();
+        }
+    }
+
+    public void update()throws SQLException {
+        try(PreparedStatement s = DbContext.getConnection().
+                prepareStatement("UPDATE problem SET title = ?, description = ?, path = ?, user_name = ?, create_at = ?, last_editor = ?, last_edited_at = ?, edit_description = ? WHERE problem_id = ?")){
+            s.setString(1, title);
+            s.setString(2, description);
+            s.setString(3, path);
+            s.setString(4, user_name);
+            s.setDate(5, (java.sql.Date) created_at);
+            s.setString(6, last_editor);
+            s.setDate(7, (java.sql.Date) last_edited_at);
+            s.setString(8, edit_description);
+            s.executeUpdate();
+        }
+    }
 
     public Integer getCategory_id() {
         return category_id;
@@ -66,8 +106,8 @@ public class Problem {
         this.user_name = user_name;
     }
 
-    public void setEdited_at(Date edited_at) {
-        this.edited_at = edited_at;
+    public void setEdited_at(Date last_edited_at) {
+        this.last_edited_at = last_edited_at;
     }
 
     public Integer getProblem_id() {
@@ -91,6 +131,6 @@ public class Problem {
     }
 
     public Date getEdited_at() {
-        return edited_at;
+        return last_edited_at;
     }
 }
