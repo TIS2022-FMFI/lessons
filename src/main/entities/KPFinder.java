@@ -26,16 +26,40 @@ public class KPFinder {
 
                 List<Key_word> elements = new ArrayList<>();
                 while (r.next()) {
-                   Key_word c = new Key_word();
+                    Key_word c = new Key_word();
 
-                   c.setKey_word_id(r.getInt("key_word_id"));
-                   c.setTitle(r.getString("title"));
-                   c.setPrime(r.getBoolean("prime"));
+                    c.setKey_word_id(r.getInt("key_word_id"));
+                    c.setTitle(r.getString("title"));
+                    c.setPrime(r.getBoolean("prime"));
 
-                   elements.add(c);
+                    elements.add(c);
                 }
 
-               return elements;
+                return elements;
+            }
+        }
+    }
+
+    public List<Key_word> usedInProblemByCategory(int categoryId) throws SQLException {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement(
+                "SELECT DISTINCT kw.key_word_id, kw.title, kw.prime FROM key_word_problem kwp LEFT JOIN key_word kw ON kwp.key_word_id = kw.key_word_id WHERE kwp.problem_id IN" +
+                        "(SELECT problem_id FROM problem WHERE category_id = ?) AND kw.prime = TRUE")) {
+            s.setInt(1, categoryId);
+
+            try (ResultSet r = s.executeQuery()) {
+
+                List<Key_word> elements = new ArrayList<>();
+                while (r.next()) {
+                    Key_word c = new Key_word();
+
+                    c.setKey_word_id(r.getInt("key_word_id"));
+                    c.setTitle(r.getString("title"));
+                    c.setPrime(r.getBoolean("prime"));
+
+                    elements.add(c);
+                }
+
+                return elements;
             }
         }
     }
