@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-    <entry key="database">jdbc:mariadb://localhost:5432/lessons</entry>
+    <entry key="database">jdbc:mariadb://localhost:3306/lesson_learning</entry>
     <entry key="user">root</entry>
     <entry key="password">root</entry>
 </properties>
