@@ -8,10 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import main.entities.Category;
-import main.entities.CategoryFinder;
-import main.entities.KPFinder;
-import main.entities.Key_word;
+import main.entities.*;
 
 import java.awt.*;
 import java.net.URL;
@@ -22,10 +19,10 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     @FXML
-    private VBox box ;
+    private VBox boxCategories;
 
-    private List<Button> buttons ;
-
+    @FXML
+    private VBox boxKeys;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -45,21 +42,40 @@ public class Controller implements Initializable {
         btn.setDisable(false);
 
         btn.setOnAction(e -> {
-
             try {
-//                box.getChildren().clear();
+                boxKeys.getChildren().clear();
                 for (Key_word k: KPFinder.getInstance().usedInProblemByCategory(Integer.parseInt(btn.getId()))) {
-
                     CheckBox check = new CheckBox(k.getTitle());
-                    check.getId();
+                    check.setId(k.getKey_word_id().toString());
 
-                    box.getChildren().add(check);
+                    boxKeys.getChildren().add(check);
                 }
+                Button submit = new Button("Submit");
+                submit.setOnMouseClicked(i -> {
+                    for (Node ch: boxKeys.getChildren()) {
+                        if(ch instanceof CheckBox)
+                        {
+                            if(((CheckBox) ch).isSelected())
+                            {
+                                try {
+                                    List<Problem> problems = KPFinder.getInstance().findByCK(Integer.parseInt(btn.getId()), Integer.parseInt(ch.getId()));
+                                    for (Problem p: problems) {
+                                        // vylistovanie miesto printu
+                                        System.out.println(p.getTitle());
+                                    }
+                                } catch (SQLException ex) {
+                                    ex.printStackTrace();
+                                }
+                            }
+                        }
+                    }
+                });
+                boxKeys.getChildren().add(submit);
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         });
-        box.getChildren().add(btn);
+        boxCategories.getChildren().add(btn);
     }
 
 }
