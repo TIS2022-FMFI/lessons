@@ -69,7 +69,30 @@ public class KeywordFinder {
         }
     }
 
-    public List<Key_word> findAll(Boolean primeX) throws SQLException {
+
+    public List<Key_word> findAll() throws SQLException {
+
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word")) {
+
+            try (ResultSet r = s.executeQuery()) {
+
+                List<Key_word> elements = new ArrayList<>();
+
+                while (r.next()) {
+                    Key_word c = new Key_word();
+
+                    c.setKey_word_id(r.getInt("key_word_id"));
+                    c.setTitle(r.getString("title"));
+                    c.setPrime(r.getBoolean("prime"));
+
+                    elements.add(c);
+                }
+                return elements;
+            }
+        }
+    }
+
+    public List<Key_word> findAllbyPrime(Boolean primeX) throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word WHERE prime = ?")) {
             s.setBoolean(1, primeX);
