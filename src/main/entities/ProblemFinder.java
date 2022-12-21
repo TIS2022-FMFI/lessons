@@ -62,7 +62,7 @@ public class ProblemFinder {
                 while (r.next()) {
                     Problem c = new Problem();
 
-                    c.setProblem_id(r.getInt("key_word_id"));
+                    c.setProblem_id(r.getInt("problem_id"));
                     c.setTitle(r.getString("title"));
                     c.setDescription(r.getString("description"));
                     c.setPath(r.getString("path"));

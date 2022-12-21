@@ -69,9 +69,10 @@ public class KeywordFinder {
         }
     }
 
-    public List<Key_word> findAllCustom() throws SQLException {
 
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word WHERE prime = FALSE")) {
+    public List<Key_word> findAll() throws SQLException {
+
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word")) {
 
             try (ResultSet r = s.executeQuery()) {
 
@@ -91,10 +92,10 @@ public class KeywordFinder {
         }
     }
 
-    public List<Key_word> findAllPrimary() throws SQLException {
+    public List<Key_word> findAllbyPrime(Boolean primeX) throws SQLException {
 
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word WHERE prime = TRUE")) {
-
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word WHERE prime = ?")) {
+            s.setBoolean(1, primeX);
             try (ResultSet r = s.executeQuery()) {
 
                 List<Key_word> elements = new ArrayList<>();
