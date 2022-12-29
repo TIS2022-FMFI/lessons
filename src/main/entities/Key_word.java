@@ -13,7 +13,7 @@ public class Key_word {
 
     public void insert() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("INSERT INTO key_word (title) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
-            s.setString(1, title);
+            s.setString(1, title.toLowerCase());
             s.executeUpdate();
         }
     }
