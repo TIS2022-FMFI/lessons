@@ -1,20 +1,25 @@
-package main;
+package main.ui;
 
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.Font;
 
+import javafx.stage.Stage;
 import main.entities.KPFinder;
 import main.entities.Key_word;
 import main.entities.Problem;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -62,17 +67,32 @@ public class LessonDetailGenerator {
 
 
         Button show = new Button("SHOW");
+        show.setMinSize(100, 30);
         show.setFont(Font.font("Calibri", FontWeight.BOLD, 20));
         show.setTextAlignment(TextAlignment.CENTER);
         HBox.setMargin(show, new Insets(50, 10, 50, 10));
 
         Button modal = new Button("MODAL");
+        modal.setMinSize(100, 30);
         modal.setFont(Font.font("Calibri", FontWeight.BOLD, 20));
         modal.setTextAlignment(TextAlignment.CENTER);
         HBox.setMargin(modal, new Insets(50, 10, 50, 10));
 
+        modal.setOnAction(e -> {
+            //try {
+                //Parent root = FXMLLoader.load(getClass().getResource("lessonDetail.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle(problem.getTitle());
+                //stage.setScene(new Scene(root));
+                stage.show();
+            //}
+            //catch (IOException ex) {
+            //    ex.printStackTrace();
+            //}
+        });
+
         HBox detail = new HBox(info, firstImage, secondImage, show, modal);
-        detail.setMinSize(1000, 150);
+        detail.setMinSize(10, 150);
         return detail;
     }
 }

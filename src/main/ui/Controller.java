@@ -3,28 +3,26 @@ package main.ui;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import main.entities.Category;
-import main.entities.CategoryFinder;
-import main.entities.KPFinder;
-import main.entities.Key_word;
+import main.entities.*;
 
-import java.awt.*;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     @FXML
-    private VBox box ;
+    private VBox boxCategories;
+
+    @FXML
+    VBox lessons;
 
     private List<Button> buttons ;
+    private List<Problem> p;
+
 
 
     @Override
@@ -36,6 +34,16 @@ public class Controller implements Initializable {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+
+        // show all lesson details
+        try {
+            p = ProblemFinder.getInstance().findAll();
+            for (Problem problem : p) {
+                lessons.getChildren().add(LessonDetailGenerator.getInstance().lessonDetail(problem));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -53,13 +61,13 @@ public class Controller implements Initializable {
                     CheckBox check = new CheckBox(k.getTitle());
                     check.getId();
 
-                    box.getChildren().add(check);
+                    boxCategories.getChildren().add(check);
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         });
-        box.getChildren().add(btn);
+        boxCategories.getChildren().add(btn);
     }
 
 }
