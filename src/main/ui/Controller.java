@@ -6,18 +6,23 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import main.entities.*;
 
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class Controller implements Initializable {
+    @FXML
+   private TextField searchBar;
+
     @FXML
     private VBox boxCategories;
 
@@ -34,6 +39,37 @@ public class Controller implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void SrcBtn() throws SQLException {
+        try{
+            String[] keywords = searchBar.getText().split(", ");
+            Map<Integer, Integer> problems = new HashMap<>();
+            for (String key : keywords) {
+                Key_word kw = KeywordFinder.getInstance().findByTitle(key.toLowerCase());
+                if (kw != null){
+                    for (Problem pr : KPFinder.getInstance().findByKeywordId(kw.getKey_word_id())){
+                        if (!problems.containsKey(pr.getProblem_id())){
+                            problems.put(pr.getProblem_id(), 1);
+                        }
+                        else{
+                            problems.put(pr.getProblem_id(), problems.get(pr.getProblem_id()) + 1);
+                        }
+                    }
+                }
+                else{
+                    System.out.println("Keyword " + key + " doesn't exist!!!");
+                }
+
+            }
+            for(Integer p : problems.keySet()){
+                System.out.println(ProblemFinder.getInstance().findById(p).getTitle() +  "     occurred " + problems.get(p) + " times");
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
     }
 
     public void addButton(Category c){

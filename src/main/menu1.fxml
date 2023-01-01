@@ -26,7 +26,7 @@
                   <Insets />
                </HBox.margin>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="45.0" prefWidth="285.0" promptText="e.g. plastic;temperature" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #000000; -fx-border-width: 2;">
+            <TextField fx:id="searchBar" alignment="CENTER" prefHeight="45.0" prefWidth="285.0" promptText="e.g. plastic;temperature" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #000000; -fx-border-width: 2;">
                <font>
                   <Font name="Calibri Italic" size="24.0" />
                </font>
@@ -37,7 +37,7 @@
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextField>
-            <Label prefHeight="36.0" prefWidth="34.0">
+            <Label onMouseClicked="#SrcBtn" prefHeight="36.0" prefWidth="34.0">
                <graphic>
                   <ImageView fitHeight="47.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
