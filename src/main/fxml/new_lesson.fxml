@@ -36,7 +36,7 @@
                            <graphic>
                               <ImageView fitHeight="48.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@boge.png" />
+                                    <Image url="@../boge.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -68,9 +68,10 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <ChoiceBox prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #D9DDDC;">
+                        <ChoiceBox fx:id="newLessCat" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #D9DDDC;">
                            <HBox.margin>
                               <Insets left="10.0" top="10.0" />
+
                            </HBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />
