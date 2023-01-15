@@ -2,13 +2,19 @@ package main.ui;
 
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import main.entities.*;
 
 import java.awt.*;
@@ -70,6 +76,19 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
 
+    }
+    @FXML
+    public void pressButton() throws Exception {
+        try {
+            URL fxmlLocation = getClass().getResource("../fxml/new_lesson.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent root1 = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void addButton(Category c){

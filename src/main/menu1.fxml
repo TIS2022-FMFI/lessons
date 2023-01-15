@@ -52,6 +52,21 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
+            <Label onMouseClicked="#pressButton" prefHeight="36.0" prefWidth="34.0">
+               <graphic>
+                  <ImageView fitHeight="47.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@lupa3.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="2.0" top="20.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
             <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="54.0" prefWidth="131.0">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
