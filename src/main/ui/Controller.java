@@ -77,10 +77,25 @@ public class Controller implements Initializable {
         }
 
     }
+
     @FXML
-    public void pressButton() throws Exception {
+    public void newLessonButton() throws Exception {
         try {
             URL fxmlLocation = getClass().getResource("../fxml/new_lesson.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent root1 = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void newKeywordButton() throws Exception {
+        try {
+            URL fxmlLocation = getClass().getResource("../fxml/new_keyword.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();

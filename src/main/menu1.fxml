@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.Controller">
+<VBox prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.Controller">
   <children>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FF0800; -fx-border-color: #000000; -fx-border-width: 0 0 3 0;">
          <children>
@@ -52,21 +52,28 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label onMouseClicked="#pressButton" prefHeight="36.0" prefWidth="34.0">
-               <graphic>
-                  <ImageView fitHeight="47.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@lupa3.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+            <Button text="New Lesson" textAlignment="CENTER" onAction="#newLessonButton">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
                <HBox.margin>
-                  <Insets left="2.0" top="20.0" />
+                  <Insets left="5.0" top="20.0" />
                </HBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </Label>
+            </Button>
+            <Button text="New Keyword" textAlignment="CENTER" onAction="#newKeywordButton">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" top="20.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
             <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="54.0" prefWidth="131.0">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
@@ -83,9 +90,9 @@
       </HBox>
     <SplitPane dividerPositions="0.2" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
       <items>
-            <VBox fx:id="boxCategories" prefHeight="510.0" prefWidth="100.0" style="-fx-background-color: #FF4433;">
+            <VBox fx:id="boxCategories" prefHeight="510.0" maxWidth="120.0" style="-fx-background-color: #FF4433;">
             </VBox>
-            <VBox fx:id="boxKeys" prefHeight="510.0" prefWidth="100.0" style="-fx-background-color: #FF4433;">
+            <VBox fx:id="boxKeys" prefHeight="510.0" maxWidth="120.0" style="-fx-background-color: #FF4433;">
             </VBox>
         <ScrollPane pannable="true" prefHeight="504.0" prefWidth="442.0" style="-fx-background-color: #FFFFFF;">
                <content>
