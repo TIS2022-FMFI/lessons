@@ -90,13 +90,13 @@
       </HBox>
     <SplitPane dividerPositions="0.2" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
       <items>
-            <VBox fx:id="boxCategories" prefHeight="510.0" maxWidth="120.0" style="-fx-background-color: #FF4433;">
+            <VBox fx:id="boxCategories" prefHeight="510.0" minWidth="120.0" maxWidth="120.0" style="-fx-background-color: #FF4433;">
             </VBox>
-            <VBox fx:id="boxKeys" prefHeight="510.0" maxWidth="120.0" style="-fx-background-color: #FF4433;">
+            <VBox fx:id="boxKeys" prefHeight="510.0" minWidth="120.0" maxWidth="120.0" style="-fx-background-color: #FF4433;">
             </VBox>
         <ScrollPane pannable="true" prefHeight="504.0" prefWidth="442.0" style="-fx-background-color: #FFFFFF;">
                <content>
-                  <VBox prefHeight="504.0" prefWidth="717.0">
+                  <VBox fx:id="lessons" prefHeight="504.0" prefWidth="717.0">
                      <children>
                         <HBox prefHeight="150.0" prefWidth="800.0" style="fx-border-color: 0 0 3 0;">
                            <children>
