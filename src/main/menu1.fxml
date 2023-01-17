@@ -97,213 +97,213 @@
         <ScrollPane pannable="true" prefHeight="504.0" prefWidth="442.0" style="-fx-background-color: #FFFFFF;">
                <content>
                   <VBox fx:id="lessons" prefHeight="504.0" prefWidth="717.0">
-                     <children>
-                        <HBox prefHeight="150.0" prefWidth="800.0" style="fx-border-color: 0 0 3 0;">
-                           <children>
-                              <VBox prefHeight="100.0" prefWidth="150.0">
-                                 <children>
-                                    <TextField editable="false" text="key.unspecified">
-                                       <font>
-                                          <Font name="Calibri Bold" size="18.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <TextField text="key.unspecified">
-                                       <font>
-                                          <Font name="Calibri Italic" size="16.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <Label style="-fx-border-color: #000000; -fx-border-width: 2;">
-                                 <graphic>
-                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                                 <HBox.margin>
-                                    <Insets left="15.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Label layoutX="175.0" layoutY="10.0" style="-fx-border-color: #000000; -fx-border-width: 2;">
-                                 <graphic>
-                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="MODAL" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Calibri Bold" size="20.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" top="50.0" />
-                                 </HBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="SHOW" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Calibri Bold" size="20.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="50.0" />
-                                 </HBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="15.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <Separator prefWidth="200.0" style="-fx-background-color: #000000;">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </Separator>
-                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="800.0" style="fx-border-color: 0 0 3 0;">
-                           <children>
-                              <VBox prefHeight="100.0" prefWidth="150.0">
-                                 <children>
-                                    <TextField editable="false" text="key.unspecified">
-                                       <font>
-                                          <Font name="Calibri Bold" size="18.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <TextField text="key.unspecified">
-                                       <font>
-                                          <Font name="Calibri Italic" size="16.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <Label style="-fx-border-color: #000000; -fx-border-width: 2;">
-                                 <graphic>
-                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                                 <HBox.margin>
-                                    <Insets left="15.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Label layoutX="175.0" layoutY="10.0" style="-fx-border-color: #000000; -fx-border-width: 2;">
-                                 <graphic>
-                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="MODAL" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Calibri Bold" size="20.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" top="50.0" />
-                                 </HBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="SHOW" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Calibri Bold" size="20.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="50.0" />
-                                 </HBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <Separator layoutX="10.0" layoutY="189.0" prefWidth="200.0" style="-fx-background-color: #000000;">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </Separator>
-                        <HBox layoutX="10.0" layoutY="164.0" prefHeight="150.0" prefWidth="800.0" style="fx-border-color: 0 0 3 0;">
-                           <children>
-                              <VBox prefHeight="100.0" prefWidth="150.0">
-                                 <children>
-                                    <TextField editable="false" text="key.unspecified">
-                                       <font>
-                                          <Font name="Calibri Bold" size="18.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <TextField text="key.unspecified">
-                                       <font>
-                                          <Font name="Calibri Italic" size="16.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <Label style="-fx-border-color: #000000; -fx-border-width: 2;">
-                                 <graphic>
-                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                                 <HBox.margin>
-                                    <Insets left="15.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Label layoutX="175.0" layoutY="10.0" style="-fx-border-color: #000000; -fx-border-width: 2;">
-                                 <graphic>
-                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="MODAL" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Calibri Bold" size="20.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" top="50.0" />
-                                 </HBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="SHOW" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Calibri Bold" size="20.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="50.0" />
-                                 </HBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </HBox>
-                     </children>
+<!--                     <children>-->
+<!--                        <HBox prefHeight="150.0" prefWidth="800.0" style="fx-border-color: 0 0 3 0;">-->
+<!--                           <children>-->
+<!--                              <VBox prefHeight="100.0" prefWidth="150.0">-->
+<!--                                 <children>-->
+<!--                                    <TextField editable="false" text="key.unspecified">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Calibri Bold" size="18.0" />-->
+<!--                                       </font>-->
+<!--                                       <VBox.margin>-->
+<!--                                          <Insets top="10.0" />-->
+<!--                                       </VBox.margin>-->
+<!--                                    </TextField>-->
+<!--                                    <TextField text="key.unspecified">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Calibri Italic" size="16.0" />-->
+<!--                                       </font>-->
+<!--                                       <VBox.margin>-->
+<!--                                          <Insets top="15.0" />-->
+<!--                                       </VBox.margin>-->
+<!--                                    </TextField>-->
+<!--                                 </children>-->
+<!--                              </VBox>-->
+<!--                              <Label style="-fx-border-color: #000000; -fx-border-width: 2;">-->
+<!--                                 <graphic>-->
+<!--                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />-->
+<!--                                 </graphic>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="15.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                              </Label>-->
+<!--                              <Label layoutX="175.0" layoutY="10.0" style="-fx-border-color: #000000; -fx-border-width: 2;">-->
+<!--                                 <graphic>-->
+<!--                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />-->
+<!--                                 </graphic>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="10.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                              </Label>-->
+<!--                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="MODAL" textAlignment="CENTER">-->
+<!--                                 <font>-->
+<!--                                    <Font name="Calibri Bold" size="20.0" />-->
+<!--                                 </font>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="10.0" top="50.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                                 <cursor>-->
+<!--                                    <Cursor fx:constant="HAND" />-->
+<!--                                 </cursor>-->
+<!--                              </Button>-->
+<!--                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="SHOW" textAlignment="CENTER">-->
+<!--                                 <font>-->
+<!--                                    <Font name="Calibri Bold" size="20.0" />-->
+<!--                                 </font>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="5.0" top="50.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                                 <cursor>-->
+<!--                                    <Cursor fx:constant="HAND" />-->
+<!--                                 </cursor>-->
+<!--                              </Button>-->
+<!--                           </children>-->
+<!--                           <VBox.margin>-->
+<!--                              <Insets top="15.0" />-->
+<!--                           </VBox.margin>-->
+<!--                        </HBox>-->
+<!--                        <Separator prefWidth="200.0" style="-fx-background-color: #000000;">-->
+<!--                           <VBox.margin>-->
+<!--                              <Insets top="10.0" />-->
+<!--                           </VBox.margin>-->
+<!--                        </Separator>-->
+<!--                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="800.0" style="fx-border-color: 0 0 3 0;">-->
+<!--                           <children>-->
+<!--                              <VBox prefHeight="100.0" prefWidth="150.0">-->
+<!--                                 <children>-->
+<!--                                    <TextField editable="false" text="key.unspecified">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Calibri Bold" size="18.0" />-->
+<!--                                       </font>-->
+<!--                                       <VBox.margin>-->
+<!--                                          <Insets top="10.0" />-->
+<!--                                       </VBox.margin>-->
+<!--                                    </TextField>-->
+<!--                                    <TextField text="key.unspecified">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Calibri Italic" size="16.0" />-->
+<!--                                       </font>-->
+<!--                                       <VBox.margin>-->
+<!--                                          <Insets top="15.0" />-->
+<!--                                       </VBox.margin>-->
+<!--                                    </TextField>-->
+<!--                                 </children>-->
+<!--                              </VBox>-->
+<!--                              <Label style="-fx-border-color: #000000; -fx-border-width: 2;">-->
+<!--                                 <graphic>-->
+<!--                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />-->
+<!--                                 </graphic>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="15.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                              </Label>-->
+<!--                              <Label layoutX="175.0" layoutY="10.0" style="-fx-border-color: #000000; -fx-border-width: 2;">-->
+<!--                                 <graphic>-->
+<!--                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />-->
+<!--                                 </graphic>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="10.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                              </Label>-->
+<!--                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="MODAL" textAlignment="CENTER">-->
+<!--                                 <font>-->
+<!--                                    <Font name="Calibri Bold" size="20.0" />-->
+<!--                                 </font>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="10.0" top="50.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                                 <cursor>-->
+<!--                                    <Cursor fx:constant="HAND" />-->
+<!--                                 </cursor>-->
+<!--                              </Button>-->
+<!--                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="SHOW" textAlignment="CENTER">-->
+<!--                                 <font>-->
+<!--                                    <Font name="Calibri Bold" size="20.0" />-->
+<!--                                 </font>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="5.0" top="50.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                                 <cursor>-->
+<!--                                    <Cursor fx:constant="HAND" />-->
+<!--                                 </cursor>-->
+<!--                              </Button>-->
+<!--                           </children>-->
+<!--                           <VBox.margin>-->
+<!--                              <Insets top="10.0" />-->
+<!--                           </VBox.margin>-->
+<!--                        </HBox>-->
+<!--                        <Separator layoutX="10.0" layoutY="189.0" prefWidth="200.0" style="-fx-background-color: #000000;">-->
+<!--                           <VBox.margin>-->
+<!--                              <Insets top="10.0" />-->
+<!--                           </VBox.margin>-->
+<!--                        </Separator>-->
+<!--                        <HBox layoutX="10.0" layoutY="164.0" prefHeight="150.0" prefWidth="800.0" style="fx-border-color: 0 0 3 0;">-->
+<!--                           <children>-->
+<!--                              <VBox prefHeight="100.0" prefWidth="150.0">-->
+<!--                                 <children>-->
+<!--                                    <TextField editable="false" text="key.unspecified">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Calibri Bold" size="18.0" />-->
+<!--                                       </font>-->
+<!--                                       <VBox.margin>-->
+<!--                                          <Insets top="10.0" />-->
+<!--                                       </VBox.margin>-->
+<!--                                    </TextField>-->
+<!--                                    <TextField text="key.unspecified">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Calibri Italic" size="16.0" />-->
+<!--                                       </font>-->
+<!--                                       <VBox.margin>-->
+<!--                                          <Insets top="15.0" />-->
+<!--                                       </VBox.margin>-->
+<!--                                    </TextField>-->
+<!--                                 </children>-->
+<!--                              </VBox>-->
+<!--                              <Label style="-fx-border-color: #000000; -fx-border-width: 2;">-->
+<!--                                 <graphic>-->
+<!--                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />-->
+<!--                                 </graphic>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="15.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                              </Label>-->
+<!--                              <Label layoutX="175.0" layoutY="10.0" style="-fx-border-color: #000000; -fx-border-width: 2;">-->
+<!--                                 <graphic>-->
+<!--                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />-->
+<!--                                 </graphic>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="10.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                              </Label>-->
+<!--                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="MODAL" textAlignment="CENTER">-->
+<!--                                 <font>-->
+<!--                                    <Font name="Calibri Bold" size="20.0" />-->
+<!--                                 </font>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="10.0" top="50.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                                 <cursor>-->
+<!--                                    <Cursor fx:constant="HAND" />-->
+<!--                                 </cursor>-->
+<!--                              </Button>-->
+<!--                              <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 4;" text="SHOW" textAlignment="CENTER">-->
+<!--                                 <font>-->
+<!--                                    <Font name="Calibri Bold" size="20.0" />-->
+<!--                                 </font>-->
+<!--                                 <HBox.margin>-->
+<!--                                    <Insets left="5.0" top="50.0" />-->
+<!--                                 </HBox.margin>-->
+<!--                                 <cursor>-->
+<!--                                    <Cursor fx:constant="HAND" />-->
+<!--                                 </cursor>-->
+<!--                              </Button>-->
+<!--                           </children>-->
+<!--                           <VBox.margin>-->
+<!--                              <Insets top="10.0" />-->
+<!--                           </VBox.margin>-->
+<!--                        </HBox>-->
+<!--                     </children>-->
                   </VBox>
                </content>
         </ScrollPane>
