@@ -43,6 +43,8 @@ public class Controller implements Initializable {
 
     public VBox lessons;
 
+    public static Integer chosenProblem;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -188,6 +190,7 @@ public class Controller implements Initializable {
                 Button show = new Button("Show");
                 show.setOnAction(v -> {
                     try {
+                        chosenProblem = problem.getProblem_id();
                         URL fxmlLocation = getClass().getResource("../fxml/show_lesson.fxml");
                         FXMLLoader loader = new FXMLLoader(fxmlLocation);
                         Parent root1 = (Parent) loader.load();
