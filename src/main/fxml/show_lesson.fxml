@@ -23,7 +23,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FF0800; -fx-border-color: #000000; -fx-border-width: 0 0 3 0;">
                      <children>
-                        <Text fx:id="title" textAlignment="CENTER" style="-fx-background-color: transparent;" text="TITLE">
+                        <Text fx:id="title" style="-fx-background-color: transparent;" text="TITLE">
                            <font>
                               <Font name="Calibri Bold" size="25.0" />
                            </font>
@@ -57,7 +57,7 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="EDIT">
+                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="EDIT" onAction="#edit">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -68,7 +68,7 @@
                               <Insets left="40.0" top="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="DELETE">
+                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="DELETE" onAction="#delete">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -152,7 +152,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="60.0" prefWidth="250.0" promptText="Enter your name">
+                        <TextField fx:id="author" prefHeight="60.0" prefWidth="250.0" promptText="Enter your name">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -168,7 +168,7 @@
                               <Insets left="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField layoutX="160.0" layoutY="10.0" prefHeight="60.0" prefWidth="300.0" promptText="Enter your name">
+                        <TextField fx:id="last_editor" layoutX="160.0" layoutY="10.0" prefHeight="60.0" prefWidth="300.0" promptText="Enter your name">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>

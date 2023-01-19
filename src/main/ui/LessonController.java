@@ -2,6 +2,7 @@ package main.ui;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import main.entities.KPFinder;
@@ -21,6 +22,8 @@ public class LessonController implements Initializable {
     public ImageView image2;
     public TextField description;
     public TextField files;
+    public TextField author;
+    public TextField last_editor;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -32,9 +35,26 @@ public class LessonController implements Initializable {
                 if(keywords.getText().equals("")) keywords.setText(k.getTitle());
                 else keywords.setText(keywords.getText() + ", " + k.getTitle());
             }
-
+            if(problem.getImage1() != null){
+                image1.setImage(new Image(problem.getImage1()));
+            }
+            if(problem.getImage2() != null){
+                image2.setImage(new Image(problem.getImage2()));
+            }
+            description.setText(problem.getDescription());
+            files.setText(problem.getPath());
+            author.setText(problem.getUser_name());
+            last_editor.setText(problem.getLast_editor());
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void edit(){
+
+    }
+
+    public void delete(){
+
     }
 }

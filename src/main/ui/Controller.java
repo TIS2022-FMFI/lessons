@@ -47,10 +47,20 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lessons.getChildren().clear();
         try {
             List<Category> cat = CategoryFinder.getInstance().findAll();
             for (int i = 1; i < cat.size(); i++) {
                 addButton(cat.get(i));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            List<Problem> problems = ProblemFinder.getInstance().findAll();
+            for (Problem p: problems) {
+                makeLesson(p);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -166,48 +176,62 @@ public class Controller implements Initializable {
         for(Integer p : problems.keySet()){
             try {
                 Problem problem = ProblemFinder.getInstance().findById(p);
-                HBox lesson = new HBox();
-                VBox details = new VBox();
-                Text title = new Text(problem.getTitle());
-                Text category = new Text(CategoryFinder.getInstance().findById(problem.getCategory_id()).getTitle());
-                Text keywords = new Text();
-                List<Key_word> keyWords = KPFinder.getInstance().findByProblemId(p);
-                for (Key_word k: keyWords) {
-                    if(keywords.getText().equals("")) keywords.setText(k.getTitle());
-                    else keywords.setText(keywords.getText() + ", " + k.getTitle());
-                }
-                details.getChildren().addAll(title, category, keywords);
-                lesson.getChildren().add(details);
-                if(problem.getImage1() != null){
-                    ImageView image1 = new ImageView(new Image(problem.getImage1()));
-                    lesson.getChildren().add(image1);
-                }
-                if(problem.getImage2() != null){
-                    ImageView image2 = new ImageView(new Image(problem.getImage2()));
-                    lesson.getChildren().add(image2);
-                }
-                Button modal = new Button("Modal");
-                Button show = new Button("Show");
-                show.setOnAction(v -> {
-                    try {
-                        chosenProblem = problem.getProblem_id();
-                        URL fxmlLocation = getClass().getResource("../fxml/show_lesson.fxml");
-                        FXMLLoader loader = new FXMLLoader(fxmlLocation);
-                        Parent root1 = (Parent) loader.load();
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(root1));
-                        stage.show();
-                    } catch(Exception exp) {
-                        exp.printStackTrace();
-                    }
-                });
-                lesson.getChildren().addAll(modal, show);
-                Separator s = new Separator();
-                lessons.getChildren().addAll(lesson, s);
+                makeLesson(problem);
                 //System.out.println(ProblemFinder.getInstance().findById(p).getTitle() +  "     occurred " + problems.get(p) + " times");
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         }
+    }
+
+    public void makeLesson(Problem problem){
+        HBox lesson = new HBox();
+        VBox details = new VBox();
+        Text title = new Text(problem.getTitle());
+        Text category = null;
+        try {
+            category = new Text(CategoryFinder.getInstance().findById(problem.getCategory_id()).getTitle());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Text keywords = new Text();
+        List<Key_word> keyWords = null;
+        try {
+            keyWords = KPFinder.getInstance().findByProblemId(problem.getProblem_id());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (Key_word k: keyWords) {
+            if(keywords.getText().equals("")) keywords.setText(k.getTitle());
+            else keywords.setText(keywords.getText() + ", " + k.getTitle());
+        }
+        details.getChildren().addAll(title, category, keywords);
+        lesson.getChildren().add(details);
+        if(problem.getImage1() != null){
+            ImageView image1 = new ImageView(new Image(problem.getImage1()));
+            lesson.getChildren().add(image1);
+        }
+        if(problem.getImage2() != null){
+            ImageView image2 = new ImageView(new Image(problem.getImage2()));
+            lesson.getChildren().add(image2);
+        }
+        Button modal = new Button("Modal");
+        Button show = new Button("Show");
+        show.setOnAction(v -> {
+            try {
+                chosenProblem = problem.getProblem_id();
+                URL fxmlLocation = getClass().getResource("../fxml/show_lesson.fxml");
+                FXMLLoader loader = new FXMLLoader(fxmlLocation);
+                Parent root1 = (Parent) loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } catch(Exception exp) {
+                exp.printStackTrace();
+            }
+        });
+        lesson.getChildren().addAll(modal, show);
+        Separator s = new Separator();
+        lessons.getChildren().addAll(lesson, s);
     }
 }
