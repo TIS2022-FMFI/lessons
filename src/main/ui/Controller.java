@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -44,6 +46,7 @@ public class Controller implements Initializable {
     public VBox lessons;
 
     public static Integer chosenProblem;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -105,6 +108,8 @@ public class Controller implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
             stage.show();
+
+
         } catch(Exception e) {
             e.printStackTrace();
         }
