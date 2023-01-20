@@ -41,6 +41,30 @@ public class CategoryFinder {
         }
     }
 
+    public Category findByTitle(String t) throws SQLException {
+
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM category WHERE title = ?")) {
+            s.setString(1, t);
+
+            try (ResultSet r = s.executeQuery()) {
+                if (r.next()) {
+                    Category c = new Category();
+
+                    c.setCategory_id(r.getInt("category_id"));
+                    c.setTitle(r.getString("title"));
+
+                    if (r.next()) {
+                        throw new RuntimeException("More than one row was returned");
+                    }
+
+                    return c;
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+
     public List<Category> findAll() throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM category")) {

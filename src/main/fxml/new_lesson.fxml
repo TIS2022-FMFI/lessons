@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxWidth="900.0" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane  maxWidth="900.0" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.NewLessonController">
    <children>
       <ScrollPane prefHeight="600.0" prefWidth="900.0">
          <content>
@@ -45,12 +45,12 @@
                   </HBox>
                   <HBox prefHeight="60.0" prefWidth="200.0">
                      <children>
-                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Topic: ">
+                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Title: ">
                            <font>
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="60.0" prefWidth="700.0" promptText="Name of the lesson">
+                        <TextField fx:id = "newLessTitle" prefHeight="60.0" prefWidth="700.0" promptText="Name of the lesson">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -87,7 +87,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="60.0" prefWidth="700.0" promptText="Key words separated by ; e.g. steel;wood">
+                        <TextField fx:id = "newLessKeyWord" prefHeight="60.0" prefWidth="700.0" promptText="Key words separated by ; e.g. steel;wood">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -105,7 +105,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="60.0" prefWidth="500.0" promptText="Image path or select file">
+                        <TextField fx:id="imagePath" prefHeight="60.0" prefWidth="500.0" promptText="Image path or select file">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -113,22 +113,22 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <Label prefHeight="50.0" prefWidth="50.0">
+                        <Label onMouseClicked="#browseImgComputer" prefHeight="50.0" prefWidth="50.0">
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@upload.png" />
+                                    <Image url="@../upload.png" />
                                  </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
                               </ImageView>
                            </graphic>
                            <HBox.margin>
                               <Insets left="5.0" top="5.0" />
                            </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Label>
-                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="ADD">
+                        <Button onMouseClicked="#addImgPath" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="ADD">
                            <font>
                               <Font name="Calibri Bold" size="25.0" />
                            </font>
@@ -149,7 +149,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="60.0" prefWidth="700.0">
+                        <TextField fx:id="newLessDesc" prefHeight="60.0" prefWidth="700.0" text="Text">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -167,7 +167,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="60.0" prefWidth="250.0" promptText="File name">
+                        <TextField fx:id="newLessFileName" prefHeight="60.0" prefWidth="250.0" promptText="File name">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -175,7 +175,7 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <TextField layoutX="190.0" layoutY="10.0" prefHeight="60.0" prefWidth="250.0" promptText="File or path">
+                        <TextField fx:id="filePath" layoutX="190.0" layoutY="10.0" prefHeight="60.0" prefWidth="250.0" promptText="File or path">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -213,12 +213,12 @@
                   <Separator layoutX="10.0" layoutY="422.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
                   <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">
                      <children>
-                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Autor:">
+                        <TextField  alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Autor:">
                            <font>
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="60.0" prefWidth="700.0" promptText="Enter your name">
+                        <TextField fx:id="newLessAutor" prefHeight="60.0" prefWidth="700.0" promptText="Enter your name">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -231,7 +231,7 @@
                   <Separator layoutX="10.0" layoutY="485.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
                   <HBox layoutX="10.0" layoutY="425.0" prefHeight="60.0" prefWidth="200.0">
                      <children>
-                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="SAVE">
+                        <Button  fx:id = "newLessSave" onMouseClicked="#saveButton" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="SAVE">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
