@@ -7,11 +7,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -27,7 +33,7 @@ import java.util.stream.Collectors;
 
 public class Controller implements Initializable {
     @FXML
-   private TextField searchBar;
+    private TextField searchBar;
 
     @FXML
     private VBox boxCategories;
@@ -35,12 +41,26 @@ public class Controller implements Initializable {
     @FXML
     private VBox boxKeys;
 
+    public VBox lessons;
+
+    public static Integer chosenProblem;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lessons.getChildren().clear();
         try {
             List<Category> cat = CategoryFinder.getInstance().findAll();
             for (int i = 1; i < cat.size(); i++) {
                 addButton(cat.get(i));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            List<Problem> problems = ProblemFinder.getInstance().findAll();
+            for (Problem p: problems) {
+                makeLesson(p);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,9 +89,7 @@ public class Controller implements Initializable {
                 }
 
             }
-            for(Integer p : problems.keySet()){
-                System.out.println(ProblemFinder.getInstance().findById(p).getTitle() +  "     occurred " + problems.get(p) + " times");
-            }
+            showLessons(problems);
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -122,16 +140,20 @@ public class Controller implements Initializable {
                 }
                 Button submit = new Button("Submit");
                 submit.setOnMouseClicked(i -> {
+                    Map<Integer, Integer> problems = new HashMap<>();
                     for (Node ch: boxKeys.getChildren()) {
                         if(ch instanceof CheckBox)
                         {
                             if(((CheckBox) ch).isSelected())
                             {
                                 try {
-                                    List<Problem> problems = KPFinder.getInstance().findByCK(Integer.parseInt(btn.getId()), Integer.parseInt(ch.getId()));
-                                    for (Problem p: problems) {
-                                        // vylistovanie miesto printu
-                                        System.out.println(p.getTitle());
+                                    for(Problem p : KPFinder.getInstance().findByCK(Integer.parseInt(btn.getId()), Integer.parseInt(ch.getId()))){
+                                        if (!problems.containsKey(p.getProblem_id())){
+                                            problems.put(p.getProblem_id(), 1);
+                                        }
+                                        else{
+                                            problems.put(p.getProblem_id(), problems.get(p.getProblem_id()) + 1);
+                                        }
                                     }
                                 } catch (SQLException ex) {
                                     ex.printStackTrace();
@@ -139,6 +161,7 @@ public class Controller implements Initializable {
                             }
                         }
                     }
+                    showLessons(problems);
                 });
                 boxKeys.getChildren().add(submit);
             } catch (SQLException ex) {
@@ -148,4 +171,67 @@ public class Controller implements Initializable {
         boxCategories.getChildren().add(btn);
     }
 
+    public void showLessons(Map<Integer, Integer> problems){
+        lessons.getChildren().clear();
+        for(Integer p : problems.keySet()){
+            try {
+                Problem problem = ProblemFinder.getInstance().findById(p);
+                makeLesson(problem);
+                //System.out.println(ProblemFinder.getInstance().findById(p).getTitle() +  "     occurred " + problems.get(p) + " times");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public void makeLesson(Problem problem){
+        HBox lesson = new HBox();
+        VBox details = new VBox();
+        Text title = new Text(problem.getTitle());
+        Text category = null;
+        try {
+            category = new Text(CategoryFinder.getInstance().findById(problem.getCategory_id()).getTitle());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Text keywords = new Text();
+        List<Key_word> keyWords = null;
+        try {
+            keyWords = KPFinder.getInstance().findByProblemId(problem.getProblem_id());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (Key_word k: keyWords) {
+            if(keywords.getText().equals("")) keywords.setText(k.getTitle());
+            else keywords.setText(keywords.getText() + ", " + k.getTitle());
+        }
+        details.getChildren().addAll(title, category, keywords);
+        lesson.getChildren().add(details);
+        if(problem.getImage1() != null){
+            ImageView image1 = new ImageView(new Image(problem.getImage1()));
+            lesson.getChildren().add(image1);
+        }
+        if(problem.getImage2() != null){
+            ImageView image2 = new ImageView(new Image(problem.getImage2()));
+            lesson.getChildren().add(image2);
+        }
+        Button modal = new Button("Modal");
+        Button show = new Button("Show");
+        show.setOnAction(v -> {
+            try {
+                chosenProblem = problem.getProblem_id();
+                URL fxmlLocation = getClass().getResource("../fxml/show_lesson.fxml");
+                FXMLLoader loader = new FXMLLoader(fxmlLocation);
+                Parent root1 = (Parent) loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } catch(Exception exp) {
+                exp.printStackTrace();
+            }
+        });
+        lesson.getChildren().addAll(modal, show);
+        Separator s = new Separator();
+        lessons.getChildren().addAll(lesson, s);
+    }
 }

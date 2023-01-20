@@ -14,7 +14,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxWidth="900.0" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.text.Text?>
+<AnchorPane maxWidth="900.0" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.LessonController">
    <children>
       <ScrollPane prefHeight="600.0" prefWidth="900.0">
          <content>
@@ -22,11 +23,11 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FF0800; -fx-border-color: #000000; -fx-border-width: 0 0 3 0;">
                      <children>
-                        <TextField editable="false" prefHeight="100.0" style="-fx-background-color: transparent;" text="TITLE">
+                        <Text fx:id="title" style="-fx-background-color: transparent;" text="TITLE">
                            <font>
                               <Font name="Calibri Bold" size="25.0" />
                            </font>
-                        </TextField>
+                        </Text>
                         <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="54.0" prefWidth="131.0">
                            <HBox.margin>
                               <Insets bottom="3.0" left="400.0" top="17.0" />
@@ -48,7 +49,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="60.0" prefWidth="500.0" promptText="Key words separated by ; e.g. steel;wood">
+                        <TextField fx:id="keywords" prefHeight="60.0" prefWidth="500.0" promptText="Key words separated by ; e.g. steel;wood">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -56,7 +57,7 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="EDIT">
+                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="EDIT" onAction="#edit">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -67,7 +68,7 @@
                               <Insets left="40.0" top="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="DELETE">
+                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="DELETE" onAction="#delete">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -88,7 +89,7 @@
                      <children>
                         <Label>
                            <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="image1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                            <HBox.margin>
                               <Insets left="30.0" />
@@ -96,7 +97,7 @@
                         </Label>
                         <Label>
                            <graphic>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="image2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                            <HBox.margin>
                               <Insets left="30.0" />
@@ -115,7 +116,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="60.0" prefWidth="710.0">
+                        <TextField fx:id="description" prefHeight="60.0" prefWidth="710.0">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -133,7 +134,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="60.0" prefWidth="710.0" promptText="File name">
+                        <TextField fx:id="files" prefHeight="60.0" prefWidth="710.0" promptText="File name">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -151,7 +152,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="60.0" prefWidth="250.0" promptText="Enter your name">
+                        <TextField fx:id="author" prefHeight="60.0" prefWidth="250.0" promptText="Enter your name">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -167,7 +168,7 @@
                               <Insets left="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField layoutX="160.0" layoutY="10.0" prefHeight="60.0" prefWidth="300.0" promptText="Enter your name">
+                        <TextField fx:id="last_editor" layoutX="160.0" layoutY="10.0" prefHeight="60.0" prefWidth="300.0" promptText="Enter your name">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
