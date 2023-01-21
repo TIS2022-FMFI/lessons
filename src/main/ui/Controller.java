@@ -50,7 +50,6 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lessons.getChildren().clear();
         try {
             List<Category> cat = CategoryFinder.getInstance().findAll();
             for (int i = 1; i < cat.size(); i++) {
@@ -59,7 +58,11 @@ public class Controller implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        showAllLessons();
+    }
 
+    public void showAllLessons(){
+        lessons.getChildren().clear();
         try {
             List<Problem> problems = ProblemFinder.getInstance().findAll();
             for (Problem p: problems) {

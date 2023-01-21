@@ -91,6 +91,7 @@
     <SplitPane dividerPositions="0.2" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
       <items>
             <VBox fx:id="boxCategories" prefHeight="510.0" minWidth="120.0" maxWidth="120.0" style="-fx-background-color: #FF4433;">
+               <Button fx:id="all" onAction="#showAllLessons" text="All Lessons"></Button>
             </VBox>
             <VBox fx:id="boxKeys" prefHeight="510.0" minWidth="120.0" maxWidth="120.0" style="-fx-background-color: #FF4433;">
             </VBox>

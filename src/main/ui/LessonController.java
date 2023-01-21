@@ -1,10 +1,14 @@
 package main.ui;
 
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import main.entities.KPFinder;
 import main.entities.Key_word;
 import main.entities.Problem;
@@ -55,6 +59,15 @@ public class LessonController implements Initializable {
     }
 
     public void delete(){
-
+        try {
+            URL fxmlLocation = getClass().getResource("../fxml/password.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent root1 = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }
