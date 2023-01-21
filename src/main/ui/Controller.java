@@ -26,6 +26,7 @@ import javafx.stage.StageStyle;
 import main.entities.*;
 
 import java.awt.*;
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -90,9 +91,25 @@ public class Controller implements Initializable {
                 else{
                     System.out.println("Keyword " + key + " doesn't exist!!!");
                 }
-
             }
-            showLessons(problems);
+            ArrayList<Integer> list = new ArrayList<>();
+            LinkedHashMap<Integer, Integer> sortedMap = new LinkedHashMap<>();
+            for(Map.Entry<Integer, Integer> entry : problems.entrySet()){
+                list.add(entry.getValue());
+            }
+            Collections.sort(list, new Comparator<Integer>() {
+                public int compare(Integer i, Integer ii){
+                    return (ii).compareTo(i);
+                }
+            });
+            for (Integer i:list){
+                for(Map.Entry<Integer, Integer> entry: problems.entrySet()) {
+                    if (entry.getValue().equals(i)){
+                        sortedMap.put(entry.getKey(), i);
+                    }
+                }
+            }
+            showLessons(sortedMap);
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -182,7 +199,7 @@ public class Controller implements Initializable {
             try {
                 Problem problem = ProblemFinder.getInstance().findById(p);
                 makeLesson(problem);
-                //System.out.println(ProblemFinder.getInstance().findById(p).getTitle() +  "     occurred " + problems.get(p) + " times");
+                System.out.println(ProblemFinder.getInstance().findById(p).getTitle() +  "     occurred " + problems.get(p) + " times");
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
