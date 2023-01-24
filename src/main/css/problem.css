@@ -1,0 +1,61 @@
+.hbox {
+}
+
+.vbox {
+    -fx-pref-height: 200;
+}
+
+.title {
+    -fx-font-family: "Calibri";
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+}
+
+.category {
+    -fx-font-family: "Calibri";
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+. keywords {
+    -fx-font-family: "Calibri";
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+.image1 {
+    -fx-border-width: 2;
+    -fx-border-color: #000000;
+    -fx-pref-height: 150;
+    -fx-pref-width: 150;
+}
+
+.image2 {
+    -fx-border-width: 2;
+    -fx-border-color: #000000;
+    -fx-pref-height: 150;
+    -fx-pref-width: 150;
+}
+
+.modal {
+    -fx-background-color: transparent;
+    -fx-border-color: #000000;
+    -fx-border-width: 4;
+    -fx-font-size: 20;
+    -fx-font-family: "Calibri";
+    -fx-font-weight: bold;
+}
+
+.show {
+    -fx-background-color: transparent;
+    -fx-border-color: #000000;
+    -fx-border-width: 4;
+    -fx-font-size: 20;
+    -fx-font-family: "Calibri";
+    -fx-font-weight: bold;
+}
+
+.separator {
+    -fx-background-color: #000000;
+    -fx-pref-width: 1000;
+}

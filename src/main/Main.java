@@ -37,7 +37,9 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("menu1.fxml"));
         stage.setTitle("Lessons Learn");
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("../main/css/buttons.css").toExternalForm());
+        stage.setScene(scene);
         stage.show();
     }
 }
