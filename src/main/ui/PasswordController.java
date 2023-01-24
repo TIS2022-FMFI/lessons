@@ -1,7 +1,9 @@
 package main.ui;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.entities.Problem;
@@ -10,7 +12,7 @@ import main.entities.ProblemFinder;
 import java.sql.SQLException;
 
 public class PasswordController {
-    public TextField password;
+    public PasswordField password;
     public Button aply;
 
     public void checkPassword(){
@@ -23,6 +25,13 @@ public class PasswordController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Incorrect password");
+            alert.setContentText("Try it again");
+            alert.showAndWait();
+            password.setText("");
         }
     }
 

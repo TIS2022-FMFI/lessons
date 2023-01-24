@@ -1,9 +1,11 @@
 package main.ui;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,6 +19,7 @@ import main.entities.ProblemFinder;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LessonController implements Initializable {
@@ -28,6 +31,7 @@ public class LessonController implements Initializable {
     public TextField files;
     public TextField author;
     public TextField last_editor;
+    public Button delete;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -69,5 +73,11 @@ public class LessonController implements Initializable {
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void closeWindow(){
+        Stage stage = (Stage) delete.getScene().getWindow();
+        stage.close();
     }
 }
