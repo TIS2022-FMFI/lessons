@@ -110,6 +110,7 @@ public class Controller implements Initializable {
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
+            stage.setTitle("New lesson");
             stage.show();
 
 
@@ -126,6 +127,7 @@ public class Controller implements Initializable {
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
+            stage.setTitle("New keyword");
             stage.show();
         } catch(Exception e) {
             e.printStackTrace();
@@ -233,6 +235,7 @@ public class Controller implements Initializable {
                 Parent root1 = (Parent) loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root1));
+                stage.setTitle(problem.getTitle());
                 stage.show();
             } catch(Exception exp) {
                 exp.printStackTrace();

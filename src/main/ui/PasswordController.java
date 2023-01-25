@@ -1,6 +1,10 @@
 package main.ui;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -9,17 +13,20 @@ import javafx.stage.Stage;
 import main.entities.Problem;
 import main.entities.ProblemFinder;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class PasswordController {
+public class PasswordController{
     public PasswordField password;
-    public Button aply;
+    public Button apply;
+    private final Problem problem = LessonController.problemToDelete;
 
     public void checkPassword(){
         //TODO  šifrovanie!!!!!!!!!!!!!!
         if(password.getText().equals("heslo")){
             try {
-                Problem problem = ProblemFinder.getInstance().findById(Controller.chosenProblem);
+                System.out.println(problem.getTitle());
                 problem.delete();
                 closeWindow();
             } catch (SQLException e) {
@@ -31,13 +38,23 @@ public class PasswordController {
             alert.setTitle("Incorrect password");
             alert.setContentText("Try it again");
             alert.showAndWait();
-            password.setText("");
+            closeWindow();
+            try {
+                URL fxmlLocation = getClass().getResource("../fxml/password.fxml");
+                FXMLLoader loader = new FXMLLoader(fxmlLocation);
+                Parent root1 = (Parent) loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @FXML
     private void closeWindow(){
-        Stage stage = (Stage) aply.getScene().getWindow();
+        Stage stage = (Stage) apply.getScene().getWindow();
         stage.close();
     }
 }

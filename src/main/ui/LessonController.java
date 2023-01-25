@@ -32,10 +32,12 @@ public class LessonController implements Initializable {
     public TextField author;
     public TextField last_editor;
     public Button delete;
+    public static Problem problemToDelete;
+    private Problem problem;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Problem problem = ProblemFinder.getInstance().findById(Controller.chosenProblem);
+            problem = ProblemFinder.getInstance().findById(Controller.chosenProblem);
             title.setText(problem.getTitle());
             keywords.setText("");
             List<Key_word> keyWords = KPFinder.getInstance().findByProblemId(problem.getProblem_id());
@@ -64,11 +66,13 @@ public class LessonController implements Initializable {
 
     public void delete(){
         try {
+            problemToDelete = problem;
             URL fxmlLocation = getClass().getResource("../fxml/password.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
+            stage.setTitle("Delete of " + problem.getTitle());
             stage.show();
         } catch(Exception e) {
             e.printStackTrace();

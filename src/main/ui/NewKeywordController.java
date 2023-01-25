@@ -3,10 +3,15 @@ package main.ui;
 import javafx.fxml.FXML;
 
 import java.awt.*;
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Locale;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -22,7 +27,7 @@ public class NewKeywordController {
     private Button closeBtn;
 
     @FXML
-    public void apply() throws SQLException {
+    public void apply() throws SQLException, IOException {
         Key_word key_word = new Key_word();
         key_word.setTitle(keyword.getText().toLowerCase(Locale.ROOT));
         try{
@@ -37,7 +42,13 @@ public class NewKeywordController {
             alert.setTitle("Adding keyword");
             alert.setHeaderText("Keyword '" + key_word.getTitle() + "' already exists.");
             alert.showAndWait();
-            return;
+            closeWindow();
+            URL fxmlLocation = getClass().getResource("../fxml/new_keyword.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent root1 = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
         }
     }
 
