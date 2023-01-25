@@ -25,8 +25,13 @@ public class PasswordController{
     public void checkPassword(){
         //TODO  šifrovanie!!!!!!!!!!!!!!
         if(password.getText().equals("heslo")){
+            System.out.println("Treba mazať");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Removing Lesson");
+            alert.setHeaderText("Lesson successfully removed! Please reload main page.");
+            alert.showAndWait();
+            closeWindow();
             try {
-                System.out.println(problem.getTitle());
                 problem.delete();
                 closeWindow();
             } catch (SQLException e) {
@@ -45,6 +50,7 @@ public class PasswordController{
                 Parent root1 = (Parent) loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root1));
+                stage.setTitle(problem.getTitle());
                 stage.show();
             } catch(Exception e) {
                 e.printStackTrace();

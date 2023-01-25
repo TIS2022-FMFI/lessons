@@ -74,6 +74,7 @@ public class LessonController implements Initializable {
             stage.setScene(new Scene(root1));
             stage.setTitle("Delete of " + problem.getTitle());
             stage.show();
+            closeWindow();
         } catch(Exception e) {
             e.printStackTrace();
         }

@@ -47,7 +47,6 @@ public class Controller implements Initializable {
 
     public static Integer chosenProblem;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
