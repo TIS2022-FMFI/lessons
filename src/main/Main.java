@@ -39,6 +39,7 @@ public class Main extends Application {
         stage.setTitle("Lessons Learn");
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("../main/css/buttons.css").toExternalForm());
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

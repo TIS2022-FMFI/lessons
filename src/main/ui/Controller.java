@@ -9,15 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -64,6 +63,25 @@ public class Controller implements Initializable {
         Button reset = new Button("RESET");
         reset.getStyleClass().add("reset");
         boxCategories.getChildren().add(reset);
+
+        reset.setOnAction(e -> {
+            try {
+                lessons.getChildren().clear();
+                boxKeys.getChildren().clear();
+
+                try {
+                    List<Problem> problems = ProblemFinder.getInstance().findAll();
+                    for (Problem p: problems) {
+                        makeLesson(p);
+                    }
+                } catch (SQLException ey) {
+                    ey.printStackTrace();
+                }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
 
         try {
             List<Problem> problems = ProblemFinder.getInstance().findAll();
@@ -127,6 +145,7 @@ public class Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.setScene(new Scene(root1));
             stage.show();
 
@@ -143,6 +162,8 @@ public class Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root1));
             stage.show();
         } catch(Exception e) {
@@ -238,14 +259,15 @@ public class Controller implements Initializable {
             else keywords.setText(keywords.getText() + ", " + k.getTitle());
         }
         text.getChildren().addAll(category, keywords);
+
         ImageView image1 = null;
         if(problem.getImage1() != null){
-            image1 = new ImageView(new Image(problem.getImage1()));
+            image1 = new ImageView(new Image(problem.getImage1(),150, 150, true, false));
             lesson.getChildren().add(image1);
         }
         ImageView image2 = null;
         if(problem.getImage2() != null){
-            image2 = new ImageView(new Image(problem.getImage2()));
+            image2 = new ImageView(new Image(problem.getImage2(), 150, 150, true, false));
             lesson.getChildren().add(image2);
         }
         Button modal = new Button("MODAL");
@@ -257,6 +279,7 @@ public class Controller implements Initializable {
                 FXMLLoader loader = new FXMLLoader(fxmlLocation);
                 Parent root1 = (Parent) loader.load();
                 Stage stage = new Stage();
+                stage.setResizable(false);
                 stage.setScene(new Scene(root1));
                 stage.show();
             } catch(Exception exp) {
@@ -264,8 +287,8 @@ public class Controller implements Initializable {
             }
         });
         buttons.getChildren().addAll(modal, show);
-        if (image1 != null) info.getChildren().addAll(title, text, image1, buttons);
-        if (image2 != null) info.getChildren().addAll(title, text, image2, buttons);
+        if (image1 != null && image2 == null) info.getChildren().addAll(title, text, image1, buttons);
+        if (image2 != null && image1 == null) info.getChildren().addAll(title, text, image2, buttons);
         if (image1 != null && image2 != null) {
             info.getChildren().addAll(title, text, image1, image2, buttons);
         } else {
@@ -289,5 +312,9 @@ public class Controller implements Initializable {
         modal.getStyleClass().add("modal");
         show.getStyleClass().add("show");
         s.getStyleClass().add("separator");
+        buttons.getStyleClass().add("buttons");
+        problems.getStyleClass().add("problem");
+        info.getStyleClass().add("info");
+        text.getStyleClass().add("text");
     }
 }
