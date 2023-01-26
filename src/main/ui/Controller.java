@@ -58,7 +58,6 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         showAllLessons();
-    }
 
         Button reset = new Button("RESET");
         reset.getStyleClass().add("reset");
