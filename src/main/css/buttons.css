@@ -1,0 +1,42 @@
+.btnCat {
+    -fx-background-color: #FFFDD0;
+    -fx-border-color: #000000;
+    -fx-border-width: 3 3 0 3;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-pref-width: 200;
+    -fx-pref-height: 50;
+}
+
+.reset {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #000000;
+    -fx-border-width: 3 3 3 3;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-pref-width: 200;
+    -fx-pref-height: 50;
+}
+
+.check-box {
+    -fx-font-family: "Calibri";
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+.submit {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #000000;
+    -fx-border-width: 3 3 3 3;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-pref-width: 180;
+    -fx-pref-height: 50;
+}
+
+.split-pane-divider {
+    -fx-padding: 0 1 0 1;
+}

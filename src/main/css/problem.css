@@ -1,0 +1,76 @@
+.hbox {
+}
+
+.vbox {
+    -fx-pref-height: 200;
+}
+
+.title {
+    -fx-font-family: "Calibri";
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+}
+
+.category {
+    -fx-font-family: "Calibri";
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+}
+
+. keywords {
+    -fx-font-family: "Calibri";
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+}
+
+.image1 {
+    -fx-pref-height: 150;
+    -fx-pref-width: 150;
+}
+
+.image2 {
+    -fx-pref-height: 150;
+    -fx-pref-width: 150;
+}
+
+.modal {
+    -fx-background-color: transparent;
+    -fx-border-color: #000000;
+    -fx-border-width: 4 4 4 4;
+    -fx-font-size: 20;
+    -fx-font-family: "Calibri";
+    -fx-font-weight: bold;
+    -fx-cursor: HAND;
+}
+
+.show {
+    -fx-background-color: transparent;
+    -fx-border-color: #000000;
+    -fx-border-width: 0 4 4 4;
+    -fx-font-size: 20;
+    -fx-font-family: "Calibri";
+    -fx-font-weight: bold;
+    -fx-cursor: HAND;
+}
+
+.separator {
+    -fx-background-color: #000000;
+    -fx-pref-width: 1000;
+}
+
+.buttons {
+    -fx-padding: 0 0 0 100;
+    -fx-alignment: CENTER;
+}
+
+.problem {
+    -fx-padding: 10 0 0 5;
+}
+
+.info {
+    -fx-padding: 10 0 0 0;
+}
+
+.text {
+    -fx-padding: 0 300 0 0;
+}

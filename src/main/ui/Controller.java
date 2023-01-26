@@ -9,15 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -61,8 +60,19 @@ public class Controller implements Initializable {
         showAllLessons();
     }
 
+        Button reset = new Button("RESET");
+        reset.getStyleClass().add("reset");
+        boxCategories.getChildren().add(reset);
+
+        reset.setOnAction(e -> {
+            showAllLessons();
+                });
+        showAllLessons();
+    }
+
     public void showAllLessons(){
         lessons.getChildren().clear();
+        boxKeys.getChildren().clear();
         try {
             List<Problem> problems = ProblemFinder.getInstance().findAll();
             for (Problem p: problems) {
@@ -125,6 +135,7 @@ public class Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.setScene(new Scene(root1));
             stage.setTitle("New lesson");
             stage.show();
@@ -142,6 +153,8 @@ public class Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root1));
             stage.setTitle("New keyword");
             stage.show();
@@ -152,6 +165,7 @@ public class Controller implements Initializable {
 
     public void addButton(Category c){
         Button btn = new Button(c.getTitle());
+        btn.getStyleClass().add("btnCat");
         btn.setId(c.getCategory_id().toString());
         btn.setDisable(false);
 
@@ -164,7 +178,8 @@ public class Controller implements Initializable {
 
                     boxKeys.getChildren().add(check);
                 }
-                Button submit = new Button("Submit");
+                Button submit = new Button("SUBMIT");
+                submit.getStyleClass().add("submit");
                 submit.setOnMouseClicked(i -> {
                     Map<Integer, Integer> problems = new HashMap<>();
                     for (Node ch: boxKeys.getChildren()) {
@@ -213,6 +228,10 @@ public class Controller implements Initializable {
     public void makeLesson(Problem problem){
         HBox lesson = new HBox();
         VBox details = new VBox();
+        VBox problems = new VBox();
+        HBox info = new HBox();
+        VBox text = new VBox();
+        VBox buttons = new VBox();
         Text title = new Text(problem.getTitle());
         Text category = null;
         try {
@@ -231,18 +250,20 @@ public class Controller implements Initializable {
             if(keywords.getText().equals("")) keywords.setText(k.getTitle());
             else keywords.setText(keywords.getText() + ", " + k.getTitle());
         }
-        details.getChildren().addAll(title, category, keywords);
-        lesson.getChildren().add(details);
+        text.getChildren().addAll(category, keywords);
+
+        ImageView image1 = null;
         if(problem.getImage1() != null){
-            ImageView image1 = new ImageView(new Image(problem.getImage1()));
+            image1 = new ImageView(new Image(problem.getImage1(),150, 150, true, false));
             lesson.getChildren().add(image1);
         }
+        ImageView image2 = null;
         if(problem.getImage2() != null){
-            ImageView image2 = new ImageView(new Image(problem.getImage2()));
+            image2 = new ImageView(new Image(problem.getImage2(), 150, 150, true, false));
             lesson.getChildren().add(image2);
         }
-        Button modal = new Button("Modal");
-        Button show = new Button("Show");
+        Button modal = new Button("MODAL");
+        Button show = new Button("SHOW");
         show.setOnAction(v -> {
             try {
                 chosenProblem = problem.getProblem_id();
@@ -250,6 +271,7 @@ public class Controller implements Initializable {
                 FXMLLoader loader = new FXMLLoader(fxmlLocation);
                 Parent root1 = (Parent) loader.load();
                 Stage stage = new Stage();
+                stage.setResizable(false);
                 stage.setScene(new Scene(root1));
                 stage.setTitle(problem.getTitle());
                 stage.show();
@@ -257,8 +279,35 @@ public class Controller implements Initializable {
                 exp.printStackTrace();
             }
         });
-        lesson.getChildren().addAll(modal, show);
+        buttons.getChildren().addAll(modal, show);
+        if (image1 != null && image2 == null) info.getChildren().addAll(title, text, image1, buttons);
+        if (image2 != null && image1 == null) info.getChildren().addAll(title, text, image2, buttons);
+        if (image1 != null && image2 != null) {
+            info.getChildren().addAll(title, text, image1, image2, buttons);
+        } else {
+            info.getChildren().addAll(title, text, buttons);
+
+        }
+
+        problems.getChildren().addAll(title, info);
+        details.getChildren().addAll(problems);
+        lesson.getChildren().add(details);
         Separator s = new Separator();
         lessons.getChildren().addAll(lesson, s);
+
+        lesson.getStyleClass().add("hbox");
+        details.getStyleClass().add("vbox");
+        title.getStyleClass().add("title");
+        if (category != null) category.getStyleClass().add("category");
+        keywords.getStyleClass().add("keywords");
+        if (image1 != null) image1.getStyleClass().add("image1");
+        if (image2 != null) image2.getStyleClass().add("image2");
+        modal.getStyleClass().add("modal");
+        show.getStyleClass().add("show");
+        s.getStyleClass().add("separator");
+        buttons.getStyleClass().add("buttons");
+        problems.getStyleClass().add("problem");
+        info.getStyleClass().add("info");
+        text.getStyleClass().add("text");
     }
 }
