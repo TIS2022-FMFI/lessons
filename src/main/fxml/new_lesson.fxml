@@ -167,7 +167,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="newLessFileName" prefHeight="60.0" prefWidth="250.0" promptText="File name">
+                        <TextField fx:id="newLessFileName" prefHeight="60.0" prefWidth="500.0" promptText="File or path">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -175,17 +175,21 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <TextField fx:id="filePath" layoutX="190.0" layoutY="10.0" prefHeight="60.0" prefWidth="250.0" promptText="File or path">
-                           <font>
-                              <Font name="Calibri Italic" size="25.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
+                        <Label onMouseClicked="#browseImgComputer" prefHeight="50.0" prefWidth="50.0">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../upload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                            <HBox.margin>
-                              <Insets left="10.0" />
+                              <Insets left="5.0" top="5.0" />
                            </HBox.margin>
-                        </TextField>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
                         <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="ADD">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
