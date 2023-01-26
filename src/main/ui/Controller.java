@@ -65,24 +65,14 @@ public class Controller implements Initializable {
         boxCategories.getChildren().add(reset);
 
         reset.setOnAction(e -> {
-            try {
-                lessons.getChildren().clear();
-                boxKeys.getChildren().clear();
+            showAllLessons();
+                });
+        showAllLessons();
+    }
 
-                try {
-                    List<Problem> problems = ProblemFinder.getInstance().findAll();
-                    for (Problem p: problems) {
-                        makeLesson(p);
-                    }
-                } catch (SQLException ey) {
-                    ey.printStackTrace();
-                }
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
-
+    public void showAllLessons(){
+        lessons.getChildren().clear();
+        boxKeys.getChildren().clear();
         try {
             List<Problem> problems = ProblemFinder.getInstance().findAll();
             for (Problem p: problems) {
