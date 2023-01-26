@@ -47,10 +47,8 @@ public class Controller implements Initializable {
 
     public static Integer chosenProblem;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lessons.getChildren().clear();
         try {
             List<Category> cat = CategoryFinder.getInstance().findAll();
             for (int i = 1; i < cat.size(); i++) {
@@ -59,6 +57,8 @@ public class Controller implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        showAllLessons();
+    }
 
         Button reset = new Button("RESET");
         reset.getStyleClass().add("reset");
@@ -137,6 +137,7 @@ public class Controller implements Initializable {
             Stage stage = new Stage();
             stage.setResizable(false);
             stage.setScene(new Scene(root1));
+            stage.setTitle("New lesson");
             stage.show();
 
 
@@ -155,6 +156,7 @@ public class Controller implements Initializable {
             stage.setResizable(false);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root1));
+            stage.setTitle("New keyword");
             stage.show();
         } catch(Exception e) {
             e.printStackTrace();
@@ -271,6 +273,7 @@ public class Controller implements Initializable {
                 Stage stage = new Stage();
                 stage.setResizable(false);
                 stage.setScene(new Scene(root1));
+                stage.setTitle(problem.getTitle());
                 stage.show();
             } catch(Exception exp) {
                 exp.printStackTrace();
