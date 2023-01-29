@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane  maxWidth="900.0" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.NewLessonController">
+<AnchorPane  maxWidth="900.0" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane prefHeight="600.0" prefWidth="900.0">
          <content>
@@ -24,7 +24,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FF0800; -fx-border-color: #000000; -fx-border-width: 0 0 3 0;">
                      <children>
-                        <TextField editable="false" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0 3 0 0;" text="NEW LESSON">
+                        <TextField editable="false" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0 3 0 0;" text="NEW LESSON" fx:id="action">
                            <font>
                               <Font name="Calibri Bold" size="25.0" />
                            </font>
@@ -246,7 +246,7 @@
                               <Insets left="690.0" top="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button layoutX="700.0" layoutY="10.0" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="DELETE">
+                        <Button fx:id="newLessDelete" onMouseClicked="#deleteButton" layoutX="700.0" layoutY="10.0" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="DELETE">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>

@@ -132,6 +132,7 @@ public class Controller implements Initializable {
         try {
             URL fxmlLocation = getClass().getResource("../fxml/new_lesson.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            loader.setController(new NewLessonController());
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.setResizable(false);

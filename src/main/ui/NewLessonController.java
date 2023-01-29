@@ -23,7 +23,7 @@ public class NewLessonController implements Initializable {
     private ChoiceBox<String> newLessCat;
 
     @FXML
-    private Button newLessSave;
+    private Button newLessSave, newLessDelete;
 
     @FXML
     private TextField newLessAutor, newLessDesc, newLessTitle, newLessKeyWord, newLessFileName, imagePath, filePath;
@@ -90,6 +90,11 @@ public class NewLessonController implements Initializable {
             }
             problem.setUser_name(newLessAutor.getText());
         });
+    }
+
+    @FXML
+    private void deleteButton() {
+
     }
 
 }
