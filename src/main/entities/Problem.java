@@ -5,7 +5,8 @@ import main.DbContext;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class Problem {
     private Integer problem_id;
@@ -15,8 +16,8 @@ public class Problem {
     private String image1;
     private String image2;
     private String user_name;
-    private Date created_at;
-    private Date last_edited_at;
+    private LocalDate created_at;
+    private LocalDate last_edited_at;
     private String last_editor;
     private String edit_description;
     private Integer category_id;
@@ -28,7 +29,7 @@ public class Problem {
             s.setString(2, description);
             s.setString(3, path);
             s.setString(4, user_name);
-            s.setDate(5, (java.sql.Date) created_at);
+            s.setObject(5, created_at);
             s.setInt(6, category_id);
             s.setString(7, image1);
             s.setString(8, image2);
@@ -53,9 +54,9 @@ public class Problem {
             s.setString(2, description);
             s.setString(3, path);
             s.setString(4, user_name);
-            s.setDate(5, (java.sql.Date) created_at);
+            s.setObject(5, created_at);
             s.setString(6, last_editor);
-            s.setDate(7, (java.sql.Date) last_edited_at);
+            s.setObject(7, last_edited_at);
             s.setString(8, edit_description);
             s.setString(9, image1);
             s.setString(10, image2);
@@ -75,12 +76,14 @@ public class Problem {
         this.last_editor = last_editor;
     }
 
-    public Date getCreated_at() {
+    public LocalDate getCreated_at() {
         return created_at;
     }
 
     public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+        if (created_at != null) {
+            this.created_at = created_at.toLocalDate();
+        }
     }
 
     public String getEdit_description() {
@@ -139,7 +142,11 @@ public class Problem {
 
     public void setImage2(String image2) { this.image2 = image2; }
 
-    public Date getLast_edited_at() { return last_edited_at; }
+    public LocalDate getLast_edited_at() { return last_edited_at; }
 
-    public void setLast_edited_at(Date last_edited_at) { this.last_edited_at = last_edited_at; }
+    public void setLast_edited_at(Date last_edited_at) {
+        if (last_edited_at != null) {
+            this.last_edited_at = last_edited_at.toLocalDate();
+        }
+    }
 }
