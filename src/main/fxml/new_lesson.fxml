@@ -20,7 +20,7 @@
    <children>
       <ScrollPane prefHeight="600.0" prefWidth="900.0">
          <content>
-            <VBox prefHeight="600.0" prefWidth="900.0">
+            <VBox fx:id="whole" prefHeight="600.0" prefWidth="900.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FF0800; -fx-border-color: #000000; -fx-border-width: 0 0 3 0;">
                      <children>
@@ -105,7 +105,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="imagePath1" prefHeight="60.0" prefWidth="645.0" promptText="Select file">
+                        <TextField fx:id="imagePath1" editable="false" prefHeight="60.0" prefWidth="550.0" promptText="Select file">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -128,6 +128,17 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
+                        <Button onMouseClicked="#removeImg1" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="X">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
                   <Separator layoutX="10.0" layoutY="233.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
@@ -138,7 +149,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="imagePath2" prefHeight="60.0" prefWidth="645.0" promptText="Select file">
+                        <TextField fx:id="imagePath2" editable="false" prefHeight="60.0" prefWidth="550.0" promptText="Select file">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -161,6 +172,17 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
+                        <Button onMouseClicked="#removeImg2" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="X">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
                   <Separator layoutX="10.0" layoutY="296.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
@@ -226,7 +248,6 @@
                            </Button>
                         </children>
                      </HBox>
-
                   </VBox>
                   <Separator layoutX="10.0" layoutY="422.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
                   <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">

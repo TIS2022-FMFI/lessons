@@ -33,21 +33,21 @@ import static java.time.LocalDate.now;
 public class NewLessonController implements Initializable {
 
     @FXML
-    private ChoiceBox<String> newLessCat;
+    ChoiceBox<String> newLessCat;
 
     @FXML
-    private Button newLessSave, newLessDelete, addFile;
+    Button newLessSave, newLessDelete, addFile;
 
     @FXML
-    private TextField newLessAutor, newLessDesc, newLessTitle, newLessKeyWord, newLessFileName, imagePath1, imagePath2;
+    TextField newLessAutor, newLessDesc, newLessTitle, newLessKeyWord, newLessFileName, imagePath1, imagePath2;
 
     @FXML
-    private VBox files;
+    VBox files;
     String image1, image2 = null;
 
     List<String> savedFiles = new ArrayList<>();
 
-    private FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.png", "*.jpeg");
+    FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.png", "*.jpeg");
 
 
 
@@ -181,7 +181,7 @@ public class NewLessonController implements Initializable {
         stage.close();
     }
 
-    private HBox showFile(String fileName) {
+    public HBox showFile(String fileName) {
         TextField file = new TextField(fileName);
         file.setEditable(false);
         file.setPrefSize(700, 60);
