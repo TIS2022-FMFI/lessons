@@ -100,12 +100,12 @@
                   <Separator layoutX="10.0" layoutY="233.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
                   <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">
                      <children>
-                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Image:">
+                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Image1:">
                            <font>
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="imagePath" prefHeight="60.0" prefWidth="500.0" promptText="Image path or select file">
+                        <TextField fx:id="imagePath1" prefHeight="60.0" prefWidth="645.0" promptText="Select file">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -113,7 +113,7 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <Label onMouseClicked="#browseImgComputer" prefHeight="50.0" prefWidth="50.0">
+                        <Label onMouseClicked="#browseImgComputer1" prefHeight="50.0" prefWidth="50.0">
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -128,17 +128,39 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Button onMouseClicked="#addImgPath" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="ADD">
+                     </children>
+                  </HBox>
+                  <Separator layoutX="10.0" layoutY="233.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
+                  <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Image2:">
                            <font>
-                              <Font name="Calibri Bold" size="25.0" />
+                              <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
+                        </TextField>
+                        <TextField fx:id="imagePath2" prefHeight="60.0" prefWidth="645.0" promptText="Select file">
+                           <font>
+                              <Font name="Calibri Italic" size="25.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <Label onMouseClicked="#browseImgComputer2" prefHeight="50.0" prefWidth="50.0">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../upload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                            <HBox.margin>
-                              <Insets left="35.0" top="5.0" />
+                              <Insets left="5.0" top="5.0" />
                            </HBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                        </Button>
+                        </Label>
                      </children>
                   </HBox>
                   <Separator layoutX="10.0" layoutY="296.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
@@ -149,7 +171,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="newLessDesc" prefHeight="60.0" prefWidth="700.0" text="Text">
+                        <TextField fx:id="newLessDesc" prefHeight="60.0" prefWidth="700.0" promptText="Text">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -160,60 +182,52 @@
                      </children>
                   </HBox>
                   <Separator layoutX="10.0" layoutY="359.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
-                  <HBox layoutX="10.0" layoutY="362.0" prefHeight="60.0" prefWidth="200.0">
-                     <children>
-                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Files:">
-                           <font>
-                              <Font name="Calibri Bold Italic" size="25.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="newLessFileName" prefHeight="60.0" prefWidth="500.0" promptText="File or path">
-                           <font>
-                              <Font name="Calibri Italic" size="25.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                        </TextField>
-                        <Label onMouseClicked="#browseImgComputer" prefHeight="50.0" prefWidth="50.0">
-                           <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../upload.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <HBox.margin>
-                              <Insets left="5.0" top="5.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Label>
-                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="ADD">
-                           <font>
-                              <Font name="Calibri Bold" size="20.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <HBox.margin>
-                              <Insets left="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button layoutX="700.0" layoutY="10.0" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="REMOVE">
-                           <font>
-                              <Font name="Calibri Bold" size="20.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <HBox.margin>
-                              <Insets left="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
+                  <VBox fx:id="files" layoutX="10.0" layoutY="362.0" prefHeight="60.0" prefWidth="200.0">
+                     <HBox prefHeight="60.0" prefWidth="200.0">
+                        <children>
+                           <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Files:">
+                              <font>
+                                 <Font name="Calibri Bold Italic" size="25.0" />
+                              </font>
+                           </TextField>
+                           <TextField fx:id="newLessFileName" prefHeight="60.0" prefWidth="550.0" promptText="File or path">
+                              <font>
+                                 <Font name="Calibri Italic" size="25.0" />
+                              </font>
+                              <cursor>
+                                 <Cursor fx:constant="TEXT" />
+                              </cursor>
+                           </TextField>
+                           <Label onMouseClicked="#browseFileComputer" prefHeight="50.0" prefWidth="50.0">
+                              <graphic>
+                                 <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../upload.png" />
+                                    </image>
+                                 </ImageView>
+                              </graphic>
+                              <HBox.margin>
+                                 <Insets left="5.0" top="5.0" />
+                              </HBox.margin>
+                              <cursor>
+                                 <Cursor fx:constant="HAND" />
+                              </cursor>
+                           </Label>
+                           <Button onMouseClicked="#addFile" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="ADD">
+                              <font>
+                                 <Font name="Calibri Bold" size="20.0" />
+                              </font>
+                              <cursor>
+                                 <Cursor fx:constant="HAND" />
+                              </cursor>
+                              <HBox.margin>
+                                 <Insets left="5.0" top="5.0" />
+                              </HBox.margin>
+                           </Button>
+                        </children>
+                     </HBox>
+
+                  </VBox>
                   <Separator layoutX="10.0" layoutY="422.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
                   <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">
                      <children>
