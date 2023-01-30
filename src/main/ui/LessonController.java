@@ -19,7 +19,6 @@ import main.entities.ProblemFinder;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LessonController implements Initializable {
@@ -33,6 +32,7 @@ public class LessonController implements Initializable {
     public TextField last_editor;
     public Button delete;
     public static Problem problemToDelete;
+    public static Problem problemToEdit;
     private Problem problem;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -46,10 +46,12 @@ public class LessonController implements Initializable {
                 else keywords.setText(keywords.getText() + ", " + k.getTitle());
             }
             if(problem.getImage1() != null){
-                image1.setImage(new Image(problem.getImage1()));
+                String path1 = "file" + problem.getImage1().replace('\\', '/').substring(1);
+                image1.setImage(new Image(path1));
             }
             if(problem.getImage2() != null){
-                image2.setImage(new Image(problem.getImage2()));
+                String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
+                image2.setImage(new Image(path2));
             }
             description.setText(problem.getDescription());
             files.setText(problem.getPath());
@@ -60,8 +62,17 @@ public class LessonController implements Initializable {
         }
     }
 
-    public void edit(){
-
+    public void edit() {
+        try {
+            problemToEdit = problem;
+            URL fxmlLocation = getClass().getResource("../fxml/new_lesson.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            loader.setController(new EditLessonController());
+            Parent root = loader.load();
+            ((Stage) title.getScene().getWindow()).setScene(new Scene(root));
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void delete(){
