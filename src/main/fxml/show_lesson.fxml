@@ -23,19 +23,19 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FF0800; -fx-border-color: #000000; -fx-border-width: 0 0 3 0;">
                      <children>
-                        <Text fx:id="title" style="-fx-background-color: transparent;" text="TITLE">
+                        <TextField fx:id="title" editable="false" prefHeight="100.0" prefWidth="650" style="-fx-background-color: transparent; " text="TITLE">
                            <font>
                               <Font name="Calibri Bold" size="25.0" />
                            </font>
-                        </Text>
+                        </TextField>
                         <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="54.0" prefWidth="131.0">
                            <HBox.margin>
-                              <Insets bottom="3.0" left="400.0" top="17.0" />
+                              <Insets bottom="3.0" left="50.0" top="17.0" />
                            </HBox.margin>
                            <graphic>
                               <ImageView fitHeight="48.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@boge.png" />
+                                    <Image url="@../boge.png" />
                                  </image>
                               </ImageView>
                            </graphic>

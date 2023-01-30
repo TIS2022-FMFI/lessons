@@ -24,7 +24,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FF0800; -fx-border-color: #000000; -fx-border-width: 0 0 3 0;">
                      <children>
-                        <TextField editable="false" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0 3 0 0;" text="NEW LESSON" fx:id="action">
+                        <TextField editable="false" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: transparent; " text="NEW LESSON" fx:id="action">
                            <font>
                               <Font name="Calibri Bold" size="25.0" />
                            </font>

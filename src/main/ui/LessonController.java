@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class LessonController implements Initializable {
-    public Text title;
+    public TextField title;
     public TextField keywords;
     public ImageView image1;
     public ImageView image2;
