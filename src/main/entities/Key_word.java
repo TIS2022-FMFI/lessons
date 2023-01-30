@@ -3,6 +3,7 @@ package main.entities;
 import main.DbContext;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -15,6 +16,11 @@ public class Key_word {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("INSERT INTO key_word (title) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
             s.setString(1, title.toLowerCase());
             s.executeUpdate();
+
+            try (ResultSet r = s.getGeneratedKeys()) {
+                r.next();
+                key_word_id = r.getInt(1);
+            }
         }
     }
 
