@@ -254,12 +254,14 @@ public class Controller implements Initializable {
 
         ImageView image1 = null;
         if(problem.getImage1() != null){
-            image1 = new ImageView(new Image(problem.getImage1(),150, 150, true, false));
+            String path1 = "file" + problem.getImage1().replace('\\', '/').substring(1);
+            image1 = new ImageView(new Image(path1,150, 150, true, false));
             lesson.getChildren().add(image1);
         }
         ImageView image2 = null;
         if(problem.getImage2() != null){
-            image2 = new ImageView(new Image(problem.getImage2(), 150, 150, true, false));
+            String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
+            image2 = new ImageView(new Image(path2, 150, 150, true, false));
             lesson.getChildren().add(image2);
         }
         Button modal = new Button("MODAL");
@@ -281,8 +283,8 @@ public class Controller implements Initializable {
         });
         buttons.getChildren().addAll(modal, show);
         if (image1 != null && image2 == null) info.getChildren().addAll(title, text, image1, buttons);
-        if (image2 != null && image1 == null) info.getChildren().addAll(title, text, image2, buttons);
-        if (image1 != null && image2 != null) {
+        else if (image2 != null && image1 == null) info.getChildren().addAll(title, text, image2, buttons);
+        else if (image1 != null && image2 != null) {
             info.getChildren().addAll(title, text, image1, image2, buttons);
         } else {
             info.getChildren().addAll(title, text, buttons);

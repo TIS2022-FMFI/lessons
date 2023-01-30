@@ -22,10 +22,13 @@ import main.entities.Problem;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static java.time.LocalDate.now;
 
 public class NewLessonController implements Initializable {
 
@@ -77,6 +80,12 @@ public class NewLessonController implements Initializable {
     }
 
     @FXML
+    private void removeImg1() {
+        image1 = null;
+        imagePath1.setText("");
+    }
+
+    @FXML
     private void browseImgComputer2() {
         Stage stage = new Stage();
         FileChooser fileChooser = new FileChooser();
@@ -90,6 +99,12 @@ public class NewLessonController implements Initializable {
         } else {
             System.out.println("error");
         }
+    }
+
+    @FXML
+    private void removeImg2() {
+        image2 = null;
+        imagePath2.setText("");
     }
 
     @FXML
@@ -120,28 +135,50 @@ public class NewLessonController implements Initializable {
 
     @FXML
     private void saveButton() {
-        newLessSave.setOnAction(e ->{
-            Problem problem = new Problem();
-            problem.setTitle(newLessTitle.getText());
-            problem.setDescription(newLessDesc.getText());
-            if (image1 != null){
-                problem.setImage1(image1);
-            }
-            if (image2 != null){
-                problem.setImage2(image2);
-            }
-            try {
-                problem.setCategory_id(CategoryFinder.getInstance().findByTitle(newLessCat.getValue()).getCategory_id());
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            problem.setUser_name(newLessAutor.getText());
-        });
+        Problem problem = new Problem();
+
+        // Title
+        problem.setTitle(newLessTitle.getText());
+
+        // Category
+        try {
+            problem.setCategory_id(CategoryFinder.getInstance().findByTitle(newLessCat.getValue()).getCategory_id());
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        // Keywords
+        // TODO
+
+        // Image1
+        problem.setImage1(image1);
+
+        // Image2
+        problem.setImage2(image2);
+
+        // Description
+        problem.setDescription(newLessDesc.getText());
+
+        // Files
+        problem.setPath(String.join(";", savedFiles));
+
+        // Author
+        problem.setUser_name(newLessAutor.getText());
+
+        // Created at
+        problem.setCreated_at(new java.sql.Date(new Date().getTime()));
+
+        try {
+            problem.insert();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     private void deleteButton() {
-
+        Stage stage = (Stage) newLessTitle.getScene().getWindow();
+        stage.close();
     }
 
     private HBox showFile(String fileName) {

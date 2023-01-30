@@ -46,10 +46,12 @@ public class LessonController implements Initializable {
                 else keywords.setText(keywords.getText() + ", " + k.getTitle());
             }
             if(problem.getImage1() != null){
-                image1.setImage(new Image(problem.getImage1()));
+                String path1 = "file" + problem.getImage1().replace('\\', '/').substring(1);
+                image1.setImage(new Image(path1));
             }
             if(problem.getImage2() != null){
-                image2.setImage(new Image(problem.getImage2()));
+                String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
+                image2.setImage(new Image(path2));
             }
             description.setText(problem.getDescription());
             files.setText(problem.getPath());
