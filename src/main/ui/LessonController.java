@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import main.entities.KPFinder;
 import main.entities.Key_word;
 import main.entities.Problem;
@@ -86,6 +87,23 @@ public class LessonController implements Initializable {
             stage.setTitle("Delete of " + problem.getTitle());
             stage.show();
             closeWindow();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML void showEditLog() {
+        try {
+            problemToEdit = problem;
+            URL fxmlLocation = getClass().getResource("../fxml/edit_log.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent root1 = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root1));
+            stage.setTitle("Edit Log");
+            stage.show();
         } catch(Exception e) {
             e.printStackTrace();
         }
