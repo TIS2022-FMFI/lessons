@@ -97,13 +97,54 @@ public class EditLessonController extends NewLessonController {
         // Category
         try {
             problem.setCategory_id(CategoryFinder.getInstance().findByTitle(newLessCat.getValue()).getCategory_id());
-            System.out.println(CategoryFinder.getInstance().findByTitle(newLessCat.getValue()).getCategory_id());
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
         // Keywords
-        // TODO
+        List<String> newKeywords = new ArrayList<>(Arrays.asList(newLessKeyWord.getText().split(";")));
+        List<Key_word> usedKeywords;
+        try {
+            usedKeywords = KPFinder.getInstance().findByProblemId(problem.getProblem_id());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        for (Key_word keyword : usedKeywords) {
+            if (!newKeywords.contains(keyword.getTitle())) {
+                try {
+                    Key_word_problem tmp = KPFinder.getInstance().findByKeywordAndProblem(keyword.getKey_word_id(), problem.getProblem_id());
+                    tmp.delete();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                newKeywords.remove(keyword.getTitle());
+            }
+        }
+        for (String key : newKeywords) {
+            if (key.isEmpty()) {
+                continue;
+            }
+            Key_word kw;
+            try {
+                kw = KeywordFinder.getInstance().findByTitle(key);
+                if (kw == null) {
+                    kw = new Key_word();
+                    kw.setTitle(key);
+                    kw.insert();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            Key_word_problem kwp = new Key_word_problem();
+            kwp.setProblem_id(problem.getProblem_id());
+            kwp.setKey_word_id(kw.getKey_word_id());
+            try {
+                kwp.insert();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         // Image1
         problem.setImage1(super.image1);

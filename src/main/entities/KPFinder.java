@@ -129,4 +129,25 @@ public class KPFinder {
             }
         }
     }
+
+    public Key_word_problem findByKeywordAndProblem(int idK, int idP) throws SQLException {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word_problem WHERE key_word_id = ? AND problem_id = ?")) {
+            s.setInt(1, idK);
+            s.setInt(2, idP);
+
+            try (ResultSet r = s.executeQuery()) {
+
+                Key_word_problem kwp = null;
+
+                if (r.next()) {
+                    kwp = new Key_word_problem();
+                    kwp.setProblem_id(r.getInt("problem_id"));
+                    kwp.setKey_word_id(r.getInt("key_word_id"));
+                    kwp.setKey_word_problem_id(r.getInt("id"));
+                }
+
+                return kwp;
+            }
+        }
+    }
 }
