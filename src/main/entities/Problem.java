@@ -49,7 +49,7 @@ public class Problem {
 
     public void update()throws SQLException {
         try(PreparedStatement s = DbContext.getConnection().
-                prepareStatement("UPDATE problem SET title = ?, description = ?, path = ?, user_name = ?, create_at = ?, last_editor = ?, last_edited_at = ?, edit_description = ?, image1 = ?, image2 = ? WHERE problem_id = ?")){
+                prepareStatement("UPDATE problem SET title = ?, description = ?, path = ?, user_name = ?, create_at = ?, last_editor = ?, last_edited_at = ?, edit_description = ?, image1 = ?, image2 = ?, category_id = ? WHERE problem_id = ?")){
             s.setString(1, title);
             s.setString(2, description);
             s.setString(3, path);
@@ -60,6 +60,8 @@ public class Problem {
             s.setString(8, edit_description);
             s.setString(9, image1);
             s.setString(10, image2);
+            s.setInt(11, category_id);
+            s.setInt(12, problem_id);
             s.executeUpdate();
         }
     }
