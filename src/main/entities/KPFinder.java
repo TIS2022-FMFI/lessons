@@ -1,5 +1,6 @@
 package main.entities;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,60 +19,89 @@ public class KPFinder {
     }
 
     public List<Key_word> findByProblemId(int idP) throws SQLException {
-    //TODO  transakcia!!!!!!!!!!
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word_problem WHERE problem_id = ?")) {
-            s.setInt(1, idP);
+        Connection c = DbContext.getConnection();
+        c.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+        c.setAutoCommit(false);
+        try {
+            try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word_problem WHERE problem_id = ?")) {
+                s.setInt(1, idP);
 
-            try (ResultSet r = s.executeQuery()) {
+                try (ResultSet r = s.executeQuery()) {
 
-                List<Key_word> elements = new ArrayList<>();
-                while (r.next()) {
+                    List<Key_word> elements = new ArrayList<>();
+                    while (r.next()) {
 
-                    Key_word c = KeywordFinder.getInstance().findById(r.getInt("key_word_id"));
-                    elements.add(c);
+                        Key_word k = KeywordFinder.getInstance().findById(r.getInt("key_word_id"));
+                        elements.add(k);
+                    }
+                    c.commit();
+                   return elements;
                 }
-
-               return elements;
             }
+
+        } catch (Exception e){
+            c.rollback();
+            throw e;
+        } finally {
+            c.setAutoCommit(true);
         }
     }
 
 
     public List<Problem> findByKeywordId(int idK) throws SQLException {
-        //TODO  transakcia!!!!!!!!!!
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word_problem WHERE key_word_id = ?")) {
-            s.setInt(1, idK);
+        Connection c = DbContext.getConnection();
+        c.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+        c.setAutoCommit(false);
+        try {
+            try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word_problem WHERE key_word_id = ?")) {
+                s.setInt(1, idK);
 
-            try (ResultSet r = s.executeQuery()) {
+                try (ResultSet r = s.executeQuery()) {
 
-                List<Problem> elements = new ArrayList<>();
-                while (r.next()) {
-                    Problem c = ProblemFinder.getInstance().findById(r.getInt("problem_id"));
+                    List<Problem> elements = new ArrayList<>();
+                    while (r.next()) {
+                        Problem p = ProblemFinder.getInstance().findById(r.getInt("problem_id"));
 
-                    elements.add(c);
+                        elements.add(p);
+                    }
+                    c.commit();
+                    return elements;
                 }
-
-                return elements;
             }
+        } catch (Exception e){
+            c.rollback();
+            throw e;
+        } finally {
+            c.setAutoCommit(true);
         }
     }
 
 
     public List<Problem> findByCK(int idC, int idK) throws SQLException {
-        //TODO  transakcia!!!!!!!!!! + dorobit ked bude frontend na zadavanie v inej funkcii
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word_problem WHERE key_word_id = ?")) {
-            s.setInt(1, idK);
+        Connection c = DbContext.getConnection();
+        c.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+        c.setAutoCommit(false);
+        try {
+            try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word_problem WHERE key_word_id = ?")) {
+                s.setInt(1, idK);
 
-            try (ResultSet r = s.executeQuery()) {
-                List<Problem> elements = new ArrayList<>();
-                while (r.next()) {
-                    Problem c = ProblemFinder.getInstance().findById(r.getInt("problem_id"));
-                    if (c.getCategory_id() == idC){
-                        elements.add(c);
+                try (ResultSet r = s.executeQuery()) {
+                    List<Problem> elements = new ArrayList<>();
+                    while (r.next()) {
+                        Problem p = ProblemFinder.getInstance().findById(r.getInt("problem_id"));
+                        if (p.getCategory_id() == idC){
+                            elements.add(p);
+                        }
                     }
+                    c.commit();
+                    return elements;
                 }
-                return elements;
             }
+        } catch (Exception e){
+            c.rollback();
+            throw e;
+        } finally {
+            c.setAutoCommit(true);
         }
     }
 
