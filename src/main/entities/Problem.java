@@ -2,10 +2,7 @@ package main.entities;
 
 import main.DbContext;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Date;
+import java.sql.*;
 import java.time.LocalDate;
 
 public class Problem {
@@ -34,6 +31,11 @@ public class Problem {
             s.setString(7, image1);
             s.setString(8, image2);
             s.executeUpdate();
+
+            try (ResultSet r = s.getGeneratedKeys()) {
+                r.next();
+                problem_id = r.getInt(1);
+            }
         }
     }
 

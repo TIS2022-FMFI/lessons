@@ -3,6 +3,7 @@ package main.entities;
 import main.DbContext;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -30,6 +31,11 @@ public class Category {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("INSERT INTO category (title) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
             s.setString(1, title);
             s.executeUpdate();
+
+            try (ResultSet r = s.getGeneratedKeys()) {
+                r.next();
+                category_id = r.getInt(1);
+            }
         }
     }
 
