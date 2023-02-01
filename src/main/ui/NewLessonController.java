@@ -148,33 +148,6 @@ public class NewLessonController implements Initializable {
             return;
         }
 
-        // Keywords
-        List<String> newKeywords = new ArrayList<>(Arrays.asList(newLessKeyWord.getText().split(";")));
-        for (String key : newKeywords) {
-            if (key.isEmpty()) {
-                continue;
-            }
-            Key_word kw;
-            try {
-                kw = KeywordFinder.getInstance().findByTitle(key);
-                if (kw == null) {
-                    kw = new Key_word();
-                    kw.setTitle(key);
-                    kw.insert();
-                }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-            Key_word_problem kwp = new Key_word_problem();
-            kwp.setProblem_id(problem.getProblem_id());
-            kwp.setKey_word_id(kw.getKey_word_id());
-            try {
-                kwp.insert();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
         // Image1
         problem.setImage1(image1);
 
@@ -195,6 +168,32 @@ public class NewLessonController implements Initializable {
 
         try {
             problem.insert();
+            // Keywords
+            List<String> newKeywords = new ArrayList<>(Arrays.asList(newLessKeyWord.getText().split(";")));
+            for (String key : newKeywords) {
+                if (key.isEmpty()) {
+                    continue;
+                }
+                Key_word kw;
+                try {
+                    kw = KeywordFinder.getInstance().findByTitle(key);
+                    if (kw == null) {
+                        kw = new Key_word();
+                        kw.setTitle(key);
+                        kw.insert();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                Key_word_problem kwp = new Key_word_problem();
+                kwp.setProblem_id(problem.getProblem_id());
+                kwp.setKey_word_id(kw.getKey_word_id());
+                try {
+                    kwp.insert();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Creating new lesson");
             alert.setHeaderText("New lesson is created successfully");

@@ -1,25 +1,16 @@
 package main.ui;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Separator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.TextAlignment;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import main.entities.*;
 
-import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
@@ -32,6 +23,8 @@ public class EditLessonController extends NewLessonController {
 
     TextField editorLabel = new TextField();
     TextField editor = new TextField();
+    TextField editLogLabel = new TextField();
+    TextField editLog = new TextField();
     private final Problem problem = LessonController.problemToEdit;
 
     @Override
@@ -77,6 +70,13 @@ public class EditLessonController extends NewLessonController {
         sep.setStyle("-fx-background-color: #000000;");
         whole.getChildren().add(numChildes - 2, sep);
 
+        // Add Edit log
+        whole.getChildren().add(numChildes - 2, addEditLog());
+        sep = new Separator();
+        sep.setMaxWidth(400);
+        sep.setPrefHeight(3);
+        sep.setStyle("-fx-background-color: #000000;");
+        whole.getChildren().add(numChildes - 2, sep);
 
         image1 = problem.getImage1();
         image2 = problem.getImage2();
@@ -88,6 +88,7 @@ public class EditLessonController extends NewLessonController {
         imagePath2.setText(problem.getImage2());
         newLessDesc.setText(problem.getDescription());
         newLessAutor.setText(problem.getUser_name());
+        editLog.setText(problem.getEdit_description());
     }
 
     @FXML
@@ -164,9 +165,21 @@ public class EditLessonController extends NewLessonController {
         // Last edited at
         problem.setLast_edited_at(new java.sql.Date(new Date().getTime()));
 
+        // EditLog
+        problem.setEdit_description(editLog.getText());
+
         try {
             problem.update();
-        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Editing lesson");
+            alert.setHeaderText("Edit saved successfully");
+            alert.showAndWait();
+            deleteButton();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Editing lesson");
+            alert.setHeaderText("Save edit failed");
+            alert.showAndWait();
             throw new RuntimeException(e);
         }
     }
@@ -184,6 +197,23 @@ public class EditLessonController extends NewLessonController {
         editor.setCursor(Cursor.TEXT);
 
         HBox output = new HBox(editorLabel, editor);
+        output.setPrefSize(200, 60);
+        return output;
+    }
+
+    private HBox addEditLog() {
+        editLogLabel.setText("Edit log:");
+        editLogLabel.setPrefSize(180, 60);
+        editLogLabel.setAlignment(Pos.CENTER);
+        editLogLabel.setEditable(false);
+        editLogLabel.setFont(Font.font("Calibri", FontWeight.BOLD, FontPosture.ITALIC, 25));
+
+        editLog.setPrefSize(700, 60);
+        editLog.setPromptText("Describe changes");
+        editLog.setFont(Font.font("Calibri", FontPosture.ITALIC, 25));
+        editLog.setCursor(Cursor.TEXT);
+
+        HBox output = new HBox(editLogLabel, editLog);
         output.setPrefSize(200, 60);
         return output;
     }

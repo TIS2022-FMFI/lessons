@@ -180,7 +180,7 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="425.0" prefHeight="60.0" prefWidth="200.0">
                      <children>
-                        <Button maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="EDIT LOG">
+                        <Button onMouseClicked="#showEditLog" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="EDIT LOG">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
