@@ -13,8 +13,9 @@ public class Key_word {
     private Boolean prime;
 
     public void insert() throws SQLException {
-        try (PreparedStatement s = DbContext.getConnection().prepareStatement("INSERT INTO key_word (title) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("INSERT INTO key_word (title, prime) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             s.setString(1, title.toLowerCase());
+            s.setBoolean(2, prime);
             s.executeUpdate();
 
             try (ResultSet r = s.getGeneratedKeys()) {
@@ -27,6 +28,9 @@ public class Key_word {
     public void delete() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM key_word WHERE key_word_id = ?")) {
             s.setInt(1, key_word_id);
+            Key_word_problem kwp = new Key_word_problem();
+            kwp.setKey_word_id(key_word_id);
+            kwp.deleteByKeywordId();
             s.executeUpdate();
         }
     }

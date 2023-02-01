@@ -42,6 +42,9 @@ public class Category {
     public void delete() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM category WHERE category_id = ?")) {
             s.setInt(1, category_id);
+            Problem problem = new Problem();
+            problem.setCategory_id(category_id);
+            problem.deleteByCategoryId();
             s.executeUpdate();
         }
     }

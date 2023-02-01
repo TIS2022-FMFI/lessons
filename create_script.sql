@@ -27,7 +27,7 @@ create table problem(problem_id int not null unique auto_increment primary key ,
                      last_edited_at date default null,
                      edit_description varchar(500) default null);
 
-create table key_word_problem(id int not null unique auto_increment primary key,
+create table key_word_problem(key_word_problem_id int not null unique auto_increment primary key,
                               problem_id int not null,
                               key_word_id int not null,
                               FOREIGN KEY (problem_id) REFERENCES problem(problem_id),

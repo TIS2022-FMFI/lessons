@@ -2,22 +2,18 @@ package main.ui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.entities.Problem;
-import main.entities.ProblemFinder;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
-public class PasswordController{
+public class DeleteLessonController {
     public PasswordField password;
     public Button apply;
     private final Problem problem = LessonController.problemToDelete;
@@ -25,7 +21,6 @@ public class PasswordController{
     public void checkPassword(){
         //TODO  šifrovanie!!!!!!!!!!!!!!
         if(password.getText().equals("heslo")){
-            System.out.println("Treba mazať");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Removing Lesson");
             alert.setHeaderText("Lesson successfully removed! Please reload main page.");

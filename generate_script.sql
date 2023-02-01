@@ -32,8 +32,8 @@ insert into key_word (title, prime)
 values ('prasklina', true), ('škrabanec', true), ('roztavenie', true), ('zmrštenie', true), ('teplota', true),
        ('drevo', false), ('okno', false), ('korózia', false), ('ulomenie', false), ('roztrhnutie', false), ('nevim', false);
 
-insert into problem (title, description, path, image1, image2, user_name, create_at, category_id)
-values ('The Dilemma of Overcrowding in Cities', 'je to pokazene', 'C://user', 'main/img/obr1_Audi_A4_section.jpg', 'main/img/obr2_clearance.jpg', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1));
+# insert into problem (title, description, path, image1, image2, user_name, create_at, category_id)
+# values ('The Dilemma of Overcrowding in Cities', 'je to pokazene', 'C://user', 'main/img/obr1_Audi_A4_section.jpg', 'main/img/obr2_clearance.jpg', (SELECT name.name from name ORDER BY RAND() LIMIT 1), now(), (SELECT category.category_id from category ORDER BY RAND() LIMIT 1));
 
 insert into problem (title, description, path, user_name, create_at, category_id)
 values
