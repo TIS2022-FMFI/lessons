@@ -16,7 +16,8 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane  maxWidth="900.0" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.web.HTMLEditor?>
+<AnchorPane maxWidth="900.0" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane prefHeight="600.0" prefWidth="900.0">
          <content>
@@ -186,21 +187,14 @@
                      </children>
                   </HBox>
                   <Separator layoutX="10.0" layoutY="296.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
-                  <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">
+                  <HBox layoutX="10.0" layoutY="236.0" minHeight="500.0" prefWidth="200.0">
                      <children>
                         <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Description:">
                            <font>
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="newLessDesc" prefHeight="60.0" prefWidth="700.0" promptText="Text">
-                           <font>
-                              <Font name="Calibri Italic" size="25.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                        </TextField>
+                        <HTMLEditor fx:id="newLessDesc" prefHeight="500.0" prefWidth="700.0" />
                      </children>
                   </HBox>
                   <Separator layoutX="10.0" layoutY="359.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />

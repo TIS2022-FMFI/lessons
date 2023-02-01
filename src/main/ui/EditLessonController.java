@@ -86,7 +86,7 @@ public class EditLessonController extends NewLessonController {
         newLessKeyWord.setText(keywordText);
         imagePath1.setText(problem.getImage1());
         imagePath2.setText(problem.getImage2());
-        newLessDesc.setText(problem.getDescription());
+        newLessDesc.setHtmlText(problem.getDescription());
         newLessAutor.setText(problem.getUser_name());
         editLog.setText(problem.getEdit_description());
     }
@@ -154,7 +154,7 @@ public class EditLessonController extends NewLessonController {
         problem.setImage2(super.image2);
 
         // Description
-        problem.setDescription(newLessDesc.getText());
+        problem.setDescription(newLessDesc.getHtmlText());
 
         // Files
         problem.setPath(String.join(";", super.savedFiles));

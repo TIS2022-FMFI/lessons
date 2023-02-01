@@ -15,6 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import javafx.scene.web.HTMLEditor;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.entities.*;
@@ -35,8 +36,9 @@ public class NewLessonController implements Initializable {
     Button newLessSave, newLessDelete, addFile;
 
     @FXML
-    TextField newLessAutor, newLessDesc, newLessTitle, newLessKeyWord, newLessFileName, imagePath1, imagePath2;
-
+    TextField newLessAutor, newLessTitle, newLessKeyWord, newLessFileName, imagePath1, imagePath2;
+    @FXML
+    HTMLEditor newLessDesc;
     @FXML
     VBox files;
     String image1, image2 = null;
@@ -155,7 +157,7 @@ public class NewLessonController implements Initializable {
         problem.setImage2(image2);
 
         // Description
-        problem.setDescription(newLessDesc.getText());
+        problem.setDescription(newLessDesc.getHtmlText());
 
         // Files
         problem.setPath(String.join(";", savedFiles));

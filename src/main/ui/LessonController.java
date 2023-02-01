@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import main.entities.KPFinder;
@@ -27,7 +28,7 @@ public class LessonController implements Initializable {
     public TextField keywords;
     public ImageView image1;
     public ImageView image2;
-    public TextField description;
+    public WebView description;
     public TextField files;
     public TextField author;
     public TextField last_editor;
@@ -54,7 +55,8 @@ public class LessonController implements Initializable {
                 String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
                 image2.setImage(new Image(path2));
             }
-            description.setText(problem.getDescription());
+            String content = problem.getDescription().replace("contenteditable=\"true\"", "contenteditable=\"false\"");
+            description.getEngine().loadContent(content);
             files.setText(problem.getPath());
             author.setText(problem.getUser_name());
             last_editor.setText(problem.getLast_editor());
