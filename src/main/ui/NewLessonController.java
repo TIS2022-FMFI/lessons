@@ -148,9 +148,6 @@ public class NewLessonController implements Initializable {
             return;
         }
 
-        // Keywords
-        // TODO
-
         // Image1
         problem.setImage1(image1);
 
