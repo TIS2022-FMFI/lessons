@@ -139,9 +139,17 @@ public class NewLessonController implements Initializable {
         // Category
         try {
             problem.setCategory_id(CategoryFinder.getInstance().findByTitle(newLessCat.getValue()).getCategory_id());
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Creating new lesson");
+            alert.setHeaderText("Category is not set");
+            alert.showAndWait();
             ex.printStackTrace();
+            return;
         }
+
+        // Keywords
+        // TODO
 
         // Image1
         problem.setImage1(image1);
