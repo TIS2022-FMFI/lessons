@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -16,17 +17,12 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import main.entities.Category;
-import main.entities.CategoryFinder;
-import main.entities.Problem;
+import main.entities.*;
 
 import java.io.File;
 import java.net.URL;
-import java.util.Date;
+import java.util.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 
 import static java.time.LocalDate.now;
 
@@ -147,9 +143,6 @@ public class NewLessonController implements Initializable {
             ex.printStackTrace();
         }
 
-        // Keywords
-        // TODO
-
         // Image1
         problem.setImage1(image1);
 
@@ -170,13 +163,48 @@ public class NewLessonController implements Initializable {
 
         try {
             problem.insert();
-        } catch (SQLException e) {
+            // Keywords
+            List<String> newKeywords = new ArrayList<>(Arrays.asList(newLessKeyWord.getText().split(";")));
+            for (String key : newKeywords) {
+                if (key.isEmpty()) {
+                    continue;
+                }
+                Key_word kw;
+                try {
+                    kw = KeywordFinder.getInstance().findByTitle(key);
+                    if (kw == null) {
+                        kw = new Key_word();
+                        kw.setTitle(key);
+                        kw.insert();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                Key_word_problem kwp = new Key_word_problem();
+                kwp.setProblem_id(problem.getProblem_id());
+                kwp.setKey_word_id(kw.getKey_word_id());
+                try {
+                    kwp.insert();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Creating new lesson");
+            alert.setHeaderText("New lesson is created successfully");
+            alert.showAndWait();
+            deleteButton();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Creating new lesson");
+            alert.setHeaderText("New lesson is not created");
+            alert.showAndWait();
             throw new RuntimeException(e);
         }
     }
 
     @FXML
-    private void deleteButton() {
+    void deleteButton() {
         Stage stage = (Stage) newLessTitle.getScene().getWindow();
         stage.close();
     }

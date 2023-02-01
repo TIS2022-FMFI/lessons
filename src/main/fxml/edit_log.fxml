@@ -21,14 +21,14 @@
             <Font name="Calibri Bold" size="25.0"/>
          </font>
          <padding>
-            <Insets left="80.0" top="35.0"/>
+            <Insets left="20.0" top="35.0"/>
          </padding>
       </Label>
    </HBox>
-   <HBox layoutY="90.0" prefHeight="100.0" prefWidth="500.0">
-      <Text fx:id="keyword">
+   <HBox layoutY="90.0" prefHeight="100.0" prefWidth="490.0">
+      <Text fx:id="editLog" wrappingWidth="480">
          <HBox.margin>
-            <Insets left="90.0" top="20.0"/>
+            <Insets left="20.0" top="20.0"/>
          </HBox.margin>
          <font>
             <Font name="Calibri Italic" size="25.0"/>
@@ -39,7 +39,7 @@
       <padding>
          <Insets left="10.0" top="200.0"/>
       </padding>
-      <Button fx:id="closeBtn" layoutX="20.0" layoutY="210.0" mnemonicParsing="false" prefHeight="50.0"
+      <Button fx:id="closeBtn" mnemonicParsing="false" prefHeight="50.0"
               prefWidth="120.0"
               style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;"
               text="BACK" onAction="#closeWindow">
@@ -50,7 +50,7 @@
             <Cursor fx:constant="HAND"/>
          </cursor>
          <HBox.margin>
-            <Insets left="80.0"/>
+            <Insets left="190.0"/>
          </HBox.margin>
       </Button>
    </HBox>
