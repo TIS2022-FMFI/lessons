@@ -1,5 +1,6 @@
 package main.ui;
 
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
@@ -46,6 +47,16 @@ public class Controller implements Initializable {
     public VBox lessons;
 
     public static Integer chosenProblem;
+
+    private HostServices hostServices ;
+
+    public HostServices getHostServices() {
+        return hostServices ;
+    }
+
+    public void setHostServices(HostServices hostServices) {
+        this.hostServices = hostServices ;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -272,6 +283,8 @@ public class Controller implements Initializable {
                 URL fxmlLocation = getClass().getResource("../fxml/show_lesson.fxml");
                 FXMLLoader loader = new FXMLLoader(fxmlLocation);
                 Parent root1 = (Parent) loader.load();
+                LessonController lessonController = loader.getController();
+                lessonController.setHostServices(hostServices);
                 Stage stage = new Stage();
                 stage.setResizable(false);
                 stage.setScene(new Scene(root1));

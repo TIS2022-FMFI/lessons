@@ -1,15 +1,20 @@
 package main.ui;
 
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.*;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -20,6 +25,8 @@ import main.entities.ProblemFinder;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -29,13 +36,18 @@ public class LessonController implements Initializable {
     public ImageView image1;
     public ImageView image2;
     public WebView description;
-    public TextField files;
+    public VBox files;
     public TextField author;
-    public TextField last_editor;
     public Button delete;
     public static Problem problemToDelete;
     public static Problem problemToEdit;
     private Problem problem;
+
+    private HostServices hostServices ;
+
+    public void setHostServices(HostServices hostServices) {
+        this.hostServices = hostServices ;
+    }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -57,9 +69,14 @@ public class LessonController implements Initializable {
             }
             String content = problem.getDescription().replace("contenteditable=\"true\"", "contenteditable=\"false\"");
             description.getEngine().loadContent(content);
-            files.setText(problem.getPath());
             author.setText(problem.getUser_name());
-            last_editor.setText(problem.getLast_editor());
+
+            List<String> savedFiles = new ArrayList<>();
+            savedFiles.addAll(Arrays.asList(problem.getPath().split(";")));
+            for (String file : savedFiles) {
+                files.getChildren().add(showFile(file));
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -115,5 +132,19 @@ public class LessonController implements Initializable {
     public void closeWindow(){
         Stage stage = (Stage) delete.getScene().getWindow();
         stage.close();
+    }
+
+    public TextField showFile(String fileName) {
+        TextField file = new TextField(fileName);
+        file.setEditable(false);
+        file.setPrefSize(700, 60);
+        file.setLayoutY(20);
+        file.setFont(Font.font("Calibri", FontPosture.ITALIC, 25));
+        file.setCursor(Cursor.HAND);
+
+        file.setOnMouseClicked(e -> {
+            hostServices.showDocument(fileName);
+        });
+        return file;
     }
 }

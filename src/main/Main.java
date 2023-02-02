@@ -35,7 +35,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("menu1.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("menu1.fxml"));
+        Parent root = loader.load();
+        Controller controller = loader.getController();
+        controller.setHostServices(getHostServices());
         stage.setTitle("Lessons Learn");
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("../main/css/buttons.css").toExternalForm());

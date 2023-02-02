@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 <AnchorPane maxWidth="900.0" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.LessonController">
    <children>
@@ -50,7 +49,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="keywords" prefHeight="60.0" prefWidth="500.0" promptText="Key words separated by ; e.g. steel;wood">
+                        <TextField fx:id="keywords" prefHeight="60.0" prefWidth="500.0" editable="false">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -119,14 +118,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="files" prefHeight="60.0" prefWidth="710.0" promptText="File name">
-                           <font>
-                              <Font name="Calibri Italic" size="25.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                        </TextField>
+                        <VBox fx:id="files" prefHeight="60.0" prefWidth="710.0" />
                      </children>
                   </HBox>
                   <Separator layoutX="10.0" layoutY="422.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
@@ -137,7 +129,7 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="author" prefHeight="60.0" prefWidth="250.0" promptText="Enter your name">
+                        <TextField fx:id="author" prefHeight="60.0" prefWidth="250.0" editable="false">
                            <font>
                               <Font name="Calibri Italic" size="25.0" />
                            </font>
@@ -145,26 +137,6 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <TextField alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="150.0" text="Modified by:">
-                           <font>
-                              <Font name="Calibri Bold Italic" size="23.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <TextField fx:id="last_editor" layoutX="160.0" layoutY="10.0" prefHeight="60.0" prefWidth="300.0" promptText="Enter your name">
-                           <font>
-                              <Font name="Calibri Italic" size="25.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="425.0" prefHeight="60.0" prefWidth="200.0">
-                     <children>
                         <Button onMouseClicked="#showEditLog" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="EDIT LOG">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
@@ -173,7 +145,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <HBox.margin>
-                              <Insets left="730.0" top="5.0" />
+                              <Insets left="200.0" top="5.0" />
                            </HBox.margin>
                         </Button>
                      </children>
