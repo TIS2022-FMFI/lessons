@@ -4,24 +4,22 @@ import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.*;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import main.entities.KPFinder;
-import main.entities.Key_word;
-import main.entities.Problem;
-import main.entities.ProblemFinder;
+import main.entities.*;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -32,11 +30,16 @@ import java.util.ResourceBundle;
 
 public class LessonController implements Initializable {
     public TextField title;
+    public TextField category;
     public TextField keywords;
     public ImageView image1;
     public ImageView image2;
+    public Label image1Label;
+    public Label image2Label;
+    public AnchorPane images;
     public WebView description;
     public VBox files;
+    public VBox whole;
     public TextField author;
     public Button delete;
     public static Problem problemToDelete;
@@ -53,6 +56,11 @@ public class LessonController implements Initializable {
         try {
             problem = ProblemFinder.getInstance().findById(Controller.chosenProblem);
             title.setText(problem.getTitle());
+            try {
+                category.setText(CategoryFinder.getInstance().findById(problem.getCategory_id()).getTitle());
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             keywords.setText("");
             List<Key_word> keyWords = KPFinder.getInstance().findByProblemId(problem.getProblem_id());
             for (Key_word k: keyWords) {
@@ -62,10 +70,19 @@ public class LessonController implements Initializable {
             if(problem.getImage1() != null){
                 String path1 = "file" + problem.getImage1().replace('\\', '/').substring(1);
                 image1.setImage(new Image(path1));
+                image1Label.setOnMouseClicked(e -> showImage(path1));
+            } else {
+                image1Label.setVisible(false);
             }
             if(problem.getImage2() != null){
                 String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
                 image2.setImage(new Image(path2));
+                image2Label.setOnMouseClicked(e -> showImage(path2));
+            } else {
+                image2Label.setVisible(false);
+            }
+            if (problem.getImage1() == null && problem.getImage1() == null) {
+                whole.getChildren().remove(images);
             }
             String content = problem.getDescription().replace("contenteditable=\"true\"", "contenteditable=\"false\"");
             description.getEngine().loadContent(content);
@@ -74,6 +91,9 @@ public class LessonController implements Initializable {
             List<String> savedFiles = new ArrayList<>();
             savedFiles.addAll(Arrays.asList(problem.getPath().split(";")));
             for (String file : savedFiles) {
+                if (file.isEmpty()) {
+                    continue;
+                }
                 files.getChildren().add(showFile(file));
             }
 
@@ -135,16 +155,36 @@ public class LessonController implements Initializable {
     }
 
     public TextField showFile(String fileName) {
-        TextField file = new TextField(fileName);
+        String[] name = fileName.split("\\\\");
+        TextField file = new TextField(name[name.length-1]);
         file.setEditable(false);
-        file.setPrefSize(700, 60);
+        file.setPrefSize(750, 60);
         file.setLayoutY(20);
         file.setFont(Font.font("Calibri", FontPosture.ITALIC, 25));
         file.setCursor(Cursor.HAND);
+        file.setStyle("-fx-text-fill: blue;");
 
         file.setOnMouseClicked(e -> {
             hostServices.showDocument(fileName);
         });
+        file.setOnMouseEntered(e -> {
+            file.setText(fileName);
+        });
+        file.setOnMouseExited(e -> {
+            file.setText(name[name.length-1]);
+        });
         return file;
+    }
+
+    public void showImage(String imgPath) {
+        try {
+            Stage stage = new Stage();
+            ImageView image = new ImageView(imgPath);
+            stage.setScene(new Scene(new ScrollPane(image)));
+            stage.setTitle(problem.getTitle());
+            stage.show();
+        } catch(Exception exp) {
+            exp.printStackTrace();
+        }
     }
 }
