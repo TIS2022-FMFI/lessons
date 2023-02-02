@@ -18,17 +18,27 @@
             xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="main.ui.DeleteCategoryController">
     <HBox prefHeight="100.0" prefWidth="500.0">
-        <Label alignment="CENTER" text="ENTER CATEGORY TO REMOVE:">
+        <Label alignment="CENTER" text="ENTER CATEGORY">
             <font>
-                <Font name="Calibri Bold" size="35.0"/>
+                <Font name="Calibri Bold" size="30.0"/>
             </font>
             <padding>
-                <Insets left="80.0" top="35.0"/>
+                <Insets left="140.0" top="35.0"/>
+            </padding>
+        </Label>
+    </HBox>
+    <HBox prefHeight="100.0" prefWidth="500.0">
+        <Label alignment="CENTER" text="TO REMOVE:">
+            <font>
+                <Font name="Calibri Bold" size="30.0"/>
+            </font>
+            <padding>
+                <Insets left="170.0" top="70.0"/>
             </padding>
         </Label>
     </HBox>
     <HBox layoutY="90.0" prefHeight="100.0" prefWidth="500.0">
-        <TextField fx:id="categoryToDelete" prefHeight="50.0" prefWidth="300.0" promptText="e.g. plastic">
+        <TextField fx:id="categoryToDelete" prefHeight="50.0" prefWidth="320.0" promptText="e.g. plastic">
             <HBox.margin>
                 <Insets left="90.0" top="20.0"/>
             </HBox.margin>

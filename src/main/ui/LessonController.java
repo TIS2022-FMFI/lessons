@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,7 +28,7 @@ public class LessonController implements Initializable {
     public TextField keywords;
     public ImageView image1;
     public ImageView image2;
-    public TextField description;
+    public TextArea description;
     public TextField files;
     public TextField author;
     public TextField last_editor;
@@ -84,7 +85,7 @@ public class LessonController implements Initializable {
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
-            stage.setTitle("Delete of " + problem.getTitle());
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
             closeWindow();
         } catch(Exception e) {
