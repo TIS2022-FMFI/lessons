@@ -63,7 +63,20 @@
             <Cursor fx:constant="HAND"/>
          </cursor>
       </Button>
-      <Button text="NEW KEYWORD" textAlignment="CENTER" onAction="#newKeywordButton"
+      <Button text="EDIT KEYWORDS" textAlignment="CENTER" onAction="#editKeywordsButton"
+              style="-fx-background-radius:10; -fx-border-radius:10; -fx-border-color: #000000;
+              -fx-border-width:2; -fx-background-color: #FFFDD0;">
+         <font>
+            <Font name="Calibri Bold" size="24.0"/>
+         </font>
+         <HBox.margin>
+            <Insets left="10.0" top="25.0"/>
+         </HBox.margin>
+         <cursor>
+            <Cursor fx:constant="HAND"/>
+         </cursor>
+      </Button>
+      <Button text="EDIT CATEGORIES" textAlignment="CENTER" onAction="#editCategoriesButton"
               style="-fx-background-radius:10; -fx-border-radius:10; -fx-border-color: #000000;
               -fx-border-width:2; -fx-background-color: #FFFDD0;">
          <font>

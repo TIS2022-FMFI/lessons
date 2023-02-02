@@ -75,7 +75,6 @@ public class CategoryFinder {
 
                 while (r.next()) {
                     Category c = new Category();
-
                     c.setCategory_id(r.getInt("category_id"));
                     c.setTitle(r.getString("title"));
 

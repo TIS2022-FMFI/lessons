@@ -71,4 +71,11 @@ public class Key_word_problem {
             s.executeUpdate();
         }
     }
+
+    public void deleteByKeywordId()throws SQLException{
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM key_word_problem WHERE key_word_id = ?")) {
+            s.setInt(1, key_word_id);
+            s.executeUpdate();
+        }
+    }
 }

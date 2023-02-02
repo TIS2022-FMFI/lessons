@@ -150,4 +150,23 @@ public class KPFinder {
             }
         }
     }
+
+    public List<Key_word_problem> findKWPByKeywordId(int keyword_id) throws SQLException{
+        try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word_problem WHERE key_word_id = ?")){
+            s.setInt(1, keyword_id);
+
+            try(ResultSet r = s.executeQuery()){
+
+                List<Key_word_problem> elements = new ArrayList<>();
+
+                while (r.next()){
+                    Key_word_problem kwp = new Key_word_problem();
+                    kwp.setKey_word_problem_id(r.getInt("key_word_problem_id"));
+                    kwp.setProblem_id(r.getInt("problem_id"));
+                    kwp.setKey_word_id(r.getInt("key_word_id"));
+                }
+                return elements;
+            }
+        }
+    }
 }
