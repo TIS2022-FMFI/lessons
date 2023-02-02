@@ -25,7 +25,7 @@
         </Label>
     </HBox>
     <HBox layoutY="90.0" prefHeight="100.0" prefWidth="500.0">
-        <TextField fx:id="categoryText" prefHeight="50.0" prefWidth="300.0" promptText="e.g. plastic">
+        <TextField fx:id="categoryText" prefHeight="50.0" prefWidth="320.0" promptText="e.g. plastic">
             <HBox.margin>
                 <Insets left="90.0" top="20.0"/>
             </HBox.margin>

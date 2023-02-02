@@ -258,7 +258,8 @@ public class Controller implements Initializable {
         HBox lesson = new HBox();
         VBox details = new VBox();
         VBox problems = new VBox();
-        HBox info = new HBox();
+        VBox info = new VBox();
+        HBox images = new HBox();
         VBox text = new VBox();
         VBox buttons = new VBox();
         Text title = new Text(problem.getTitle());
@@ -283,14 +284,14 @@ public class Controller implements Initializable {
 
         ImageView image1 = null;
         if(problem.getImage1() != null){
-            String path1 = "file" + problem.getImage1().replace('\\', '/').substring(1);
-            image1 = new ImageView(new Image(path1,150, 150, true, false));
+//            String path1 = "file" + problem.getImage1().replace('\\', '/').substring(1);
+            image1 = new ImageView(new Image(problem.getImage1(),150, 150, true, false));
             lesson.getChildren().add(image1);
         }
         ImageView image2 = null;
         if(problem.getImage2() != null){
-            String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
-            image2 = new ImageView(new Image(path2, 150, 150, true, false));
+//            String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
+            image2 = new ImageView(new Image(problem.getImage2(), 150, 150, true, false));
             lesson.getChildren().add(image2);
         }
         Button show = new Button("SHOW");
@@ -310,12 +311,13 @@ public class Controller implements Initializable {
             }
         });
         buttons.getChildren().add(show);
-        if (image1 != null && image2 == null) info.getChildren().addAll(title, text, image1, buttons);
-        else if (image2 != null && image1 == null) info.getChildren().addAll(title, text, image2, buttons);
+        if (image1 != null && image2 == null) info.getChildren().addAll(title, text, image1);
+        else if (image2 != null && image1 == null) info.getChildren().addAll(title, text, image2);
         else if (image1 != null && image2 != null) {
-            info.getChildren().addAll(title, text, image1, image2, buttons);
+            images.getChildren().addAll(image1, image2);
+            info.getChildren().addAll(title, text, images);
         } else {
-            info.getChildren().addAll(title, text, buttons);
+            info.getChildren().addAll(title, text);
 
         }
 
@@ -323,7 +325,7 @@ public class Controller implements Initializable {
         details.getChildren().addAll(problems);
         lesson.getChildren().add(details);
         Separator s = new Separator();
-        lessons.getChildren().addAll(lesson, s);
+        lessons.getChildren().addAll(lesson, buttons, s);
 
         lesson.getStyleClass().add("hbox");
         details.getStyleClass().add("vbox");
@@ -337,6 +339,7 @@ public class Controller implements Initializable {
         buttons.getStyleClass().add("buttons");
         problems.getStyleClass().add("problem");
         info.getStyleClass().add("info");
+        images.getStyleClass().add("images");
         text.getStyleClass().add("text");
     }
 }

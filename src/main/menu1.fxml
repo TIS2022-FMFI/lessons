@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+<VBox prefHeight="800.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="main.ui.Controller">
    <HBox minHeight="100.0" minWidth="200.0"
          style="-fx-background-color: #FF0800; -fx-border-color: #000000; -fx-border-width: 0 0 3 0;">
@@ -31,7 +31,7 @@
             <Font name="Calibri Italic" size="24.0"/>
          </font>
          <HBox.margin>
-            <Insets left="80.0" top="25.0"/>
+            <Insets left="20.0" top="25.0"/>
          </HBox.margin>
          <cursor>
             <Cursor fx:constant="TEXT"/>
@@ -104,11 +104,8 @@
               VBox.vgrow="ALWAYS">
       <VBox fx:id="boxCategories" minWidth="200.0" maxWidth="200.0" style="-fx-background-color: #FF4433;"
             stylesheets="/main/css/buttons.css">
-         <cursor>
-            <Cursor fx:constant="HAND"/>
-         </cursor>
       </VBox>
-      <VBox fx:id="boxKeys" prefHeight="510.0" minWidth="180.0" maxWidth="180.0"
+      <VBox fx:id="boxKeys" prefHeight="510.0" minWidth="220.0" maxWidth="220.0"
             style="-fx-background-color: #FF4433;"
             stylesheets="/main/css/buttons.css">
       </VBox>
