@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class Key_word {
     private Integer key_word_id;
     private String title;
-    private Boolean prime;
+    private Boolean prime = false;
 
     public void insert() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("INSERT INTO key_word (title, prime) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
