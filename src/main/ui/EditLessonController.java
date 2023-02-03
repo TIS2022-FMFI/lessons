@@ -55,6 +55,9 @@ public class EditLessonController extends NewLessonController {
         // Load files
         savedFiles.addAll(Arrays.asList(problem.getPath().split(";")));
         for (String file : savedFiles) {
+            if (file.isEmpty()) {
+                continue;
+            }
             files.getChildren().add(showFile(file));
         }
 

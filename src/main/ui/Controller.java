@@ -295,14 +295,14 @@ public class Controller implements Initializable {
 
         ImageView image1 = null;
         if(problem.getImage1() != null){
-//            String path1 = "file" + problem.getImage1().replace('\\', '/').substring(1);
-            image1 = new ImageView(new Image(problem.getImage1(),150, 150, true, false));
+            String path1 = "file" + problem.getImage1().replace('\\', '/').substring(1);
+            image1 = new ImageView(new Image(path1,150, 150, true, false));
             lesson.getChildren().add(image1);
         }
         ImageView image2 = null;
         if(problem.getImage2() != null){
-//            String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
-            image2 = new ImageView(new Image(problem.getImage2(), 150, 150, true, false));
+            String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
+            image2 = new ImageView(new Image(path2, 150, 150, true, false));
             lesson.getChildren().add(image2);
         }
         Button show = new Button("SHOW");
