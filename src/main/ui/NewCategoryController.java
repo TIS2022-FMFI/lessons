@@ -39,13 +39,13 @@ public class NewCategoryController {
             category.insert();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Adding category");
-            alert.setHeaderText("Successfully added, please reopen app!");
+            alert.setHeaderText("Successfully added, please click 'Reload page' button!");
             alert.showAndWait();
             closeWindow();
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Adding category");
-            alert.setHeaderText("Category '" + category.getTitle() + "' already exists.");
+            alert.setHeaderText("Adding new category '" + category.getTitle() + "' was unsuccessful.\nThis category already exists or check if you are not using diacritic");
             alert.showAndWait();
             closeWindow();
             URL fxmlLocation = getClass().getResource("../fxml/new_category.fxml");

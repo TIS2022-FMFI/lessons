@@ -89,6 +89,19 @@
             <Cursor fx:constant="HAND"/>
          </cursor>
       </Button>
+      <Button text="ALL KEYWORDS" textAlignment="CENTER" onAction="#showAllKeywords"
+              style="-fx-background-radius:10; -fx-border-radius:10; -fx-border-color: #000000;
+              -fx-border-width:2; -fx-background-color: #FFFDD0;">
+         <font>
+            <Font name="Calibri Bold" size="24.0"/>
+         </font>
+         <HBox.margin>
+            <Insets left="10.0" top="25.0"/>
+         </HBox.margin>
+         <cursor>
+            <Cursor fx:constant="HAND"/>
+         </cursor>
+      </Button>
       <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="54.0" prefWidth="131.0">
          <graphic>
             <ImageView fitHeight="48.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">

@@ -55,7 +55,7 @@ public class NewKeywordController {
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Adding keyword");
-            alert.setHeaderText("Keyword '" + key_word.getTitle() + "' already exists.");
+            alert.setHeaderText("Adding new keyword '" + key_word.getTitle() + "' was unsuccessful.\nThis keyword already exists or check if you are not using diacritic");
             alert.showAndWait();
             closeWindow();
             URL fxmlLocation = getClass().getResource("../fxml/new_keyword.fxml");
