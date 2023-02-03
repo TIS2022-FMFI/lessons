@@ -3,10 +3,11 @@
     -fx-border-color: #000000;
     -fx-border-width: 3 3 0 3;
     -fx-font-family: "Calibri";
-    -fx-font-size: 20;
+    -fx-font-size: 24;
     -fx-font-weight: bold;
     -fx-pref-width: 200;
     -fx-pref-height: 50;
+    -fx-cursor: hand;
 }
 
 .reset {
@@ -18,11 +19,12 @@
     -fx-font-weight: bold;
     -fx-pref-width: 200;
     -fx-pref-height: 50;
+    -fx-cursor: hand;
 }
 
 .check-box {
     -fx-font-family: "Calibri";
-    -fx-font-size: 20;
+    -fx-font-size: 24;
     -fx-font-weight: bold;
 }
 
@@ -33,8 +35,9 @@
     -fx-font-family: "Calibri";
     -fx-font-size: 20;
     -fx-font-weight: bold;
-    -fx-pref-width: 180;
+    -fx-pref-width: 220;
     -fx-pref-height: 50;
+    -fx-cursor: hand;
 }
 
 .split-pane-divider {

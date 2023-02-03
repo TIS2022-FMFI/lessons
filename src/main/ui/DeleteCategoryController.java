@@ -1,14 +1,5 @@
 package main.ui;
 
-import javafx.fxml.FXML;
-
-import java.awt.*;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Locale;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,25 +7,26 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import main.entities.Key_word;
-import main.entities.KeywordFinder;
+import main.entities.Category;
+import main.entities.CategoryFinder;
 
-public class NewKeywordController {
-    @FXML
-    private TextField keyword;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.Locale;
 
-    @FXML
-    private Button closeBtn;
+public class DeleteCategoryController {
+    public TextField categoryToDelete;
+    public Button closeButton;
 
-    @FXML
     public void apply() throws SQLException, IOException {
-        if(keyword.getText().equals("")){
+        if(categoryToDelete.getText().equals("")){
             closeWindow();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Creating keyword");
+            alert.setTitle("Removing keyword");
             alert.setHeaderText("Enter keyword please!");
             alert.showAndWait();
-            URL fxmlLocation = getClass().getResource("../fxml/new_keyword.fxml");
+            URL fxmlLocation = getClass().getResource("../fxml/delete_keyword.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
@@ -42,23 +34,21 @@ public class NewKeywordController {
             stage.show();
             return;
         }
-        Key_word key_word = new Key_word();
-        key_word.setPrime(true);
-        key_word.setTitle(keyword.getText().toLowerCase(Locale.ROOT));
+        Category category = CategoryFinder.getInstance().findByTitle(categoryToDelete.getText().toLowerCase(Locale.ROOT));
         try{
-            key_word.insert();
+            category.delete();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Adding keyword");
-            alert.setHeaderText("Successfully added");
+            alert.setTitle("Removing category");
+            alert.setHeaderText("Category successful removed, reopen application, please!");
             alert.showAndWait();
             closeWindow();
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Adding keyword");
-            alert.setHeaderText("Keyword '" + key_word.getTitle() + "' already exists.");
+            alert.setTitle("Removing category");
+            alert.setHeaderText("Category '" + categoryToDelete.getText() + "' doesnt exists.");
             alert.showAndWait();
             closeWindow();
-            URL fxmlLocation = getClass().getResource("../fxml/new_keyword.fxml");
+            URL fxmlLocation = getClass().getResource("../fxml/delete_category.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
@@ -67,9 +57,8 @@ public class NewKeywordController {
         }
     }
 
-    @FXML
-    private void closeWindow(){
-        Stage stage = (Stage) closeBtn.getScene().getWindow();
+    public void closeWindow(){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 }

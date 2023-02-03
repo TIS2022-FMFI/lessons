@@ -123,7 +123,7 @@ public class LessonController implements Initializable {
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
-            stage.setTitle("Delete of " + problem.getTitle());
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
             closeWindow();
         } catch(Exception e) {

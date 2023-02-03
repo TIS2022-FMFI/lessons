@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -37,8 +34,10 @@ public class NewLessonController implements Initializable {
 
     @FXML
     TextField newLessAutor, newLessTitle, newLessKeyWord, newLessFileName, imagePath1, imagePath2;
+
     @FXML
     HTMLEditor newLessDesc;
+
     @FXML
     VBox files;
     String image1, image2 = null;

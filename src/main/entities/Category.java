@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class Category {
     private Integer category_id;
@@ -42,6 +43,10 @@ public class Category {
     public void delete() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM category WHERE category_id = ?")) {
             s.setInt(1, category_id);
+            List<Problem> problems = ProblemFinder.getInstance().findByCategory(category_id);
+            for (Problem p: problems) {
+                p.delete();
+            }
             s.executeUpdate();
         }
     }

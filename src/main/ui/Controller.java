@@ -62,7 +62,7 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             List<Category> cat = CategoryFinder.getInstance().findAll();
-            for (int i = 1; i < cat.size(); i++) {
+            for (int i = 0; i < cat.size(); i++) {
                 addButton(cat.get(i));
             }
         } catch (SQLException e) {
@@ -157,17 +157,32 @@ public class Controller implements Initializable {
         }
     }
 
-    @FXML
-    public void newKeywordButton() throws Exception {
+    public void editKeywordsButton(){
         try {
-            URL fxmlLocation = getClass().getResource("../fxml/new_keyword.fxml");
+            URL fxmlLocation = getClass().getResource("../fxml/edit_keywords.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.setResizable(false);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root1));
-            stage.setTitle("New keyword");
+            stage.setTitle("Edit keywords");
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editCategoriesButton(){
+        try {
+            URL fxmlLocation = getClass().getResource("../fxml/edit_categories.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent root1 = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root1));
+            stage.setTitle("Edit categories");
             stage.show();
         } catch(Exception e) {
             e.printStackTrace();
@@ -179,7 +194,6 @@ public class Controller implements Initializable {
         btn.getStyleClass().add("btnCat");
         btn.setId(c.getCategory_id().toString());
         btn.setDisable(false);
-
         btn.setOnAction(e -> {
             try {
                 boxKeys.getChildren().clear();
@@ -192,12 +206,14 @@ public class Controller implements Initializable {
                 Button submit = new Button("SUBMIT");
                 submit.getStyleClass().add("submit");
                 submit.setOnMouseClicked(i -> {
+                    int count_selected = 0;
                     Map<Integer, Integer> problems = new HashMap<>();
                     for (Node ch: boxKeys.getChildren()) {
                         if(ch instanceof CheckBox)
                         {
                             if(((CheckBox) ch).isSelected())
                             {
+                                count_selected++;
                                 try {
                                     for(Problem p : KPFinder.getInstance().findByCK(Integer.parseInt(btn.getId()), Integer.parseInt(ch.getId()))){
                                         if (!problems.containsKey(p.getProblem_id())){
@@ -211,6 +227,20 @@ public class Controller implements Initializable {
                                     ex.printStackTrace();
                                 }
                             }
+                        }
+                    }
+                    if(count_selected == 0){
+                        try {
+                            for(Problem p : ProblemFinder.getInstance().findByCategory(Integer.parseInt(btn.getId()))){
+                                if (!problems.containsKey(p.getProblem_id())){
+                                    problems.put(p.getProblem_id(), 1);
+                                }
+                                else{
+                                    problems.put(p.getProblem_id(), problems.get(p.getProblem_id()) + 1);
+                                }
+                            }
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
                         }
                     }
                     showLessons(problems);
@@ -229,7 +259,6 @@ public class Controller implements Initializable {
             try {
                 Problem problem = ProblemFinder.getInstance().findById(p);
                 makeLesson(problem);
-                System.out.println(ProblemFinder.getInstance().findById(p).getTitle() +  "     occurred " + problems.get(p) + " times");
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
@@ -240,7 +269,8 @@ public class Controller implements Initializable {
         HBox lesson = new HBox();
         VBox details = new VBox();
         VBox problems = new VBox();
-        HBox info = new HBox();
+        VBox info = new VBox();
+        HBox images = new HBox();
         VBox text = new VBox();
         VBox buttons = new VBox();
         Text title = new Text(problem.getTitle());
@@ -265,17 +295,16 @@ public class Controller implements Initializable {
 
         ImageView image1 = null;
         if(problem.getImage1() != null){
-            String path1 = "file" + problem.getImage1().replace('\\', '/').substring(1);
-            image1 = new ImageView(new Image(path1,150, 150, true, false));
+//            String path1 = "file" + problem.getImage1().replace('\\', '/').substring(1);
+            image1 = new ImageView(new Image(problem.getImage1(),150, 150, true, false));
             lesson.getChildren().add(image1);
         }
         ImageView image2 = null;
         if(problem.getImage2() != null){
-            String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
-            image2 = new ImageView(new Image(path2, 150, 150, true, false));
+//            String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
+            image2 = new ImageView(new Image(problem.getImage2(), 150, 150, true, false));
             lesson.getChildren().add(image2);
         }
-        Button modal = new Button("MODAL");
         Button show = new Button("SHOW");
         show.setOnAction(v -> {
             try {
@@ -294,13 +323,14 @@ public class Controller implements Initializable {
                 exp.printStackTrace();
             }
         });
-        buttons.getChildren().addAll(modal, show);
-        if (image1 != null && image2 == null) info.getChildren().addAll(title, text, image1, buttons);
-        else if (image2 != null && image1 == null) info.getChildren().addAll(title, text, image2, buttons);
+        buttons.getChildren().add(show);
+        if (image1 != null && image2 == null) info.getChildren().addAll(title, text, image1);
+        else if (image2 != null && image1 == null) info.getChildren().addAll(title, text, image2);
         else if (image1 != null && image2 != null) {
-            info.getChildren().addAll(title, text, image1, image2, buttons);
+            images.getChildren().addAll(image1, image2);
+            info.getChildren().addAll(title, text, images);
         } else {
-            info.getChildren().addAll(title, text, buttons);
+            info.getChildren().addAll(title, text);
 
         }
 
@@ -308,7 +338,7 @@ public class Controller implements Initializable {
         details.getChildren().addAll(problems);
         lesson.getChildren().add(details);
         Separator s = new Separator();
-        lessons.getChildren().addAll(lesson, s);
+        lessons.getChildren().addAll(lesson, buttons, s);
 
         lesson.getStyleClass().add("hbox");
         details.getStyleClass().add("vbox");
@@ -317,12 +347,12 @@ public class Controller implements Initializable {
         keywords.getStyleClass().add("keywords");
         if (image1 != null) image1.getStyleClass().add("image1");
         if (image2 != null) image2.getStyleClass().add("image2");
-        modal.getStyleClass().add("modal");
         show.getStyleClass().add("show");
         s.getStyleClass().add("separator");
         buttons.getStyleClass().add("buttons");
         problems.getStyleClass().add("problem");
         info.getStyleClass().add("info");
+        images.getStyleClass().add("images");
         text.getStyleClass().add("text");
     }
 }

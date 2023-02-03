@@ -1,6 +1,3 @@
-.hbox {
-}
-
 .vbox {
     -fx-pref-height: 200;
 }
@@ -17,7 +14,7 @@
     -fx-font-weight: bold;
 }
 
-. keywords {
+.keywords {
     -fx-font-family: "Calibri";
     -fx-font-size: 24;
     -fx-font-weight: bold;
@@ -33,21 +30,15 @@
     -fx-pref-width: 150;
 }
 
-.modal {
-    -fx-background-color: transparent;
-    -fx-border-color: #000000;
-    -fx-border-width: 4 4 4 4;
-    -fx-font-size: 20;
-    -fx-font-family: "Calibri";
-    -fx-font-weight: bold;
-    -fx-cursor: HAND;
+.images {
+    -fx-padding: 30 0 0 0;
 }
 
 .show {
-    -fx-background-color: transparent;
+    -fx-background-color: #FFFDD0;
     -fx-border-color: #000000;
-    -fx-border-width: 0 4 4 4;
-    -fx-font-size: 20;
+    -fx-border-width: 4;
+    -fx-font-size: 24;
     -fx-font-family: "Calibri";
     -fx-font-weight: bold;
     -fx-cursor: HAND;
@@ -55,16 +46,16 @@
 
 .separator {
     -fx-background-color: #000000;
-    -fx-pref-width: 1000;
+    -fx-pref-width: 1200;
 }
 
 .buttons {
-    -fx-padding: 0 0 0 100;
+    -fx-padding: 0 0 0 650;
     -fx-alignment: CENTER;
 }
 
 .problem {
-    -fx-padding: 10 0 0 5;
+    -fx-padding: 10 0 0 85;
 }
 
 .info {
