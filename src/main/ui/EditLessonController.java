@@ -178,7 +178,7 @@ public class EditLessonController extends NewLessonController {
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Editing lesson");
-            alert.setHeaderText("Save edit failed");
+            alert.setHeaderText("Save edit failed\nCheck if you are not using diacritic");
             alert.showAndWait();
             throw new RuntimeException(e);
         }

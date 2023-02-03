@@ -204,7 +204,7 @@ public class NewLessonController implements Initializable {
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Creating new lesson");
-            alert.setHeaderText("New lesson is not created");
+            alert.setHeaderText("New lesson is not created\nCheck if you are not using diacritic");
             alert.showAndWait();
             throw new RuntimeException(e);
         }
