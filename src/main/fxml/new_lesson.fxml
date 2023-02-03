@@ -289,61 +289,8 @@
                      </children>
                   </HBox>
                </children>
-            </HBox>
-         </VBox>
-         <Separator layoutX="10.0" layoutY="422.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0"
-                    prefWidth="400.0" style="-fx-background-color: #000000;"/>
-         <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">
-            <children>
-               <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Autor:">
-                  <font>
-                     <Font name="Calibri Bold Italic" size="25.0"/>
-                  </font>
-               </TextField>
-               <TextField fx:id="newLessAutor" prefHeight="60.0" prefWidth="700.0" promptText="Enter your name">
-                  <font>
-                     <Font name="Calibri Italic" size="25.0"/>
-                  </font>
-                  <cursor>
-                     <Cursor fx:constant="TEXT"/>
-                  </cursor>
-               </TextField>
-            </children>
-         </HBox>
-         <Separator layoutX="10.0" layoutY="485.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0"
-                    prefWidth="400.0" style="-fx-background-color: #000000;"/>
-         <HBox layoutX="10.0" layoutY="425.0" prefHeight="60.0" prefWidth="200.0">
-            <children>
-               <Button fx:id="newLessSave" onMouseClicked="#saveButton" maxHeight="50.0" minHeight="50.0"
-                       mnemonicParsing="false"
-                       style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;"
-                       text="SAVE">
-                  <font>
-                     <Font name="Calibri Bold" size="20.0"/>
-                  </font>
-                  <cursor>
-                     <Cursor fx:constant="HAND"/>
-                  </cursor>
-                  <HBox.margin>
-                     <Insets left="690.0" top="5.0"/>
-                  </HBox.margin>
-               </Button>
-               <Button fx:id="newLessDelete" onMouseClicked="#deleteButton" layoutX="700.0" layoutY="10.0"
-                       maxHeight="50.0" minHeight="50.0" mnemonicParsing="false"
-                       style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;"
-                       text="DELETE">
-                  <font>
-                     <Font name="Calibri Bold" size="20.0"/>
-                  </font>
-                  <cursor>
-                     <Cursor fx:constant="HAND"/>
-                  </cursor>
-                  <HBox.margin>
-                     <Insets left="5.0" top="5.0"/>
-                  </HBox.margin>
-               </Button>
-            </children>
-         </HBox>
-      </VBox>
-   </ScrollPane>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
 </AnchorPane>

@@ -81,7 +81,7 @@ public class LessonController implements Initializable {
             } else {
                 image2Label.setVisible(false);
             }
-            if (problem.getImage1() == null && problem.getImage1() == null) {
+            if (problem.getImage1() == null && problem.getImage2() == null) {
                 whole.getChildren().remove(images);
             }
             String content = problem.getDescription().replace("contenteditable=\"true\"", "contenteditable=\"false\"");
