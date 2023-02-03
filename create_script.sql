@@ -15,8 +15,8 @@ create table key_word(key_word_id int not null unique auto_increment primary key
 
 create table problem(problem_id int not null unique auto_increment primary key ,
                      title varchar(225) not null,
-                     description varchar(1000),
-                     path varchar(225) not null,
+                     description text,
+                     path text,
                      image1 varchar(255) default null,
                      image2 varchar(255) default null,
                      category_id int not null,

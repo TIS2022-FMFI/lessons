@@ -16,238 +16,278 @@
 <?import javafx.scene.text.Font?>
 
 
-<?import javafx.scene.control.TextArea?>
-<AnchorPane maxWidth="900.0" minHeight="630.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171"
-            xmlns:fx="http://javafx.com/fxml/1">
-   <ScrollPane prefHeight="630.0" prefWidth="900.0">
-      <VBox fx:id="whole" prefHeight="600.0" prefWidth="900.0">
-         <HBox prefHeight="100.0" prefWidth="200.0"
-               style="-fx-background-color: #FF0800; -fx-border-color: #000000; -fx-border-width: 0 0 3 0;">
-            <TextField editable="false" prefHeight="100.0" prefWidth="180.0"
-                       style="-fx-background-color: transparent; " text="NEW LESSON" fx:id="action">
-               <font>
-                  <Font name="Calibri Bold" size="25.0"/>
-               </font>
-            </TextField>
-            <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="54.0" prefWidth="131.0">
-               <HBox.margin>
-                  <Insets bottom="3.0" left="540.0" top="10.0"/>
-               </HBox.margin>
-               <graphic>
-                  <ImageView fitHeight="48.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
-                     <Image url="@../boge.png"/>
-                  </ImageView>
-               </graphic>
-            </Label>
-         </HBox>
-         <HBox prefHeight="60.0" prefWidth="200.0">
-            <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Title: ">
-               <font>
-                  <Font name="Calibri Bold Italic" size="25.0"/>
-               </font>
-            </TextField>
-            <TextField fx:id="newLessTitle" prefHeight="60.0" prefWidth="700.0"
-                       promptText="Name of the lesson">
-               <font>
-                  <Font name="Calibri Italic" size="25.0"/>
-               </font>
-               <cursor>
-                  <Cursor fx:constant="TEXT"/>
-               </cursor>
-            </TextField>
-         </HBox>
-         <Separator maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0"
-                    style="-fx-background-color: #000000;"/>
-         <HBox layoutX="10.0" layoutY="110.0" prefHeight="60.0" prefWidth="200.0">
-            <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0"
-                       text="Category:">
-               <font>
-                  <Font name="Calibri Bold Italic" size="25.0"/>
-               </font>
-            </TextField>
-            <ChoiceBox fx:id="newLessCat" prefHeight="40.0" prefWidth="200.0"
-                       style="-fx-background-color: #D9DDDC;">
-               <HBox.margin>
-                  <Insets left="10.0" top="10.0"/>
-
-               </HBox.margin>
-               <cursor>
-                  <Cursor fx:constant="HAND"/>
-               </cursor>
-            </ChoiceBox>
-         </HBox>
-         <Separator layoutX="10.0" layoutY="170.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0"
-                    prefWidth="400.0" style="-fx-background-color: #000000;"/>
-         <HBox layoutX="10.0" layoutY="110.0" prefHeight="60.0" prefWidth="200.0">
-            <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0"
-                       text="Key words: ">
-               <font>
-                  <Font name="Calibri Bold Italic" size="25.0"/>
-               </font>
-            </TextField>
-            <TextField fx:id="newLessKeyWord" prefHeight="60.0" prefWidth="700.0"
-                       promptText="Key words separated by ; e.g. steel;wood">
-               <font>
-                  <Font name="Calibri Italic" size="25.0"/>
-               </font>
-               <cursor>
-                  <Cursor fx:constant="TEXT"/>
-               </cursor>
-            </TextField>
-         </HBox>
-         <Separator layoutX="10.0" layoutY="233.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0"
-                    prefWidth="400.0" style="-fx-background-color: #000000;"/>
-         <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">
-            <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Image1:">
-               <font>
-                  <Font name="Calibri Bold Italic" size="25.0"/>
-               </font>
-            </TextField>
-            <TextField fx:id="imagePath1" editable="false" prefHeight="60.0" prefWidth="550.0"
-                       promptText="Select file">
-               <font>
-                  <Font name="Calibri Italic" size="25.0"/>
-               </font>
-               <cursor>
-                  <Cursor fx:constant="TEXT"/>
-               </cursor>
-            </TextField>
-            <Label onMouseClicked="#browseImgComputer1" prefHeight="50.0" prefWidth="50.0">
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <Image url="@../upload.png"/>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="5.0" top="5.0"/>
-               </HBox.margin>
-               <cursor>
-                  <Cursor fx:constant="HAND"/>
-               </cursor>
-            </Label>
-            <Button onMouseClicked="#removeImg1" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false"
-                    style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;"
-                    text="X">
-               <font>
-                  <Font name="Calibri Bold" size="20.0"/>
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND"/>
-               </cursor>
-               <HBox.margin>
-                  <Insets left="5.0" top="5.0"/>
-               </HBox.margin>
-            </Button>
-         </HBox>
-         <Separator layoutX="10.0" layoutY="233.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0"
-                    prefWidth="400.0" style="-fx-background-color: #000000;"/>
-         <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">
-            <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Image2:">
-               <font>
-                  <Font name="Calibri Bold Italic" size="25.0"/>
-               </font>
-            </TextField>
-            <TextField fx:id="imagePath2" editable="false" prefHeight="60.0" prefWidth="550.0"
-                       promptText="Select file">
-               <font>
-                  <Font name="Calibri Italic" size="25.0"/>
-               </font>
-               <cursor>
-                  <Cursor fx:constant="TEXT"/>
-               </cursor>
-            </TextField>
-            <Label onMouseClicked="#browseImgComputer2" prefHeight="50.0" prefWidth="50.0">
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <Image url="@../upload.png"/>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="5.0" top="5.0"/>
-               </HBox.margin>
-               <cursor>
-                  <Cursor fx:constant="HAND"/>
-               </cursor>
-            </Label>
-            <Button onMouseClicked="#removeImg2" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false"
-                    style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;"
-                    text="X">
-               <font>
-                  <Font name="Calibri Bold" size="20.0"/>
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND"/>
-               </cursor>
-               <HBox.margin>
-                  <Insets left="5.0" top="5.0"/>
-               </HBox.margin>
-            </Button>
-         </HBox>
-         <Separator layoutX="10.0" layoutY="296.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0"
-                    prefWidth="400.0" style="-fx-background-color: #000000;"/>
-         <HBox layoutX="10.0" layoutY="236.0" prefHeight="150.0" prefWidth="200.0">
-            <TextField alignment="CENTER" editable="false" prefHeight="150.0" prefWidth="180.0" text="Description:">
-               <font>
-                  <Font name="Calibri Bold Italic" size="25.0"/>
-               </font>
-            </TextField>
-            <TextArea fx:id="newLessDesc" prefHeight="150.0" prefWidth="700.0" promptText="Text">
-               <font>
-                  <Font name="Calibri Italic" size="20.0"/>
-               </font>
-               <cursor>
-                  <Cursor fx:constant="TEXT"/>
-               </cursor>
-            </TextArea>
-         </HBox>
-         <Separator layoutX="10.0" layoutY="359.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0"
-                    prefWidth="400.0" style="-fx-background-color: #000000;"/>
-         <VBox fx:id="files" layoutX="10.0" layoutY="362.0" prefHeight="60.0" prefWidth="200.0">
-            <HBox prefHeight="60.0" prefWidth="200.0">
+<?import javafx.scene.web.HTMLEditor?>
+<AnchorPane maxWidth="900.0" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane prefHeight="600.0" prefWidth="900.0">
+         <content>
+            <VBox fx:id="whole" prefHeight="600.0" prefWidth="900.0">
                <children>
-                  <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0"
-                             text="Files:">
-                     <font>
-                        <Font name="Calibri Bold Italic" size="25.0"/>
-                     </font>
-                  </TextField>
-                  <TextField fx:id="newLessFileName" prefHeight="60.0" prefWidth="550.0"
-                             promptText="File or path">
-                     <font>
-                        <Font name="Calibri Italic" size="25.0"/>
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="TEXT"/>
-                     </cursor>
-                  </TextField>
-                  <Label onMouseClicked="#browseFileComputer" prefHeight="50.0" prefWidth="50.0">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../upload.png"/>
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets left="5.0" top="5.0"/>
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND"/>
-                     </cursor>
-                  </Label>
-                  <Button onMouseClicked="#addFile" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false"
-                          style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;"
-                          text="ADD">
-                     <font>
-                        <Font name="Calibri Bold" size="20.0"/>
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND"/>
-                     </cursor>
-                     <HBox.margin>
-                        <Insets left="5.0" top="5.0"/>
-                     </HBox.margin>
-                  </Button>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FF0800; -fx-border-color: #000000; -fx-border-width: 0 0 3 0;">
+                     <children>
+                        <TextField editable="false" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: transparent; " text="NEW LESSON" fx:id="action">
+                           <font>
+                              <Font name="Calibri Bold" size="25.0" />
+                           </font>
+                        </TextField>
+                        <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="54.0" prefWidth="131.0">
+                           <HBox.margin>
+                              <Insets bottom="3.0" left="540.0" top="17.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="48.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../boge.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Title: ">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="25.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id = "newLessTitle" prefHeight="60.0" prefWidth="700.0" promptText="Name of the lesson">
+                           <font>
+                              <Font name="Calibri Italic" size="25.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Separator maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
+                  <HBox layoutX="10.0" layoutY="110.0" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Category:">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="25.0" />
+                           </font>
+                        </TextField>
+                        <ChoiceBox fx:id="newLessCat" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #D9DDDC;">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <Separator layoutX="10.0" layoutY="170.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
+                  <HBox layoutX="10.0" layoutY="110.0" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Key words: ">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="25.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id = "newLessKeyWord" prefHeight="60.0" prefWidth="700.0" promptText="Key words separated by ; e.g. steel;wood">
+                           <font>
+                              <Font name="Calibri Italic" size="25.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Separator layoutX="10.0" layoutY="233.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
+                  <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Image1:">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="25.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="imagePath1" editable="false" prefHeight="60.0" prefWidth="550.0" promptText="Select file">
+                           <font>
+                              <Font name="Calibri Italic" size="25.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <Label onMouseClicked="#browseImgComputer1" prefHeight="50.0" prefWidth="50.0">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../upload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Button onMouseClicked="#removeImg1" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="X">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Separator layoutX="10.0" layoutY="233.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
+                  <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Image2:">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="25.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="imagePath2" editable="false" prefHeight="60.0" prefWidth="550.0" promptText="Select file">
+                           <font>
+                              <Font name="Calibri Italic" size="25.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <Label onMouseClicked="#browseImgComputer2" prefHeight="50.0" prefWidth="50.0">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../upload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Button onMouseClicked="#removeImg2" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="X">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Separator layoutX="10.0" layoutY="296.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
+                  <HBox layoutX="10.0" layoutY="236.0" minHeight="500.0" prefWidth="200.0">
+                     <children>
+                        <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Description:">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="25.0" />
+                           </font>
+                        </TextField>
+                        <HTMLEditor fx:id="newLessDesc" prefHeight="500.0" prefWidth="700.0" />
+                     </children>
+                  </HBox>
+                  <Separator layoutX="10.0" layoutY="359.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
+                  <VBox fx:id="files" layoutX="10.0" layoutY="362.0" prefHeight="60.0" prefWidth="200.0">
+                     <HBox prefHeight="60.0" prefWidth="200.0">
+                        <children>
+                           <TextField alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Files:">
+                              <font>
+                                 <Font name="Calibri Bold Italic" size="25.0" />
+                              </font>
+                           </TextField>
+                           <TextField fx:id="newLessFileName" prefHeight="60.0" prefWidth="550.0" promptText="File or path">
+                              <font>
+                                 <Font name="Calibri Italic" size="25.0" />
+                              </font>
+                              <cursor>
+                                 <Cursor fx:constant="TEXT" />
+                              </cursor>
+                           </TextField>
+                           <Label onMouseClicked="#browseFileComputer" prefHeight="50.0" prefWidth="50.0">
+                              <graphic>
+                                 <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../upload.png" />
+                                    </image>
+                                 </ImageView>
+                              </graphic>
+                              <HBox.margin>
+                                 <Insets left="5.0" top="5.0" />
+                              </HBox.margin>
+                              <cursor>
+                                 <Cursor fx:constant="HAND" />
+                              </cursor>
+                           </Label>
+                           <Button onMouseClicked="#addFile" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="ADD">
+                              <font>
+                                 <Font name="Calibri Bold" size="20.0" />
+                              </font>
+                              <cursor>
+                                 <Cursor fx:constant="HAND" />
+                              </cursor>
+                              <HBox.margin>
+                                 <Insets left="5.0" top="5.0" />
+                              </HBox.margin>
+                           </Button>
+                        </children>
+                     </HBox>
+                  </VBox>
+                  <Separator layoutX="10.0" layoutY="422.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
+                  <HBox layoutX="10.0" layoutY="236.0" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <TextField  alignment="CENTER" editable="false" prefHeight="60.0" prefWidth="180.0" text="Autor:">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="25.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="newLessAutor" prefHeight="60.0" prefWidth="700.0" promptText="Enter your name">
+                           <font>
+                              <Font name="Calibri Italic" size="25.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Separator layoutX="10.0" layoutY="485.0" maxWidth="400.0" minWidth="400.0" prefHeight="3.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
+                  <HBox layoutX="10.0" layoutY="425.0" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <Button  fx:id = "newLessSave" onMouseClicked="#saveButton" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="SAVE">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="690.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="newLessDelete" onMouseClicked="#deleteButton" layoutX="700.0" layoutY="10.0" maxHeight="50.0" minHeight="50.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;" text="DELETE">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
          </VBox>

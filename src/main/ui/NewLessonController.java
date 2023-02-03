@@ -12,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import javafx.scene.web.HTMLEditor;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.entities.*;
@@ -35,7 +36,7 @@ public class NewLessonController implements Initializable {
     TextField newLessAutor, newLessTitle, newLessKeyWord, newLessFileName, imagePath1, imagePath2;
 
     @FXML
-    TextArea newLessDesc;
+    HTMLEditor newLessDesc;
 
     @FXML
     VBox files;
@@ -155,7 +156,7 @@ public class NewLessonController implements Initializable {
         problem.setImage2(image2);
 
         // Description
-        problem.setDescription(newLessDesc.getText());
+        problem.setDescription(newLessDesc.getHtmlText());
 
         // Files
         problem.setPath(String.join(";", savedFiles));
@@ -202,7 +203,7 @@ public class NewLessonController implements Initializable {
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Creating new lesson");
-            alert.setHeaderText("New lesson is not created");
+            alert.setHeaderText("New lesson is not created\nCheck if you are not using diacritic");
             alert.showAndWait();
             throw new RuntimeException(e);
         }
