@@ -4,4 +4,5 @@
     <entry key="database">jdbc:mariadb://localhost:3306/lesson_learning</entry>
     <entry key="user">root</entry>
     <entry key="password">root</entry>
+    <entry key="delete-password">heslo</entry>
 </properties>

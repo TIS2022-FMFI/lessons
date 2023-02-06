@@ -253,7 +253,7 @@ public class NewLessonController implements Initializable {
         notPrimeKey.getItems().add("-- Not prime keywords --");
         notPrimeKey.setValue("-- Not prime keywords --");
         try {
-            for (Key_word kw: KPFinder.getInstance().usedInProblemByCategory(CategoryFinder.getInstance().findByTitle(newLessCat.getValue()).getCategory_id())) {
+            for (Key_word kw: KeywordFinder.getInstance().findAll()) {
                 if (kw.getPrime()) {
                     primeKey.getItems().add(kw.getTitle());
                 }
