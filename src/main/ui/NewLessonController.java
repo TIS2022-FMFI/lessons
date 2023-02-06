@@ -22,12 +22,10 @@ import java.net.URL;
 import java.util.*;
 import java.sql.SQLException;
 
-import static java.time.LocalDate.now;
-
 public class NewLessonController implements Initializable {
 
     @FXML
-    ChoiceBox<String> newLessCat;
+    ChoiceBox<String> newLessCat, primeKey, notPrimeKey;
 
     @FXML
     Button newLessSave, newLessDelete, addFile;
@@ -58,6 +56,11 @@ public class NewLessonController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        primeKey.getItems().add("-- Prime keywords --");
+        primeKey.setValue("-- Prime keywords --");
+
+        notPrimeKey.getItems().add("-- Not prime keywords --");
+        notPrimeKey.setValue("-- Not prime keywords --");
     }
 
     @FXML
@@ -239,5 +242,58 @@ public class NewLessonController implements Initializable {
             savedFiles.remove(fileName);
         });
         return output;
+    }
+    @FXML
+    private void getKeys() {
+        primeKey.getItems().clear();
+        primeKey.getItems().add("-- Prime keywords --");
+        primeKey.setValue("-- Prime keywords --");
+
+        notPrimeKey.getItems().clear();
+        notPrimeKey.getItems().add("-- Not prime keywords --");
+        notPrimeKey.setValue("-- Not prime keywords --");
+        try {
+            for (Key_word kw: KPFinder.getInstance().usedInProblemByCategory(CategoryFinder.getInstance().findByTitle(newLessCat.getValue()).getCategory_id())) {
+                if (kw.getPrime()) {
+                    primeKey.getItems().add(kw.getTitle());
+                }
+                else {
+                    notPrimeKey.getItems().add(kw.getTitle());
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void setPrime() {
+        if (primeKey.getValue() == null || primeKey.getValue() == "-- Prime keywords --") {
+            return;
+        }
+        String text = newLessKeyWord.getText();
+        if (text == null || text.isEmpty()) {
+            newLessKeyWord.setText(primeKey.getValue());
+        }
+        else {
+            newLessKeyWord.setText(text + ";" + primeKey.getValue());
+
+        }
+    }
+
+    @FXML
+    private void setNotPrime() {
+        if (notPrimeKey.getValue() == null || notPrimeKey.getValue() == "-- Not prime keywords --") {
+            return;
+        }
+        String text = newLessKeyWord.getText();
+        if (text == null || text.isEmpty()) {
+            newLessKeyWord.setText(notPrimeKey.getValue());
+        }
+        else {
+            newLessKeyWord.setText(text + ";" + notPrimeKey.getValue());
+
+        }
     }
 }

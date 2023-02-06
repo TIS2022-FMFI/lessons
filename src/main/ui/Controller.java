@@ -198,6 +198,9 @@ public class Controller implements Initializable {
             try {
                 boxKeys.getChildren().clear();
                 for (Key_word k: KPFinder.getInstance().usedInProblemByCategory(Integer.parseInt(btn.getId()))) {
+                    if (!k.getPrime()) {
+                        continue;
+                    }
                     CheckBox check = new CheckBox(k.getTitle());
                     check.setId(k.getKey_word_id().toString());
 
@@ -295,13 +298,13 @@ public class Controller implements Initializable {
 
         ImageView image1 = null;
         if(problem.getImage1() != null){
-            String path1 = "file" + problem.getImage1().replace('\\', '/').substring(1);
+            String path1 = "file:/" + problem.getImage1().replace('\\', '/');
             image1 = new ImageView(new Image(path1,150, 150, true, false));
             lesson.getChildren().add(image1);
         }
         ImageView image2 = null;
         if(problem.getImage2() != null){
-            String path2 = "file" + problem.getImage2().replace('\\', '/').substring(1);
+            String path2 = "file:/" + problem.getImage2().replace('\\', '/');
             image2 = new ImageView(new Image(path2, 150, 150, true, false));
             lesson.getChildren().add(image2);
         }
