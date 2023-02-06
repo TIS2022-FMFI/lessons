@@ -1,4 +1,4 @@
-create database if not exists lesson_learning;
+create database if not exists lesson_learning collate = utf8mb4_unicode_ci;
 use lesson_learning;
 
 drop table if exists key_word_problem cascade ;
