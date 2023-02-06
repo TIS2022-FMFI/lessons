@@ -96,6 +96,15 @@ public class EditLessonController extends NewLessonController {
 
     @FXML
     private void saveButton() {
+        if (editor.getText() == null || editor.getText().isEmpty() || editLog.getText() == null || editLog.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Editing lesson");
+            alert.setHeaderText("Editor and edit log must be filled");
+            alert.showAndWait();
+            return;
+        }
+
+
         problem.setTitle(newLessTitle.getText());
 
         // Category
