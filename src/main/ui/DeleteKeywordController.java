@@ -2,6 +2,7 @@ package main.ui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -9,28 +10,36 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import main.entities.KPFinder;
-import main.entities.Key_word;
-import main.entities.Key_word_problem;
-import main.entities.KeywordFinder;
+import main.entities.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class DeleteKeywordController{
+public class DeleteKeywordController implements Initializable {
     public Button closeButton;
+    public ChoiceBox<String> keyword;
 
-//    public TextField keyword;
-    public ChoiceBox keyword;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            for(Key_word key_word : KeywordFinder.getInstance().findAll()){
+                keyword.getItems().add(key_word.getTitle());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public void apply() throws SQLException, IOException {
-        if(keyword.getValue().equals("")){
+        if(keyword.getValue() == null){
             closeWindow();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Removing keyword");
-            alert.setHeaderText("Enter keyword please!");
+            alert.setHeaderText("Choose keyword, please!");
             alert.showAndWait();
             URL fxmlLocation = getClass().getResource("../fxml/delete_keyword.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
@@ -40,12 +49,12 @@ public class DeleteKeywordController{
             stage.show();
             return;
         }
-        Key_word key_word = KeywordFinder.getInstance().findById(Integer.parseInt(keyword.getId()));
+        Key_word key_word = KeywordFinder.getInstance().findByTitle(keyword.getValue());
         try{
             key_word.delete();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Removing keyword");
-            alert.setHeaderText("Success removed");
+            alert.setHeaderText("Keyword successfully removed");
             alert.showAndWait();
             closeWindow();
         }catch (Exception e){
