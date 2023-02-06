@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.entities.Category;
@@ -16,11 +17,12 @@ import java.sql.SQLException;
 import java.util.Locale;
 
 public class DeleteCategoryController {
-    public TextField categoryToDelete;
+//    public TextField categoryToDelete;
+    public ChoiceBox categoryToDelete;
     public Button closeButton;
 
     public void apply() throws SQLException, IOException {
-        if(categoryToDelete.getText().equals("")){
+        if(categoryToDelete.getValue().equals("")){
             closeWindow();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Removing keyword");
@@ -34,7 +36,7 @@ public class DeleteCategoryController {
             stage.show();
             return;
         }
-        Category category = CategoryFinder.getInstance().findByTitle(categoryToDelete.getText().toLowerCase(Locale.ROOT));
+        Category category = CategoryFinder.getInstance().findById(Integer.parseInt(categoryToDelete.getId()));
         try{
             category.delete();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -45,7 +47,7 @@ public class DeleteCategoryController {
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Removing category");
-            alert.setHeaderText("Category '" + categoryToDelete.getText() + "' doesnt exists.");
+            alert.setHeaderText("Category '" + categoryToDelete.getValue() + "' doesnt exists.");
             alert.showAndWait();
             closeWindow();
             URL fxmlLocation = getClass().getResource("../fxml/delete_category.fxml");

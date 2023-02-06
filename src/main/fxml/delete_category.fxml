@@ -38,14 +38,11 @@
         </Label>
     </HBox>
     <HBox layoutY="90.0" prefHeight="100.0" prefWidth="500.0">
-        <TextField fx:id="categoryToDelete" prefHeight="50.0" prefWidth="320.0" promptText="e.g. plastic">
+        <ChoiceBox fx:id="categoryToDelete" prefHeight="50.0" prefWidth="320.0">
             <HBox.margin>
                 <Insets left="90.0" top="20.0"/>
             </HBox.margin>
-            <font>
-                <Font name="Calibri Italic" size="25.0"/>
-            </font>
-        </TextField>
+        </ChoiceBox>
     </HBox>
     <HBox prefHeight="252.0" prefWidth="500.0">
         <padding>

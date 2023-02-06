@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.entities.KPFinder;
@@ -21,10 +22,11 @@ import java.util.Locale;
 public class DeleteKeywordController{
     public Button closeButton;
 
-    public TextField keyword;
+//    public TextField keyword;
+    public ChoiceBox keyword;
 
     public void apply() throws SQLException, IOException {
-        if(keyword.getText().equals("")){
+        if(keyword.getValue().equals("")){
             closeWindow();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Removing keyword");
@@ -38,7 +40,7 @@ public class DeleteKeywordController{
             stage.show();
             return;
         }
-        Key_word key_word = KeywordFinder.getInstance().findByTitle(keyword.getText().toLowerCase(Locale.ROOT));
+        Key_word key_word = KeywordFinder.getInstance().findById(Integer.parseInt(keyword.getId()));
         try{
             key_word.delete();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -49,7 +51,7 @@ public class DeleteKeywordController{
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Removing keyword");
-            alert.setHeaderText("Keyword '" + keyword.getText() + "' doesnt exists.");
+            alert.setHeaderText("Keyword '" + keyword.getValue() + "' doesnt exists.");
             alert.showAndWait();
             closeWindow();
             URL fxmlLocation = getClass().getResource("../fxml/delete_keyword.fxml");
