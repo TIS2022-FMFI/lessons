@@ -15,33 +15,33 @@
             prefWidth="500.0" style="-fx-border-color: #000000; -fx-border-width: 10; -fx-background-color: #FFFDD0;"
             xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="main.ui.KeywordsController">
-    <VBox>
         <HBox prefHeight="100.0" prefWidth="500.0">
-            <Label alignment="CENTER" text="EDIT CATEGORIES">
+            <Label alignment="CENTER" text="ALL KEYWORDS">
                 <font>
                     <Font name="Calibri Bold" size="35.0"/>
                 </font>
                 <padding>
-                    <Insets left="115.0" top="35.0"/>
+                    <Insets left="130.0" top="35.0"/>
                 </padding>
             </Label>
         </HBox>
-        <ScrollPane pannable="true">
-            <VBox fx:id="keywordList" layoutY="90.0" layoutX="115.0" prefHeight="100.0" prefWidth="500.0">
+        <ScrollPane pannable="true" layoutY="90.0" layoutX="115.0" prefHeight="100.0" prefWidth="250.0">
+            <VBox fx:id="keywordList">
             </VBox>
         </ScrollPane>
-        <Button fx:id="closeButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0"
-                style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;"
-                text="BACK" onAction="#closeWindow">
-            <font>
-                <Font name="Calibri Bold" size="25.0"/>
-            </font>
-            <cursor>
-                <Cursor fx:constant="HAND"/>
-            </cursor>
-            <VBox.margin>
-                <Insets bottom="10.0"/>
-            </VBox.margin>
-        </Button>
-    </VBox>
+        <VBox layoutY="210.0" layoutX="115.0" prefHeight="100.0" prefWidth="500.0">
+            <Button fx:id="closeButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0"
+                    style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;"
+                    text="BACK" onAction="#closeWindow">
+                <font>
+                    <Font name="Calibri Bold" size="25.0"/>
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <VBox.margin>
+                    <Insets bottom="10.0"/>
+                </VBox.margin>
+            </Button>
+        </VBox>
 </AnchorPane>
