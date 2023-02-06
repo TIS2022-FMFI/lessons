@@ -243,6 +243,7 @@ public class NewLessonController implements Initializable {
         });
         return output;
     }
+
     @FXML
     private void getKeys() {
         primeKey.getItems().clear();
