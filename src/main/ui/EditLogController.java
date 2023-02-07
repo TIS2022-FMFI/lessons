@@ -20,10 +20,12 @@ public class EditLogController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Problem problem = LessonController.problemToEdit;
-        modified.setText(problem.getLast_editor() + "\t" + problem.getLast_edited_at());
+        if (problem.getLast_edited_at() != null) {
+            modified.setText(problem.getLast_editor() + "\t" + problem.getLast_edited_at());
+        }
         String desc = problem.getEdit_description();
         if (desc == null) {
-            desc = "";
+            desc = "Not edited yet";
         }
         editLog.setText(desc);
     }

@@ -109,7 +109,7 @@ public class KPFinder {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement(
                 "SELECT DISTINCT kw.key_word_id, kw.title, kw.prime FROM key_word_problem kwp LEFT JOIN key_word kw " +
                         "ON kwp.key_word_id = kw.key_word_id WHERE kwp.problem_id IN" +
-                        "(SELECT problem_id FROM problem WHERE category_id = ?) AND kw.prime = TRUE")) {
+                        "(SELECT problem_id FROM problem WHERE category_id = ?)")) {
             s.setInt(1, categoryId);
 
             try (ResultSet r = s.executeQuery()) {

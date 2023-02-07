@@ -10,17 +10,22 @@ import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import main.entities.Problem;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DeleteLessonController {
     public PasswordField password;
     public Button apply;
     private final Problem problem = LessonController.problemToDelete;
 
-    public void checkPassword(){
-        //TODO  šifrovanie!!!!!!!!!!!!!!
-        if(password.getText().equals("heslo")){
+    public void checkPassword() throws IOException {
+        java.util.Properties prop = new Properties();
+        prop.loadFromXML(new FileInputStream("config/config.xml"));
+        if(password.getText().equals(prop.getProperty("delete-password"))){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Removing Lesson");
             alert.setHeaderText("Lesson successfully removed! Please reload main page.");

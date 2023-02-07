@@ -69,7 +69,23 @@
                               <Font name="Calibri Bold Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <ChoiceBox fx:id="newLessCat" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #D9DDDC;">
+                        <ChoiceBox fx:id="newLessCat" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #D9DDDC;" onAction="#getKeys">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ChoiceBox>
+                        <ChoiceBox fx:id="primeKey" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #D9DDDC;" onAction="#setPrime">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ChoiceBox>
+                        <ChoiceBox fx:id="notPrimeKey" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #D9DDDC;" onAction="#setNotPrime">
                            <HBox.margin>
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
