@@ -1,6 +1,7 @@
 package main;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -39,6 +40,7 @@ public class Main extends Application {
         Parent root = loader.load();
         Controller controller = loader.getController();
         controller.setHostServices(getHostServices());
+        stage.setOnCloseRequest(e -> Platform.exit());
         stage.setTitle("Lessons Learn");
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("../main/css/buttons.css").toExternalForm());
