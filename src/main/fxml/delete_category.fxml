@@ -47,9 +47,9 @@
             </cursor>
         </ChoiceBox>
     </HBox>
-    <HBox prefHeight="252.0" prefWidth="500.0">
+    <HBox layoutY="200" prefHeight="50.0" prefWidth="500.0" >
         <padding>
-            <Insets left="10.0" top="200.0"/>
+            <Insets left="10.0"/>
         </padding>
         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0"
                 style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54 #FE2C54;"
@@ -64,7 +64,7 @@
                 <Insets left="80.0"/>
             </HBox.margin>
         </Button>
-        <Button fx:id="closeButton" layoutX="20.0" layoutY="210.0" mnemonicParsing="false" prefHeight="50.0"
+        <Button fx:id="closeButton" layoutX="20.0" mnemonicParsing="false" prefHeight="50.0"
                 prefWidth="120.0"
                 style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #000000; -fx-border-width: 2; -fx-background-color: #FE2C54;"
                 text="BACK" onAction="#closeWindow">
