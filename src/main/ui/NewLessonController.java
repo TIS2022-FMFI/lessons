@@ -52,7 +52,6 @@ public class NewLessonController implements Initializable {
             for (Category c : CategoryFinder.getInstance().findAll()){
                 newLessCat.getItems().add(c.getTitle());
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

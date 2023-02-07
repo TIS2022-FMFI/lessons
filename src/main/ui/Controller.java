@@ -60,6 +60,12 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        showCategories();
+        showAllLessons();
+    }
+
+    public void showCategories(){
+        boxCategories.getChildren().clear();
         try {
             List<Category> cat = CategoryFinder.getInstance().findAll();
             for (int i = 0; i < cat.size(); i++) {
@@ -68,16 +74,57 @@ public class Controller implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        showAllLessons();
-
-        Button reset = new Button("RESET");
+        Button reset = new Button("RELOAD PAGE");
         reset.getStyleClass().add("reset");
         boxCategories.getChildren().add(reset);
 
         reset.setOnAction(e -> {
+            showCategories();
             showAllLessons();
-                });
-        showAllLessons();
+        });
+    }
+
+    public void showAllKeywords(){
+        try {
+            URL fxmlLocation = getClass().getResource("../fxml/keywords.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent root1 = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root1));
+            stage.setTitle("New category");
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+//        List<Key_word> keywords = null;
+//        try {
+//            keywords = KeywordFinder.getInstance().findAll();
+//            keywords.sort(Comparator.comparing(Key_word::getTitle));
+//            for (Key_word k: keywords) {
+//                System.out.println(k.getTitle());
+////                Text key = new Text(k.getTitle());
+////                keywordList.getChildren().add(key);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
+//        try {
+//            URL fxmlLocation = getClass().getResource("../fxml/.fxml");
+//            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+//            loader.setController(new NewLessonController());
+//            Parent root1 = (Parent) loader.load();
+//            Stage stage = new Stage();
+//            stage.setResizable(false);
+//            stage.setScene(new Scene(root1));
+//            stage.setTitle("Keywords");
+//            stage.show();
+//
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void showAllLessons(){
