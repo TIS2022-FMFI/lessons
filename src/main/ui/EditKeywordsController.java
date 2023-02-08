@@ -24,7 +24,7 @@ public class EditKeywordsController {
             stage.setResizable(false);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root1));
-            stage.setTitle("New keyword");
+            stage.setTitle("New prime keyword");
             stage.show();
         } catch(Exception e) {
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class EditKeywordsController {
             stage.setResizable(false);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root1));
-            stage.setTitle("Remove keyword");
+            stage.setTitle("Remove prime keyword");
             stage.show();
         } catch(Exception e) {
             e.printStackTrace();

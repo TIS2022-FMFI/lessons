@@ -42,20 +42,26 @@ public class NewKeywordController {
             stage.show();
             return;
         }
-        Key_word key_word = new Key_word();
+        Key_word key_word = KeywordFinder.getInstance().findByTitle(keyword.getText());
+        Boolean existed = true;
+        if(key_word == null){
+            key_word = new Key_word();
+            key_word.setTitle(keyword.getText().toLowerCase(Locale.ROOT));
+            existed = false;
+        }
         key_word.setPrime(true);
-        key_word.setTitle(keyword.getText().toLowerCase(Locale.ROOT));
         try{
-            key_word.insert();
+            if(existed) key_word.update();
+            else key_word.insert();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Adding keyword");
-            alert.setHeaderText("Successfully added");
+            alert.setHeaderText("Successfully added to prime keywords");
             alert.showAndWait();
             closeWindow();
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Adding keyword");
-            alert.setHeaderText("Adding new keyword '" + key_word.getTitle() + "' was unsuccessful.\nThis keyword already exists or check if you are not using diacritic");
+            alert.setHeaderText("Adding new prime keyword '" + key_word.getTitle() + "' was unsuccessful.\nThis keyword already exists or check if you are not using diacritic");
             alert.showAndWait();
             closeWindow();
             URL fxmlLocation = getClass().getResource("../fxml/new_keyword.fxml");

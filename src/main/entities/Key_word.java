@@ -36,9 +36,10 @@ public class Key_word {
     }
 
     public void update()throws SQLException {
-        try(PreparedStatement s = DbContext.getConnection().prepareStatement("UPDATE key_word SET title = ? WHERE key_word_id=?")){
+        try(PreparedStatement s = DbContext.getConnection().prepareStatement("UPDATE key_word SET title = ?, prime = ? WHERE key_word_id=?")){
             s.setString(1, title);
-            s.setInt(2, key_word_id);
+            s.setBoolean(2, prime);
+            s.setInt(3, key_word_id);
             s.executeUpdate();
         }
     }
