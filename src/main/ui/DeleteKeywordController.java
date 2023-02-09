@@ -25,7 +25,7 @@ public class DeleteKeywordController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            for(Key_word key_word : KeywordFinder.getInstance().findAll()){
+            for(Key_word key_word : KeywordFinder.getInstance().findAllbyPrime(true)){
                 keyword.getItems().add(key_word.getTitle());
             }
         } catch (SQLException e) {
@@ -38,7 +38,7 @@ public class DeleteKeywordController implements Initializable {
         if(keyword.getValue() == null){
             closeWindow();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Removing keyword");
+            alert.setTitle("Removing prime keyword");
             alert.setHeaderText("Choose keyword, please!");
             alert.showAndWait();
             URL fxmlLocation = getClass().getResource("../fxml/delete_keyword.fxml");
@@ -51,10 +51,15 @@ public class DeleteKeywordController implements Initializable {
         }
         Key_word key_word = KeywordFinder.getInstance().findByTitle(keyword.getValue());
         try{
-            key_word.delete();
+            System.out.println(key_word.getTitle() + key_word.getKey_word_id() + key_word.getPrime());
+            key_word.setPrime(false);
+            key_word.update();
+            System.out.println(key_word.getPrime());
+            Key_word pom = KeywordFinder.getInstance().findById(key_word.getKey_word_id());
+            System.out.println(pom.getPrime());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Removing keyword");
-            alert.setHeaderText("Keyword successfully removed");
+            alert.setTitle("Removing prime keyword");
+            alert.setHeaderText("Keyword '" + key_word.getTitle() + "' successfully change to non-prime");
             alert.showAndWait();
             closeWindow();
         }catch (Exception e){
