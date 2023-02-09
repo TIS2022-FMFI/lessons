@@ -143,7 +143,7 @@ public class KPFinder {
                     kwp = new Key_word_problem();
                     kwp.setProblem_id(r.getInt("problem_id"));
                     kwp.setKey_word_id(r.getInt("key_word_id"));
-                    kwp.setKey_word_problem_id(r.getInt("id"));
+                    kwp.setKey_word_problem_id(r.getInt("key_word_problem_id"));
                 }
 
                 return kwp;
