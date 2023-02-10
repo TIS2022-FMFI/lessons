@@ -18,6 +18,11 @@ public class NewCategoryController {
     public TextField categoryText;
     public Button closeBtn;
 
+    /**
+     * Creates category if it not exists yet
+     * @throws SQLException
+     * @throws IOException
+     */
     public void apply() throws SQLException, IOException {
         if(categoryText.getText().equals("")){
             closeWindow();
@@ -57,6 +62,9 @@ public class NewCategoryController {
         }
     }
 
+    /**
+     * On close of window close window
+     */
     public void closeWindow(){
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();

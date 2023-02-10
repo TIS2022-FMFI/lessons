@@ -27,6 +27,11 @@ public class EditLessonController extends NewLessonController {
     TextField editLog = new TextField();
     private final Problem problem = LessonController.problemToEdit;
 
+    /**
+     * Load data to form from Problem object
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
@@ -94,6 +99,9 @@ public class EditLessonController extends NewLessonController {
         editLog.setText(problem.getEdit_description());
     }
 
+    /**
+     * Saves changes if everything is correct on clicked button
+     */
     @FXML
     private void saveButton() {
         if (editor.getText() == null || editor.getText().isEmpty() || editLog.getText() == null || editLog.getText().isEmpty()) {
@@ -196,6 +204,10 @@ public class EditLessonController extends NewLessonController {
         }
     }
 
+    /**
+     * Create component to write editor for problem edition
+     * @return HBox which contains label and textfield for editor
+     */
     private HBox addEditor() {
         editorLabel.setText("Editor:");
         editorLabel.setPrefSize(180, 60);
@@ -213,6 +225,10 @@ public class EditLessonController extends NewLessonController {
         return output;
     }
 
+    /**
+     * Create component to write edit log for problem edition
+     * @return HBox which contains label and textfield for edit log
+     */
     private HBox addEditLog() {
         editLogLabel.setText("Edit log:");
         editLogLabel.setPrefSize(180, 60);

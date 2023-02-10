@@ -42,10 +42,13 @@ public class NewLessonController implements Initializable {
 
     List<String> savedFiles = new ArrayList<>();
 
-    FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.png", "*.jpeg");
+    FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.png", "*.jpeg", "*.gif");
 
-
-
+    /**
+     * Loads category, prime keywords and not prime keywords to ChoiceBoxes
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -62,6 +65,10 @@ public class NewLessonController implements Initializable {
         notPrimeKey.setValue("-- Not prime keywords --");
     }
 
+    /**
+     * Open browse window to choose first image to show.
+     * It can be chosen only from image formats.
+     */
     @FXML
     private void browseImgComputer1() {
         Stage stage = new Stage();
@@ -78,12 +85,19 @@ public class NewLessonController implements Initializable {
         }
     }
 
+    /**
+     * Remove saved first image
+     */
     @FXML
     private void removeImg1() {
         image1 = null;
         imagePath1.setText("");
     }
 
+    /**
+     * Open browse window to choose second image to show.
+     * It can be chosen only from image formats.
+     */
     @FXML
     private void browseImgComputer2() {
         Stage stage = new Stage();
@@ -100,12 +114,18 @@ public class NewLessonController implements Initializable {
         }
     }
 
+    /**
+     * Remove second saved image
+     */
     @FXML
     private void removeImg2() {
         image2 = null;
         imagePath2.setText("");
     }
 
+    /**
+     * Opens window to brows computer files to add for problem
+     */
     @FXML
     private void browseFileComputer() {
         Stage stage = new Stage();
@@ -123,6 +143,9 @@ public class NewLessonController implements Initializable {
         }
     }
 
+    /**
+     * Add file to problem from path
+     */
     @FXML
     private void addFile() {
         String path = newLessFileName.getText();
@@ -132,6 +155,9 @@ public class NewLessonController implements Initializable {
         }
     }
 
+    /**
+     * Save problem on click if category is set
+     */
     @FXML
     private void saveButton() {
         Problem problem = new Problem();
@@ -211,12 +237,20 @@ public class NewLessonController implements Initializable {
         }
     }
 
+    /**
+     * Close window
+     */
     @FXML
     void deleteButton() {
         Stage stage = (Stage) newLessTitle.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Create GUI component to show saved file and add remove button next to it for remove from saved files
+     * @param fileName absolute path of file
+     * @return HBox which contains Textfield with path and Button to remove it
+     */
     public HBox showFile(String fileName) {
         TextField file = new TextField(fileName);
         file.setEditable(false);
@@ -243,6 +277,9 @@ public class NewLessonController implements Initializable {
         return output;
     }
 
+    /**
+     * On category change load keywords
+     */
     @FXML
     private void getKeys() {
         primeKey.getItems().clear();
@@ -267,6 +304,9 @@ public class NewLessonController implements Initializable {
         }
     }
 
+    /**
+     * If prime keyword is chosen from ChoiceBox, add it to keywords Textfield
+     */
     @FXML
     private void setPrime() {
         if (primeKey.getValue() == null || primeKey.getValue() == "-- Prime keywords --") {
@@ -282,6 +322,9 @@ public class NewLessonController implements Initializable {
         }
     }
 
+    /**
+     * If not prime keyword is chosen from ChoiceBox, add it to keywords Textfield
+     */
     @FXML
     private void setNotPrime() {
         if (notPrimeKey.getValue() == null || notPrimeKey.getValue() == "-- Not prime keywords --") {
