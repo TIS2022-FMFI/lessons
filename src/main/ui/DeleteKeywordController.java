@@ -22,6 +22,11 @@ public class DeleteKeywordController implements Initializable {
     public Button closeButton;
     public ChoiceBox<String> keyword;
 
+    /**
+     * Load all keywords to ChoiceBox for choose to delete
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -34,6 +39,11 @@ public class DeleteKeywordController implements Initializable {
 
     }
 
+    /**
+     * Delete keyword when it´s clicked on button
+     * @throws SQLException
+     * @throws IOException
+     */
     public void apply() throws SQLException, IOException {
         if(keyword.getValue() == null){
             closeWindow();
@@ -77,6 +87,9 @@ public class DeleteKeywordController implements Initializable {
         }
     }
 
+    /**
+     * On close of window close window
+     */
     @FXML
     private void closeWindow(){
         Stage stage = (Stage) closeButton.getScene().getWindow();

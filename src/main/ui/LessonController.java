@@ -48,10 +48,19 @@ public class LessonController implements Initializable {
 
     private HostServices hostServices ;
 
+    /**
+     * Set services for open file
+     * @param hostServices
+     */
     public void setHostServices(HostServices hostServices) {
         this.hostServices = hostServices ;
     }
 
+    /**
+     * Load data from Problem to show
+     * @param url
+     * @param resourceBundle
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             problem = ProblemFinder.getInstance().findById(Controller.chosenProblem);
@@ -102,6 +111,9 @@ public class LessonController implements Initializable {
         }
     }
 
+    /**
+     * Opens edit mode for current problem
+     */
     public void edit() {
         try {
             problemToEdit = problem;
@@ -115,6 +127,9 @@ public class LessonController implements Initializable {
         }
     }
 
+    /**
+     * Opens confirm window with password to delete current problem
+     */
     public void delete(){
         try {
             problemToDelete = problem;
@@ -131,6 +146,9 @@ public class LessonController implements Initializable {
         }
     }
 
+    /**
+     * Opens window with editlog
+     */
     @FXML void showEditLog() {
         try {
             problemToEdit = problem;
@@ -148,12 +166,20 @@ public class LessonController implements Initializable {
         }
     }
 
+    /**
+     * On close of window close window
+     */
     @FXML
     public void closeWindow(){
         Stage stage = (Stage) delete.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Generate GUI component for given file and on click opens itself
+     * @param fileName absolute file path
+     * @return Textfield to show saved file for problem
+     */
     public TextField showFile(String fileName) {
         String[] name = fileName.split("\\\\");
         TextField file = new TextField(name[name.length-1]);
@@ -176,6 +202,10 @@ public class LessonController implements Initializable {
         return file;
     }
 
+    /**
+     * Click on image show it in full resolution in new window
+     * @param imgPath absolute path of image
+     */
     public void showImage(String imgPath) {
         try {
             Stage stage = new Stage();

@@ -14,6 +14,9 @@ public class EditCategoriesController {
     public Button addButton;
     public Button deleteButton;
 
+    /**
+     * Opens window to create new category when button is clicked
+     */
     public void newCategory(){
         try {
             URL fxmlLocation = getClass().getResource("../fxml/new_category.fxml");
@@ -30,6 +33,9 @@ public class EditCategoriesController {
         }
     }
 
+    /**
+     * Opens window to delete category when button is clicked
+     */
     public void deleteCategory(){
         try {
             URL fxmlLocation = getClass().getResource("../fxml/delete_category.fxml");
@@ -46,6 +52,9 @@ public class EditCategoriesController {
         }
     }
 
+    /**
+     * On close of window close window
+     */
     public void closeWindow(){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();

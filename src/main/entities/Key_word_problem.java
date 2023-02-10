@@ -36,6 +36,10 @@ public class Key_word_problem {
         this.key_word_id = key_word_id;
     }
 
+    /**
+     * Insert object to database table <em>key_word_problem</em>
+     * @throws SQLException
+     */
     public void insert() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("INSERT INTO key_word_problem (problem_id, key_word_id) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS)) {
             s.setInt(1, problem_id);
@@ -49,6 +53,11 @@ public class Key_word_problem {
         }
 
     }
+
+    /**
+     * Delete form database table <em>key_word_problem</em> row with key_word_problem_id
+     * @throws SQLException
+     */
     public void delete() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM key_word_problem WHERE key_word_problem_id = ?")) {
             s.setInt(1, key_word_problem_id);
@@ -56,6 +65,10 @@ public class Key_word_problem {
         }
     }
 
+    /**
+     * Send update query to database table <em>key_word_problem</em> to update row with data from object
+     * @throws SQLException
+     */
     public void update()throws SQLException {
         try(PreparedStatement s = DbContext.getConnection().prepareStatement("UPDATE key_word_problem SET problem_id = ?, key_word_id = ? WHERE key_word_problem_id =?")){
             s.setInt(1, problem_id);
@@ -65,6 +78,10 @@ public class Key_word_problem {
         }
     }
 
+    /**
+     * Delete form database table <em>key_word_problem</em> row with Key_word_problem id
+     * @throws SQLException
+     */
     public void deleteByProblemId()throws SQLException{
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM key_word_problem WHERE problem_id = ?")) {
             s.setInt(1, problem_id);
@@ -72,6 +89,10 @@ public class Key_word_problem {
         }
     }
 
+    /**
+     * Delete form database table <em>key_word_problem</em> row with Key_word_problem id
+     * @throws SQLException
+     */
     public void deleteByKeywordId()throws SQLException{
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM key_word_problem WHERE key_word_id = ?")) {
             s.setInt(1, key_word_id);

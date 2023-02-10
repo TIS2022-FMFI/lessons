@@ -22,6 +22,10 @@ public class DeleteLessonController {
     public Button apply;
     private final Problem problem = LessonController.problemToDelete;
 
+    /**
+     * Check if password is correct and if it is, delete problem
+     * @throws IOException
+     */
     public void checkPassword() throws IOException {
         java.util.Properties prop = new Properties();
         prop.loadFromXML(new FileInputStream("config/config.xml"));
@@ -58,6 +62,9 @@ public class DeleteLessonController {
         }
     }
 
+    /**
+     * On close of window close window
+     */
     @FXML
     private void closeWindow(){
         Stage stage = (Stage) apply.getScene().getWindow();

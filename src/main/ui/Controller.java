@@ -64,6 +64,9 @@ public class Controller implements Initializable {
         showAllLessons();
     }
 
+    /**
+     * Load categories on main page
+     */
     public void showCategories(){
         boxCategories.getChildren().clear();
         try {
@@ -84,6 +87,9 @@ public class Controller implements Initializable {
         });
     }
 
+    /**
+     * Function for button to show all keywords
+     */
     public void showAllKeywords(){
         try {
             URL fxmlLocation = getClass().getResource("../fxml/keywords.fxml");
@@ -98,35 +104,11 @@ public class Controller implements Initializable {
         } catch(Exception e) {
             e.printStackTrace();
         }
-//        List<Key_word> keywords = null;
-//        try {
-//            keywords = KeywordFinder.getInstance().findAll();
-//            keywords.sort(Comparator.comparing(Key_word::getTitle));
-//            for (Key_word k: keywords) {
-//                System.out.println(k.getTitle());
-////                Text key = new Text(k.getTitle());
-////                keywordList.getChildren().add(key);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-
-//        try {
-//            URL fxmlLocation = getClass().getResource("../fxml/.fxml");
-//            FXMLLoader loader = new FXMLLoader(fxmlLocation);
-//            loader.setController(new NewLessonController());
-//            Parent root1 = (Parent) loader.load();
-//            Stage stage = new Stage();
-//            stage.setResizable(false);
-//            stage.setScene(new Scene(root1));
-//            stage.setTitle("Keywords");
-//            stage.show();
-//
-//        } catch(Exception e) {
-//            e.printStackTrace();
-//        }
     }
 
+    /**
+     * Show all lessons (problems) on main page with some info
+     */
     public void showAllLessons(){
         lessons.getChildren().clear();
         boxKeys.getChildren().clear();
@@ -140,6 +122,10 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Function for button to search by typed keywords
+     * @throws SQLException
+     */
     @FXML
     private void SrcBtn() throws SQLException {
         try{
@@ -185,6 +171,10 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * Function for button to create new lesson
+     * @throws Exception
+     */
     @FXML
     public void newLessonButton() throws Exception {
         try {
@@ -204,6 +194,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Function for button to open menu to edit keywords
+     */
     public void editKeywordsButton(){
         try {
             URL fxmlLocation = getClass().getResource("../fxml/edit_keywords.fxml");
@@ -220,6 +213,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Function for button to open menu to edit categories
+     */
     public void editCategoriesButton(){
         try {
             URL fxmlLocation = getClass().getResource("../fxml/edit_categories.fxml");
@@ -236,6 +232,10 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Add button to represent category on main page. On click related keywords to category are shown
+     * @param c Category object to create button for
+     */
     public void addButton(Category c){
         Button btn = new Button(c.getTitle());
         btn.getStyleClass().add("btnCat");
@@ -303,6 +303,10 @@ public class Controller implements Initializable {
         boxCategories.getChildren().add(btn);
     }
 
+    /**
+     * Show some lessons (problems) on main page with little info
+     * @param problems Map of sorted problems to show
+     */
     public void showLessons(Map<Integer, Integer> problems){
         lessons.getChildren().clear();
         for(Integer p : problems.keySet()){
@@ -315,6 +319,10 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Create and add GUI component with little info about problem
+     * @param problem Problem object to show
+     */
     public void makeLesson(Problem problem){
         HBox lesson = new HBox();
         VBox details = new VBox();

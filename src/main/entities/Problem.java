@@ -19,6 +19,10 @@ public class Problem {
     private String edit_description;
     private Integer category_id;
 
+    /**
+     * Insert object to database table <em>problem</em>
+     * @throws SQLException
+     */
     public void insert() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().
                 prepareStatement("INSERT INTO problem (title, description, path, user_name, create_at, category_id, image1, image2) VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
@@ -39,6 +43,10 @@ public class Problem {
         }
     }
 
+    /**
+     * Delete form database table <em>problem</em> row with Problem id
+     * @throws SQLException
+     */
     public void delete() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM problem WHERE problem_id = ?")) {
             s.setInt(1, problem_id);
@@ -49,6 +57,10 @@ public class Problem {
         }
     }
 
+    /**
+     * Send update query to database table <em>problem</em> to update row with data from object
+     * @throws SQLException
+     */
     public void update()throws SQLException {
         try(PreparedStatement s = DbContext.getConnection().
                 prepareStatement("UPDATE problem SET title = ?, description = ?, path = ?, user_name = ?, create_at = ?, last_editor = ?, last_edited_at = ?, edit_description = ?, image1 = ?, image2 = ?, category_id = ? WHERE problem_id = ?")){

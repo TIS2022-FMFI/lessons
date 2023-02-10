@@ -17,6 +17,11 @@ public class EditLogController implements Initializable {
     @FXML
     private Label modified;
 
+    /**
+     * Load data for editor and editlog from Problem
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Problem problem = LessonController.problemToEdit;
@@ -30,6 +35,9 @@ public class EditLogController implements Initializable {
         editLog.setText(desc);
     }
 
+    /**
+     * On close of window close window
+     */
     @FXML
     private void closeWindow(){
         Stage stage = (Stage) editLog.getScene().getWindow();

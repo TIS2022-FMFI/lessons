@@ -18,6 +18,12 @@ public class KPFinder {
     private KPFinder() {
     }
 
+    /**
+     * Finds all keywords linked with exact problem by problem id
+     * @param idP id of problem
+     * @return list of Key_word objects which are connected to exact problem
+     * @throws SQLException
+     */
     public List<Key_word> findByProblemId(int idP) throws SQLException {
         Connection c = DbContext.getConnection();
         c.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
@@ -47,7 +53,12 @@ public class KPFinder {
         }
     }
 
-
+    /**
+     * Finds all problems linked with exact keyword by keyword id
+     * @param idK id of keyword
+     * @return list of Problem objects which are connected to exact keyword
+     * @throws SQLException
+     */
     public List<Problem> findByKeywordId(int idK) throws SQLException {
         Connection c = DbContext.getConnection();
         c.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
@@ -76,7 +87,13 @@ public class KPFinder {
         }
     }
 
-
+    /**
+     * Finds problems which has exact keyword and category
+     * @param idC id of category
+     * @param idK id of keyword
+     * @return list of Problem objects with required category and keywords
+     * @throws SQLException
+     */
     public List<Problem> findByCK(int idC, int idK) throws SQLException {
         Connection c = DbContext.getConnection();
         c.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
@@ -105,6 +122,12 @@ public class KPFinder {
         }
     }
 
+    /**
+     * Finds all keywords used in problems by category
+     * @param categoryId id of category to search
+     * @return list of Keywords which are linked with problem in category
+     * @throws SQLException
+     */
     public List<Key_word> usedInProblemByCategory(int categoryId) throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement(
                 "SELECT DISTINCT kw.key_word_id, kw.title, kw.prime FROM key_word_problem kwp LEFT JOIN key_word kw " +
@@ -130,6 +153,13 @@ public class KPFinder {
         }
     }
 
+    /**
+     * Finds many to many connection of problem and keyword
+     * @param idK id of keyword
+     * @param idP id of problem
+     * @return new Key-word_problem object
+     * @throws SQLException
+     */
     public Key_word_problem findByKeywordAndProblem(int idK, int idP) throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word_problem WHERE key_word_id = ? AND problem_id = ?")) {
             s.setInt(1, idK);
@@ -151,6 +181,12 @@ public class KPFinder {
         }
     }
 
+    /**
+     * Finds all many to many connection by keyword id
+     * @param keyword_id id of keyword
+     * @return list of Key_word_problem objects with required key_word id
+     * @throws SQLException
+     */
     public List<Key_word_problem> findKWPByKeywordId(int keyword_id) throws SQLException{
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word_problem WHERE key_word_id = ?")){
             s.setInt(1, keyword_id);

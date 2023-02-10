@@ -23,6 +23,11 @@ public class DeleteCategoryController implements Initializable {
     public ChoiceBox<String> categoryToDelete;
     public Button closeButton;
 
+    /**
+     * Load all categories to ChoiceBox for choose to delete
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -34,6 +39,11 @@ public class DeleteCategoryController implements Initializable {
         }
     }
 
+    /**
+     * Delete category when it´s clicked on button and all related problems
+     * @throws SQLException
+     * @throws IOException
+     */
     public void apply() throws SQLException, IOException {
         if(categoryToDelete.getValue() == null){
             closeWindow();
@@ -72,6 +82,9 @@ public class DeleteCategoryController implements Initializable {
         }
     }
 
+    /**
+     * On close of window close window
+     */
     public void closeWindow(){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();

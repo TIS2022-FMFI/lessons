@@ -15,6 +15,9 @@ public class EditKeywordsController {
     public Button addButton;
     public Button deleteButton;
 
+    /**
+     * Opens window to create new keyword when button is clicked
+     */
     public void newKeyword(){
         try {
             URL fxmlLocation = getClass().getResource("../fxml/new_keyword.fxml");
@@ -31,6 +34,9 @@ public class EditKeywordsController {
         }
     }
 
+    /**
+     * Opens window to delete keyword when button is clicked
+     */
     public void deleteKeyword(){
         try {
             URL fxmlLocation = getClass().getResource("../fxml/delete_keyword.fxml");
@@ -47,6 +53,9 @@ public class EditKeywordsController {
         }
     }
 
+    /**
+     * On close of window close window
+     */
     public void closeWindow(){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();

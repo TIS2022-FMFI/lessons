@@ -19,6 +19,11 @@ public class KeywordsController implements Initializable {
     public VBox keywordList;
     public Button closeButton;
 
+    /**
+     * Loads keywords, prime with green color and not prime red coloured
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -27,8 +32,8 @@ public class KeywordsController implements Initializable {
             keywordList.getChildren().clear();
             for (Key_word k: keywords) {
                 Text key = new Text(k.getTitle());
-                if(k.getPrime()) key.setStyle("-fx-text-fill: green; -fx-font-size: 16px;");
-                else key.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
+                if(k.getPrime()) key.setStyle("-fx-fill: green; -fx-font-size: 16px;");
+                else key.setStyle("-fx-fill: red; -fx-font-size: 16px;");
                 keywordList.getChildren().add(key);
             }
         } catch (SQLException e) {
@@ -36,6 +41,9 @@ public class KeywordsController implements Initializable {
         }
     }
 
+    /**
+     * On close of window close window
+     */
     public void closeWindow(){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();

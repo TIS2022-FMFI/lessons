@@ -26,6 +26,11 @@ public class NewKeywordController {
     @FXML
     private Button closeBtn;
 
+    /**
+     * Creates prime keyword if it not exists yet
+     * @throws SQLException
+     * @throws IOException
+     */
     @FXML
     public void apply() throws SQLException, IOException {
         if(keyword.getText().equals("")){
@@ -73,6 +78,9 @@ public class NewKeywordController {
         }
     }
 
+    /**
+     * On close of window close window
+     */
     @FXML
     private void closeWindow(){
         Stage stage = (Stage) closeBtn.getScene().getWindow();
