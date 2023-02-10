@@ -17,6 +17,12 @@ public class KeywordFinder {
     private KeywordFinder() {
     }
 
+    /**
+     * Finds keyword by id
+     * @param id id of keyword
+     * @return new Key_word object which has requested id
+     * @throws SQLException
+     */
     public Key_word findById(int id) throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word WHERE key_word_id = ?")) {
@@ -43,6 +49,12 @@ public class KeywordFinder {
         }
     }
 
+    /**
+     * Finds keyword by its title/name
+     * @param titleK title of keyword
+     * @return new Key_word object with required title
+     * @throws SQLException
+     */
     public Key_word findByTitle(String titleK) throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word WHERE title = ?")) {
@@ -69,7 +81,11 @@ public class KeywordFinder {
         }
     }
 
-
+    /**
+     * Finds all Key_words in database
+     * @return List of all Key_word objects
+     * @throws SQLException
+     */
     public List<Key_word> findAll() throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word")) {
@@ -92,6 +108,12 @@ public class KeywordFinder {
         }
     }
 
+    /**
+     * Finds all Key_words in database of selected type. Prime or not prime.
+     * @param primeX true if prime keyword, false if not prime keyword
+     * @return List of all Key_word objects with given prime bool
+     * @throws SQLException
+     */
     public List<Key_word> findAllbyPrime(Boolean primeX) throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM key_word WHERE prime = ?")) {

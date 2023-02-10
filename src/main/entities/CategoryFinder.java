@@ -17,6 +17,12 @@ public class CategoryFinder {
     private CategoryFinder() {
     }
 
+    /**
+     * Finds category by id
+     * @param id id of category
+     * @return new Category object which has requested id
+     * @throws SQLException
+     */
     public Category findById(int id) throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM category WHERE category_id = ?")) {
@@ -41,6 +47,12 @@ public class CategoryFinder {
         }
     }
 
+    /**
+     * Finds category by its title/name
+     * @param t title of category
+     * @return new Category object with required title
+     * @throws SQLException
+     */
     public Category findByTitle(String t) throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM category WHERE title = ?")) {
@@ -65,6 +77,11 @@ public class CategoryFinder {
         }
     }
 
+    /**
+     * Finds all Categories in database
+     * @return List of all Category objects
+     * @throws SQLException
+     */
     public List<Category> findAll() throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM category")) {

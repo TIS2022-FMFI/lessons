@@ -12,6 +12,10 @@ public class Key_word {
     private String title;
     private Boolean prime = false;
 
+    /**
+     * Insert object to database table <em>key_word</em>
+     * @throws SQLException
+     */
     public void insert() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("INSERT INTO key_word (title, prime) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             s.setString(1, title.toLowerCase());
@@ -25,6 +29,10 @@ public class Key_word {
         }
     }
 
+    /**
+     * Delete form database table <em>key_word</em> row with Key_word id
+     * @throws SQLException
+     */
     public void delete() throws SQLException {
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("DELETE FROM key_word WHERE key_word_id = ?")) {
             s.setInt(1, key_word_id);
@@ -35,6 +43,10 @@ public class Key_word {
         }
     }
 
+    /**
+     * Send update query to database table <em>key_word</em> to update row with data from object
+     * @throws SQLException
+     */
     public void update()throws SQLException {
         try(PreparedStatement s = DbContext.getConnection().prepareStatement("UPDATE key_word SET title = ?, prime = ? WHERE key_word_id=?")){
             s.setString(1, title);

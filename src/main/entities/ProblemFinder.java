@@ -17,6 +17,12 @@ public class ProblemFinder {
     private ProblemFinder() {
     }
 
+    /**
+     * Finds problem by id
+     * @param id id of problem
+     * @return new Problem object which has requested id
+     * @throws SQLException
+     */
     public Problem findById(int id) throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM problem WHERE problem_id = ?")) {
@@ -51,6 +57,11 @@ public class ProblemFinder {
         }
     }
 
+    /**
+     * Finds all Problems in database
+     * @return List of all Problem objects
+     * @throws SQLException
+     */
     public List<Problem> findAll() throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM problem")) {
@@ -81,6 +92,12 @@ public class ProblemFinder {
         }
     }
 
+    /**
+     * Finds list of Problems which have id of requested category
+     * @param id_category id of category
+     * @return list of Problem objects from database which have required category id
+     * @throws SQLException
+     */
     public List<Problem> findByCategory(int id_category) throws SQLException {
 
         try (PreparedStatement s = DbContext.getConnection().prepareStatement("SELECT * FROM problem WHERE category_id = ?")) {
